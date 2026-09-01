@@ -23,9 +23,6 @@ GLM-5.2-FP8 inference benchmark results (aiperf 0.12).
 | TTFT (ms) | Time to First Token |
 | ITL (ms) | Inter Token Latency |
 | request latency (ms) | Request Latency |
-| mean_accept_len | vLLM SpecDecoding (decode log) |
-| draft_accept_rate | accepted tokens / drafted tokens |
-| per_pos | per-position acceptance rate vector |
 
 Sweep: `glm52-fp8-pd-mtp-dspark-20260901` · datasets: spec-al-math500, spec-al-humaneval · concurrency 4–512
 
@@ -46,21 +43,6 @@ One row per **concurrency**. Each **Δ%** column = `(DSpark − MTP) / MTP × 10
 
 Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-math500/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-math500/comparison.csv)
 
-### Speculative decoding acceptance
-
-| concurrency | MTP mean_accept_len | DSpark mean_accept_len | MTP draft_accept_rate | DSpark draft_accept_rate | MTP per_pos | DSpark per_pos |
-|---:|---:|---:|---:|---:|---|---|
-| 4 | — | — | — | — | — | — |
-| 8 | — | — | — | — | — | — |
-| 16 | — | — | — | — | — | — |
-| 32 | — | — | — | — | — | — |
-| 64 | — | — | — | — | — | — |
-| 128 | — | — | — | — | — | — |
-| 256 | — | — | — | — | — | — |
-| 512 | — | — | — | — | — | — |
-
-Acceptance columns empty for this export (decode logs were not archived for this run). Values come from vLLM decode logs + `collect-acceptance.py`.
-
 ## spec-al-humaneval
 
 One row per **concurrency**. Each **Δ%** column = `(DSpark − MTP) / MTP × 100` for that metric (negative on latency = DSpark lower/faster).
@@ -77,20 +59,5 @@ One row per **concurrency**. Each **Δ%** column = `(DSpark − MTP) / MTP × 10
 | 512 | 61.35 | **68.17** | +11 | 1291.41 | **2891.61** | +124 | 16.63 | **15.23** | -8 | 58848.76 | **59766.78** | +2 |
 
 Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-humaneval/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-humaneval/comparison.csv)
-
-### Speculative decoding acceptance
-
-| concurrency | MTP mean_accept_len | DSpark mean_accept_len | MTP draft_accept_rate | DSpark draft_accept_rate | MTP per_pos | DSpark per_pos |
-|---:|---:|---:|---:|---:|---|---|
-| 4 | — | — | — | — | — | — |
-| 8 | — | — | — | — | — | — |
-| 16 | — | — | — | — | — | — |
-| 32 | — | — | — | — | — | — |
-| 64 | — | — | — | — | — | — |
-| 128 | — | — | — | — | — | — |
-| 256 | — | — | — | — | — | — |
-| 512 | — | — | — | — | — | — |
-
-Acceptance columns empty for this export (decode logs were not archived for this run). Values come from vLLM decode logs + `collect-acceptance.py`.
 
 
