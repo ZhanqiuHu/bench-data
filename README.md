@@ -1,36 +1,31 @@
-# GLM-5.2-FP8 MTP vs DSpark — benchmark data
+# bench-data
 
-Public dataset for overnight speculative-decoding sweeps on **GLM-5.2-FP8** with P/D disaggregation (1×8 prefill + 1×8 decode, 16× H200).
+Public inference benchmark results. **One repo, many sweeps; each sweep splits by dataset.**
 
-## What's here
+## Layout
 
-| Path | Description |
-|------|-------------|
-| `summary/all_cells.csv` | One row per completed cell (parsed key metrics) |
-| `raw/{mtp,dspark}/{dataset}/c{N}/profile_export_aiperf.csv` | aiperf 0.12 CSV exports |
-| `STATUS.md` | Coverage matrix + known gaps |
+```
+bench-data/
+  sweeps/
+    <sweep-id>/
+      README.md
+      STATUS.md
+      datasets/
+        <dataset-name>/
+          summary.csv          # all methods × conc for this dataset
+          head-to-head.csv     # MTP vs DSpark (when both exist)
+          mtp/c{N}/profile_export_aiperf.csv
+          dspark/c{N}/profile_export_aiperf.csv
+```
 
-## Setup (fixed for all runs)
+## Sweeps
 
-- **Model:** `zai-org/GLM-5.2-FP8`
-- **Client:** aiperf `profile`, `--use-server-token-count`, `--streaming`
-- **Concurrency sweep:** 4, 8, 16, 32, 64, 128, 256, 512
-- **Datasets:** aiperf spec-decode public sets (`spec-al-math500`, `spec-al-humaneval`, `spec-al-mbpp`)
-- **Metrics:** tok/s/user = `Output Token Throughput Per User`; tok/s/gpu = total output tok/s ÷ 16 GPUs
+| Sweep | Model | Notes |
+|-------|-------|-------|
+| [`glm52-fp8-pd-mtp-dspark-20260901`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/) | GLM-5.2-FP8 | P/D 16×H200, MTP vs DSpark spec-decode, overnight 2026-09-01 |
 
-## Complete fair pairs (MTP + DSpark)
+## Adding data
 
-- **spec-al-math500** — 8/8 + 8/8 (DSpark = fair rerun, epoch after 2026-09-01T03:26Z)
-- **spec-al-humaneval** — 8/8 + 8/8
-
-## Partial
-
-- **spec-al-mbpp** — DSpark 8/8 only; MTP blocked by cluster GPU contention
-
-## Not included (failed / not run)
-
-- gsm8k, mtbench, spec-bench, P4 synthetics — see `STATUS.md`
-
-## Citation
-
-If you use this data, note: spec-decode datasets are **not** InferenceMAX chat/reasoning/summarization scenarios; comparison is valid within same dataset/topology/client.
+1. `sweeps/<new-id>/datasets/<dataset>/mtp/c4/...`
+2. Add per-dataset `summary.csv` (and `head-to-head.csv` if applicable).
+3. Update sweep `STATUS.md` and this README table.

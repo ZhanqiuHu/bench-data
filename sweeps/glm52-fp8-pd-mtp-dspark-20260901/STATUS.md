@@ -15,6 +15,6 @@
 - MTP serving could not schedule (16 GPU required; cluster saturated by other jobs).
 - Orchestrator log: `deploy mtp attempt 1/4` failed — `Insufficient nvidia.com/gpu`.
 
-## Raw file count
+## Data layout
 
-40 `profile_export_aiperf.csv` files under `raw/` (16 MTP + 24 DSpark).
+40 cells under `datasets/<name>/{mtp,dspark}/c{N}/` (16 MTP + 24 DSpark).
