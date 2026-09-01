@@ -1,7 +1,14 @@
 # spec-al-humaneval
 
-Complete MTP vs DSpark pair (8 conc each).
+| c | MTP tok/s/user | DSpark tok/s/user | Δ DSpark | MTP TTFT ms | DSpark TTFT ms |
+|--:|---------------:|------------------:|---------:|------------:|---------------:|
+| 4 | 106.52 | 121.39 | +14% | 653 | 471 |
+| 8 | 97.03 | 108.58 | +12% | 701 | 509 |
+| 16 | 87.20 | 98.28 | +13% | 978 | 481 |
+| 32 | 79.57 | 88.42 | +11% | 1,083 | 542 |
+| 64 | 67.97 | 81.13 | +19% | 1,728 | 583 |
+| 128 | 65.60 | 71.98 | +10% | 1,422 | 819 |
+| 256 | 68.21 | 71.03 | +4% | 3,139 | 1,636 |
+| 512 | 61.35 | 68.17 | +11% | 1,291 | 2,892 |
 
-- [`summary.csv`](summary.csv)
-- [`head-to-head.csv`](head-to-head.csv)
-- `mtp/c{N}/`, `dspark/c{N}/`
+[head-to-head.csv](head-to-head.csv) · [summary.csv](summary.csv) · `mtp/c{N}/` · `dspark/c{N}/`

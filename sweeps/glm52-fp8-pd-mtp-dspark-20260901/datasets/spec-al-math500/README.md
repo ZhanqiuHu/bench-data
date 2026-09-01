@@ -1,7 +1,14 @@
 # spec-al-math500
 
-Fair MTP vs DSpark pair. DSpark = fair rerun (csv mtime after 2026-09-01T03:26Z).
+| c | MTP tok/s/user | DSpark tok/s/user | Δ DSpark | MTP TTFT ms | DSpark TTFT ms |
+|--:|---------------:|------------------:|---------:|------------:|---------------:|
+| 4 | 118.57 | 136.34 | +15% | 734 | 625 |
+| 8 | 107.42 | 139.07 | +30% | 697 | 522 |
+| 16 | 94.76 | 125.24 | +32% | 654 | 492 |
+| 32 | 90.67 | 109.91 | +21% | 588 | 502 |
+| 64 | 79.30 | 76.96 | −3% | 1,082 | 2,507 |
+| 128 | 64.31 | 56.97 | −11% | 1,844 | 13,199 |
+| 256 | 50.14 | 53.75 | +7% | 1,475 | 46,084 |
+| 512 | 56.14 | 55.81 | ~0% | 12,406 | 22,216 |
 
-- [`summary.csv`](summary.csv) — per-method metrics
-- [`head-to-head.csv`](head-to-head.csv) — MTP vs DSpark tok/s/user + delta %
-- `mtp/c{N}/`, `dspark/c{N}/` — raw aiperf exports
+[head-to-head.csv](head-to-head.csv) · [summary.csv](summary.csv) · `mtp/c{N}/` · `dspark/c{N}/`
