@@ -15,7 +15,7 @@ GLM-5.2-FP8 inference benchmark results (aiperf 0.12).
 | Prefill draft tokens (k) | 1 | **1** |
 | Decode draft tokens (k) | 5 | **7** |
 
-Sweep: `glm52-fp8-pd-mtp-dspark-20260901` · MTP vs DSpark · concurrency levels where `n_req ≥ c`
+Sweep: `glm52-fp8-pd-mtp-dspark-20260901` · MTP vs DSpark
 
 ## spec-al-math500
 
@@ -31,8 +31,6 @@ Sweep: `glm52-fp8-pd-mtp-dspark-20260901` · MTP vs DSpark · concurrency levels
 | ISL distribution (c=4, tokens) | avg 71.94, p50 57.50, p90 117.10, min 21.00, max 354.00 |
 | OSL distribution (c=4, tokens) | avg 2783.16, p50 1303.50, p90 6308.70, min 156.00, max 28753.00 |
 | Notes | MATH-500; model-chosen output length. |
-
-Rows with `n_req < concurrency` are excluded (cannot saturate requested concurrency).
 
 ### Throughput & latency
 
@@ -83,8 +81,6 @@ Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-a
 | ISL distribution (c=4, tokens) | avg 138.36, p50 128.00, p90 219.90, min 50.00, max 330.00 |
 | OSL distribution (c=4, tokens) | avg 4391.63, p50 971.50, p90 10946.40, min 138.00, max 65291.00 |
 | Notes | HumanEval via chat template. |
-
-Rows with `n_req < concurrency` are excluded (cannot saturate requested concurrency).
 
 ### Throughput & latency
 
