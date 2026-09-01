@@ -17,7 +17,7 @@ GLM-5.2-FP8 inference benchmark results (aiperf 0.12).
 | Prefill draft tokens (k) | 1 | **1** |
 | Decode draft tokens (k) | 5 | **7** |
 
-Sweep: `glm52-fp8-pd-mtp-dspark-20260901` · MTP vs DSpark
+Sweep: `glm52-fp8-pd-mtp-dspark` · MTP vs DSpark
 
 ## spec-al-math500
 
@@ -67,7 +67,7 @@ Each **Δ%** = `(DSpark − MTP) / MTP × 100` (negative on latency = DSpark fas
 | 128 | 64.31 | **56.97** | -11 | 1844.17 | **13198.77** | +616 | 16.79 | **47.28** | +182 | 61040.37 | **125236.17** | +105 |
 | 256 | 50.14 | **53.75** | +7 | 1475.12 | **46083.61** | +3024 | 20.84 | **61.55** | +195 | 71006.21 | **188352.75** | +165 |
 
-Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-math500/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-math500/comparison.csv)
+Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/spec-al-math500/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/spec-al-math500/comparison.csv)
 
 ## spec-al-humaneval
 
@@ -114,5 +114,5 @@ Each **Δ%** = `(DSpark − MTP) / MTP × 100` (negative on latency = DSpark fas
 | 64 | 67.97 | **81.13** | +19 | 1728.30 | **583.18** | -66 | 15.46 | **12.76** | -17 | 65427.42 | **69293.17** | +6 |
 | 128 | 65.60 | **71.98** | +10 | 1422.31 | **818.65** | -42 | 15.39 | **14.47** | -6 | 72097.76 | **60877.10** | -16 |
 
-Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-humaneval/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark-20260901/datasets/spec-al-humaneval/comparison.csv)
+Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/spec-al-humaneval/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/spec-al-humaneval/comparison.csv)
 
