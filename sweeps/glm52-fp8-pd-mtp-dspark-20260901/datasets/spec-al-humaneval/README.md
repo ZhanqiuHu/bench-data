@@ -11,7 +11,7 @@
 | 256 | 68.21 | 71.03 | +4% | 3,139 | 1,636 |
 | 512 | 61.35 | 68.17 | +11% | 1,291 | 2,892 |
 
-[`head-to-head.csv`](head-to-head.csv) · [`summary.csv`](summary.csv)
+[`MTP vs DSpark comparison`](head-to-head.csv) · [`summary.csv`](summary.csv)
 
 MTP: [`c4`](mtp/c4/profile_export_aiperf.csv) [`c8`](mtp/c8/profile_export_aiperf.csv) [`c16`](mtp/c16/profile_export_aiperf.csv) [`c32`](mtp/c32/profile_export_aiperf.csv) [`c64`](mtp/c64/profile_export_aiperf.csv) [`c128`](mtp/c128/profile_export_aiperf.csv) [`c256`](mtp/c256/profile_export_aiperf.csv) [`c512`](mtp/c512/profile_export_aiperf.csv)
 

@@ -25,7 +25,7 @@ Sweep `glm52-fp8-pd-mtp-dspark-20260901` — MTP vs DSpark fair (k=5 vs k=7), co
 | 512 | MTP | 0 | 56.14 | 2493.78 | 155.86 | 12405.85 | 20.73 |
 | 512 | DSpark fair | 0 | 55.81 | 2164.70 | 135.29 | 22215.88 | 54.25 |
 
-### Head-to-head
+### MTP vs DSpark comparison (by concurrency)
 
 | concurrency | MTP tok/s/user | DSpark tok/s/user | Δ% tok/s/user (DSpark vs MTP) | MTP TTFT (ms) | DSpark TTFT (ms) | MTP ITL (ms) | DSpark ITL (ms) |
 |---:|---:|---:|---:|---:|---:|---:|---:|
@@ -65,7 +65,7 @@ Sweep `glm52-fp8-pd-mtp-dspark-20260901` — MTP vs DSpark fair (k=5 vs k=7), co
 | 512 | MTP | 0 | 61.35 | 1038.10 | 64.88 | 1291.41 | 16.63 |
 | 512 | DSpark fair | 0 | 68.17 | 1010.04 | 63.13 | 2891.61 | 15.23 |
 
-### Head-to-head
+### MTP vs DSpark comparison (by concurrency)
 
 | concurrency | MTP tok/s/user | DSpark tok/s/user | Δ% tok/s/user (DSpark vs MTP) | MTP TTFT (ms) | DSpark TTFT (ms) | MTP ITL (ms) | DSpark ITL (ms) |
 |---:|---:|---:|---:|---:|---:|---:|---:|
