@@ -490,3 +490,21 @@ Each **Δ%** = `(DSpark − MTP) / MTP × 100` (negative on latency = DSpark fas
 
 Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/synthetic-summarization/summary.csv) · [`comparison.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/synthetic-summarization/comparison.csv)
 
+---
+
+## DSpark adaptive (throughput only — acceptance pending rerun)
+
+Full tables: [`sweeps/glm52-fp8-pd-adaptive/README.md`](sweeps/glm52-fp8-pd-adaptive/README.md)
+
+| Dataset | cells | note |
+|---|---:|---|
+| spec-al-math500 | 8 | throughput CSV exported from pod mirror |
+| spec-al-humaneval | 8 | throughput CSV exported from pod mirror |
+| spec-al-gsm8k | 8 | throughput CSV exported from pod mirror |
+| spec-al-mbpp | 8 | throughput CSV exported from pod mirror |
+| spec-al-mtbench | 6 | throughput CSV exported from pod mirror |
+| spec-bench | 8 | throughput CSV exported from pod mirror |
+| synthetic-chat | 8 | throughput CSV exported from pod mirror |
+| synthetic-reasoning | 8 | throughput CSV exported from pod mirror |
+| synthetic-summarization | 8 | throughput CSV exported from pod mirror |
+
