@@ -1,5 +1,7 @@
 # glm52-fp8-pd-adaptive
 
+> **INVALID — do not cite.** Overnight 2026-09-03 run: wrong baseline (greedy DSpark vs probabilistic+patch+adaptive), no paired decode logs, no valid acceptance. Rerun in progress.
+
 GLM-5.2-FP8 · DSpark adaptive verification (`enable_adaptive_verification=true`).
 
 | Item | Value |

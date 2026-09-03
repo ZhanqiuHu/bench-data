@@ -334,6 +334,8 @@ Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/spec-bench/summ
 
 ## DSpark adaptive
 
+> **INVALID — do not cite.** See [`sweeps/glm52-fp8-pd-adaptive/README.md`](sweeps/glm52-fp8-pd-adaptive/README.md). Tables below are from a broken run; kept for audit only.
+
 Sweep: `glm52-fp8-pd-adaptive` · adaptive vs DSpark baseline
 
 CSV index: [`sweeps/glm52-fp8-pd-adaptive/README.md`](sweeps/glm52-fp8-pd-adaptive/README.md)
