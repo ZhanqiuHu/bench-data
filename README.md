@@ -494,11 +494,13 @@ Raw CSV: [`summary.csv`](sweeps/glm52-fp8-pd-mtp-dspark/datasets/synthetic-summa
 
 ---
 
+---
+
 ## DSpark adaptive
 
-Full tables: [`sweeps/glm52-fp8-pd-adaptive/README.md`](sweeps/glm52-fp8-pd-adaptive/README.md)
+Full tables (vs MTP + DSpark): [`sweeps/glm52-fp8-pd-adaptive/README.md`](sweeps/glm52-fp8-pd-adaptive/README.md)
 
-| Dataset | cells |
+| Dataset | adaptive cells |
 |---|---:|
 | spec-al-math500 | 8 |
 | spec-al-humaneval | 8 |
