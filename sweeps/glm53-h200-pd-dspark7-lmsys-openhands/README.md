@@ -20,9 +20,9 @@ Manifests:
 - pin: [`base-dspark7-frankenstein-clean-agentx.yaml#L69`](https://github.com/LucasWilkinson/agentx-mvp/blob/feature/manifesto-sweeps/manifesto/models/glm-5.3/h200/base-dspark7-frankenstein-clean-agentx.yaml#L69)
 
 `tok/s/GPU` = EvalScope `Total Throughput (tok/s)` / 16.  
-Acc. length = EvalScope `Decoded Tok/Iter`.
+EvalScope Acc. length = `Decoded Tok/Iter`. Per-pos Acc. length = vLLM `Mean acceptance length`. `p0`–`p6` = vLLM `Per-position acceptance rate`.
 
-Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`raw/`](raw/) · `vllm_env_*.txt`
+Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`acceptance.csv`](acceptance.csv) · [`raw/`](raw/) · `vllm_env_*.txt`
 
 ## EvalScope
 
@@ -40,3 +40,22 @@ Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`raw/`](raw/) ·
 | TP8 | 2 | 0.7053 | 1.56 s | 5.80 ms | 3526 | 6.06 |
 | TP8 | 4 | 0.7262 | 4.07 s | 6.35 ms | 3632 | 6.02 |
 | TP8 | 8 | 0.0948 | 81.70 s | 5.58 ms | 473 | 6.08 |
+
+## Per-pos (decode)
+
+Token-weighted by `Drafted`. PCP8: decoder 3-sample tail. PCP8+DCP8 / TP8: pod-window.
+
+| prefiller | conc | source | n | Acc. length | p0 | p1 | p2 | p3 | p4 | p5 | p6 |
+|---|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| PCP8 | 1 | decoder-c-tail | 3 | 5.74 | 0.918 | 0.828 | 0.730 | 0.663 | 0.608 | 0.535 | 0.457 |
+| PCP8 | 2 | decoder-c-tail | 3 | 5.29 | 0.859 | 0.762 | 0.684 | 0.608 | 0.542 | 0.470 | 0.367 |
+| PCP8 | 4 | decoder-c-tail | 3 | 6.93 | 0.988 | 0.957 | 0.926 | 0.885 | 0.796 | 0.729 | 0.652 |
+| PCP8 | 8 | decoder-c-tail | 3 | 7.08 | 0.990 | 0.955 | 0.924 | 0.899 | 0.877 | 0.755 | 0.679 |
+| PCP8+DCP8 | 1 | pod-window | 12 | 5.71 | 0.915 | 0.799 | 0.715 | 0.655 | 0.603 | 0.546 | 0.476 |
+| PCP8+DCP8 | 2 | pod-window | 13 | 5.37 | 0.898 | 0.799 | 0.682 | 0.581 | 0.530 | 0.472 | 0.407 |
+| PCP8+DCP8 | 4 | pod-window | 7 | 5.20 | 0.862 | 0.749 | 0.650 | 0.578 | 0.527 | 0.455 | 0.382 |
+| PCP8+DCP8 | 8 | pod-window | 13 | 5.49 | 0.875 | 0.785 | 0.709 | 0.605 | 0.559 | 0.500 | 0.451 |
+| TP8 | 1 | pod-window | 15 | 5.51 | 0.889 | 0.788 | 0.689 | 0.625 | 0.577 | 0.506 | 0.435 |
+| TP8 | 2 | pod-window | 16 | 5.42 | 0.884 | 0.771 | 0.683 | 0.609 | 0.556 | 0.487 | 0.427 |
+| TP8 | 4 | pod-window | 16 | 5.49 | 0.891 | 0.796 | 0.712 | 0.598 | 0.549 | 0.501 | 0.448 |
+| TP8 | 8 | pod-window | 217 | 5.31 | 0.858 | 0.759 | 0.662 | 0.591 | 0.539 | 0.480 | 0.425 |
