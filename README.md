@@ -1,5 +1,8 @@
 # bench-data
 
+- [`sweeps/glm53-h200-pd-dspark7-lmsys-openhands`](sweeps/glm53-h200-pd-dspark7-lmsys-openhands/) — GLM-5.3, 16×H200 P/D, DSpark7, LMSYS OpenHands, run_id `20260911T053020Z`
+- [`sweeps/glm52-fp8-pd-mtp-dspark`](sweeps/glm52-fp8-pd-mtp-dspark/) — GLM-5.2-FP8 MTP vs DSpark (aiperf 0.12)
+
 GLM-5.2-FP8 inference benchmark results (aiperf 0.12).
 
 ### Hardware & serving

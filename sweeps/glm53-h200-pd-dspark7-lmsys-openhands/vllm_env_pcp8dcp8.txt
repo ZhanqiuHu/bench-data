@@ -1,0 +1,18 @@
+prefill:
+  env: /workspace/vdptest/frankenstein-clean-dspark-pd-e7ede2722
+  commit: 95eb419caf7501fd3c9d05887e897528d2f835d8
+  branch: HEAD
+  described: remotes/lucas/frankenstein-prefiller-clean-0-g95eb419caf
+  version: 0.26.1rc1.dev1245+g95eb419caf
+  dirty: ?? config.toml
+  dirty: ?? csrc/.ve-force-local-build
+  dirty: ?? nohup.out
+decode:
+  env: /workspace/vdptest/frankenstein-clean-dspark-pd-e7ede2722
+  commit: 95eb419caf7501fd3c9d05887e897528d2f835d8
+  branch: HEAD
+  described: remotes/lucas/frankenstein-prefiller-clean-0-g95eb419caf
+  version: 0.26.1rc1.dev1245+g95eb419caf
+  dirty: ?? config.toml
+  dirty: ?? csrc/.ve-force-local-build
+  dirty: ?? nohup.out
