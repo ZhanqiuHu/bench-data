@@ -28,7 +28,7 @@ Manifests (`EXPECTED_VLLM_COMMIT` in base spec):
 - [`p1-tp8ep-d1-tp8ep-dspark7-frankenstein-clean-agentx`](https://github.com/LucasWilkinson/agentx-mvp/blob/feature/manifesto-sweeps/manifesto/models/glm-5.3/h200/p1-tp8ep-d1-tp8ep-dspark7-frankenstein-clean-agentx.yaml)
 - base pin: [`base-dspark7-frankenstein-clean-agentx.yaml#L69`](https://github.com/LucasWilkinson/agentx-mvp/blob/feature/manifesto-sweeps/manifesto/models/glm-5.3/h200/base-dspark7-frankenstein-clean-agentx.yaml#L69)
 
-CSV: [`evalscope-summary.csv`](evalscope-summary.csv) · [`prefix-cache.csv`](prefix-cache.csv) · [`acceptance.csv`](acceptance.csv)  
+CSV: [`evalscope-summary.csv`](evalscope-summary.csv) · [`acceptance.csv`](acceptance.csv)  
 Raw: [`raw/`](raw/) · ve snapshots: `vllm_env_*.txt`
 
 `tok_s_per_gpu` = EvalScope `Total Throughput (tok/s)` / 16.
@@ -51,34 +51,6 @@ Raw: [`raw/`](raw/) · ve snapshots: `vllm_env_*.txt`
 | tp8 | 2 | 104 | 0 | 147.46 | 0.7053 | 1555.69 | 5.80 | 31.69 | 56408.47 | 3525.53 | 6.06 | 0.8349 |
 | tp8 | 4 | 104 | 0 | 143.20 | 0.7262 | 4070.68 | 6.35 | 35.38 | 58109.69 | 3631.86 | 6.02 | 0.8339 |
 | tp8 | 8 | 208 | 0 | 2195.22 | 0.0948 | 81695.00 | 5.58 | 30.49 | 7575.86 | 473.49 | 6.08 | 0.8354 |
-
-## Prefix cache (vLLM Engine 000)
-
-`decoder-c-tail`: `kubectl logs -l role=decode --since=30m` after each point (3 engine samples).  
-`pod-window`: full pod log sliced by EvalScope point start time. pcp8 has no full prefill/decode pod dump.
-
-| prefiller | conc | role | source | n | external min–max % | local med % | local min % | local max % |
-|---|---:|---|---|---:|---|---:|---:|---:|
-| pcp8 | 1 | decode | decoder-c-tail | 3 | 100–100 | 94.0 | 93.8 | 94.1 |
-| pcp8 | 2 | decode | decoder-c-tail | 3 | 100–100 | 95.1 | 95.0 | 95.3 |
-| pcp8 | 4 | decode | decoder-c-tail | 3 | 100–100 | 96.3 | 96.3 | 96.3 |
-| pcp8 | 8 | decode | decoder-c-tail | 3 | 100–100 | 96.0 | 95.9 | 96.0 |
-| pcp8dcp8 | 1 | decode | pod-window | 12 | 100–100 | 89.9 | 0.0 | 91.8 |
-| pcp8dcp8 | 2 | decode | pod-window | 14 | 100–100 | 94.2 | 91.8 | 95.1 |
-| pcp8dcp8 | 4 | decode | pod-window | 7 | 100–100 | 95.4 | 94.2 | 96.1 |
-| pcp8dcp8 | 8 | decode | pod-window | 13 | 100–100 | 95.6 | 94.9 | 96.8 |
-| pcp8dcp8 | 1 | prefill | pod-window | 12 | 0–0 | 89.0 | 0.0 | 90.8 |
-| pcp8dcp8 | 2 | prefill | pod-window | 14 | 0–0 | 93.1 | 90.8 | 94.2 |
-| pcp8dcp8 | 4 | prefill | pod-window | 7 | 0–0 | 94.5 | 93.3 | 95.1 |
-| pcp8dcp8 | 8 | prefill | pod-window | 13 | 0–0 | 94.8 | 94.2 | 95.7 |
-| tp8 | 1 | decode | pod-window | 16 | 100–100 | 90.0 | 0.0 | 91.8 |
-| tp8 | 2 | decode | pod-window | 16 | 100–100 | 94.2 | 91.8 | 95.3 |
-| tp8 | 4 | decode | pod-window | 16 | 100–100 | 95.4 | 94.2 | 96.1 |
-| tp8 | 8 | decode | pod-window | 221 | 100–100 | 96.1 | 95.0 | 96.9 |
-| tp8 | 1 | prefill | pod-window | 15 | 0–0 | 88.8 | 0.0 | 91.6 |
-| tp8 | 2 | prefill | pod-window | 16 | 0–0 | 93.8 | 91.6 | 94.9 |
-| tp8 | 4 | prefill | pod-window | 16 | 0–0 | 92.6 | 91.4 | 94.0 |
-| tp8 | 8 | prefill | pod-window | 221 | 0–0 | 66.5 | 51.9 | 92.7 |
 
 ## DSpark7 per-position accept (decode)
 
