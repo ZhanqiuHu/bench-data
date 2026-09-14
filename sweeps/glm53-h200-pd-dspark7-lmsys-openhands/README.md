@@ -22,7 +22,7 @@ Manifests:
 `tok/s/GPU` = EvalScope `Total Throughput (tok/s)` / 16.  
 Acc. length = EvalScope `Decoded Tok/Iter`.
 
-Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`acceptance.csv`](acceptance.csv) · [`raw/`](raw/) · `vllm_env_*.txt`
+Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`raw/`](raw/) · `vllm_env_*.txt`
 
 ## EvalScope
 
@@ -40,18 +40,3 @@ Raw dumps: [`evalscope-summary.csv`](evalscope-summary.csv) · [`acceptance.csv`
 | TP8 | 2 | 0.7053 | 1.56 s | 5.80 ms | 3526 | 6.06 |
 | TP8 | 4 | 0.7262 | 4.07 s | 6.35 ms | 3632 | 6.02 |
 | TP8 | 8 | 0.0948 | 81.70 s | 5.58 ms | 473 | 6.08 |
-
-## DSpark7 per-position accept (decode, pod-window)
-
-Token-weighted by `Drafted` in each 10s `SpecDecoding metrics` line. MAL = vLLM `Mean acceptance length`. `p0`–`p6` = `Per-position acceptance rate`. PCP8 has no full pod-window dump (decoder log is a 3-sample tail only) and is not in this table.
-
-| prefiller | conc | n | MAL | p0 | p1 | p2 | p3 | p4 | p5 | p6 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| PCP8+DCP8 | 1 | 12 | 5.71 | 0.915 | 0.799 | 0.715 | 0.655 | 0.603 | 0.546 | 0.476 |
-| PCP8+DCP8 | 2 | 13 | 5.37 | 0.898 | 0.799 | 0.682 | 0.581 | 0.530 | 0.472 | 0.407 |
-| PCP8+DCP8 | 4 | 7 | 5.20 | 0.862 | 0.749 | 0.650 | 0.578 | 0.527 | 0.455 | 0.382 |
-| PCP8+DCP8 | 8 | 13 | 5.49 | 0.875 | 0.785 | 0.709 | 0.605 | 0.559 | 0.500 | 0.451 |
-| TP8 | 1 | 15 | 5.51 | 0.889 | 0.788 | 0.689 | 0.625 | 0.577 | 0.506 | 0.435 |
-| TP8 | 2 | 16 | 5.42 | 0.884 | 0.771 | 0.683 | 0.609 | 0.556 | 0.487 | 0.427 |
-| TP8 | 4 | 16 | 5.49 | 0.891 | 0.796 | 0.712 | 0.598 | 0.549 | 0.501 | 0.448 |
-| TP8 | 8 | 217 | 5.31 | 0.858 | 0.759 | 0.662 | 0.591 | 0.539 | 0.480 | 0.425 |
