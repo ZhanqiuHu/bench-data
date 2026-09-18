@@ -1,0 +1,12 @@
+{
+  "version": "zhu-sweep",
+  "concurrency": 32,
+  "exit_code": 0,
+  "started_at": "2026-09-17T14:13:22Z",
+  "ended_at": "2026-09-17T14:48:17Z",
+  "duration_sec": 2095,
+  "local_dir": "/Users/zhu/Documents/workspace/agentx-mvp/results/.artifacts/sweeps/mtp3-offload512-agentx-20260917T133915Z-current-pcp8dcp8-mtp3-offload512/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu_c32",
+  "pvc_path": "zhu-pcp-main/mtp3-offload512-agentx-20260917T133915Z-current-pcp8dcp8-mtp3-offload512/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu_c32",
+  "artifact_subdir": "mtp3-offload512-agentx-20260917T133915Z-current-pcp8dcp8-mtp3-offload512/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/results_p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu_c32",
+  "live_capture": true
+}

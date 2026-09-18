@@ -1,0 +1,154 @@
+2026-09-16 17:32:24 - evalscope - INFO: Starting benchmark with args: 
+2026-09-16 17:32:24 - evalscope - INFO: {
+    "model": "zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512",
+    "model_id": "zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512",
+    "attn_implementation": null,
+    "api": "openai",
+    "tokenizer_path": null,
+    "port": 8877,
+    "url": "http://glm-zhu-epp:80/v1/chat/completions",
+    "headers": {},
+    "connect_timeout": null,
+    "read_timeout": null,
+    "total_timeout": 21600,
+    "api_key": null,
+    "no_test_connection": false,
+    "number": 8,
+    "parallel": 2,
+    "rate": -1.0,
+    "open_loop": false,
+    "sleep_interval": 5,
+    "sla_auto_tune": false,
+    "sla_variable": "parallel",
+    "sla_params": null,
+    "sla_num_runs": 3,
+    "sla_upper_bound": 65536,
+    "sla_lower_bound": 1,
+    "sla_fixed_parallel": null,
+    "sla_number_multiplier": null,
+    "db_commit_interval": 1000,
+    "queue_size_multiplier": 5,
+    "in_flight_task_multiplier": 2,
+    "log_every_n_query": 100,
+    "debug": false,
+    "enable_progress_tracker": false,
+    "visualizer": null,
+    "wandb_api_key": null,
+    "swanlab_api_key": null,
+    "name": "p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z",
+    "outputs_dir": "/workspace/zhu-pcp-main/lmsys-runs/mtp3-offload512-openhands/20260916T172941Z-current-pcp8dcp8-mtp3-offload512/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z",
+    "no_timestamp": true,
+    "max_prompt_length": 131072,
+    "min_prompt_length": 0,
+    "prefix_length": 0,
+    "prompt": null,
+    "query_template": null,
+    "apply_chat_template": true,
+    "image_width": 224,
+    "image_height": 224,
+    "image_format": "RGB",
+    "image_num": 1,
+    "image_patch_size": 28,
+    "dataset": "swe_smith",
+    "dataset_path": "/workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json",
+    "dataset_offset": 0,
+    "frequency_penalty": null,
+    "repetition_penalty": null,
+    "logprobs": null,
+    "max_tokens": 220,
+    "min_tokens": null,
+    "n_choices": null,
+    "seed": null,
+    "stop": null,
+    "stop_token_ids": null,
+    "stream": true,
+    "temperature": 0.0,
+    "top_p": null,
+    "top_k": null,
+    "extra_args": {
+        "ignore_eos": true
+    },
+    "tokenize_prompt": false,
+    "multi_turn": true,
+    "min_turns": 1,
+    "max_turns": null,
+    "multi_turn_args": null
+}
+2026-09-16 17:32:24 - evalscope - INFO: Loading conversations from dataset: swe_smith
+2026-09-16 17:32:24 - evalscope - INFO: Loading pre-built dataset from /workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json
+2026-09-16 17:32:24 - evalscope - INFO: Loaded 128 conversations (offset=0)
+2026-09-16 17:32:24 - evalscope - INFO: Loading[conversations]   0%| 8/? [Elapsed: 00:00 < Remaining: 00:00,  7.62it/s]
+2026-09-16 17:32:24 - evalscope - INFO: Loaded 8 conversations
+2026-09-16 17:32:26 - evalscope - INFO: Test connection successful.
+2026-09-16 17:32:26 - evalscope - INFO: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/mtp3-offload512-openhands/20260916T172941Z-current-pcp8dcp8-mtp3-offload512/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z/parallel_2_number_8/benchmark_data.db
+2026-09-16 17:33:31 - evalscope - INFO: Processing[parallel_2_number_8]  38%| 3/8 [Elapsed: 01:05 < Remaining: 01:50, 22.11s/it]
+2026-09-16 17:34:47 - evalscope - INFO: {
+  "Test Duration (s)": 140.9234,
+  "Concurrency": 2,
+  "Request Rate (req/s)": -1.0,
+  "Total Requests": 100,
+  "Success Requests": 100,
+  "Failed Requests": 0,
+  "Req Throughput (req/s)": 0.7096,
+  "Avg Latency (s)": 2.8051,
+  "Avg Input Tokens": 79602.68,
+  "Output Throughput (tok/s)": 156.1132,
+  "Total Throughput (tok/s)": 56642.5981,
+  "TTFT (ms)": 1039.0,
+  "TPOT (ms)": 8.06,
+  "ITL (ms)": 29.56,
+  "Avg Output Tokens": 220.0,
+  "Avg Turns/Request": 6.79,
+  "KV Cache Hit Rate (%)": 0.0,
+  "Decoded Tok/Iter": 3.7051,
+  "Spec. Accept Rate": 0.7301
+}
+2026-09-16 17:34:49 - evalscope - INFO: Processing[parallel_2_number_8]  88%| 7/8 [Elapsed: 02:23 < Remaining: 00:22, 22.31s/it]
+2026-09-16 17:34:53 - evalscope - INFO: Processing[parallel_2_number_8] 100%| 8/8 [Elapsed: 02:26 < Remaining: 00:00, 16.27s/it]
+2026-09-16 17:34:53 - evalscope - INFO: 
+Benchmarking summary:
+┌────────────────────────────┬───────────────┐
+│ Metric                     │         Value │
+├────────────────────────────┼───────────────┤
+│ ── General ──              │               │
+│ Test Duration (s)          │        146.64 │
+│ Concurrency                │             2 │
+│ Request Rate (req/s)       │         -1.00 │
+│ Total / Success / Failed   │ 104 / 104 / 0 │
+│ Req Throughput (req/s)     │          0.71 │
+│ ── Latency ──              │               │
+│ Avg Latency (s)            │          2.79 │
+│ TTFT (ms)                  │       1028.23 │
+│ TPOT (ms)                  │          8.03 │
+│ ITL (ms)                   │         29.52 │
+│ ── Tokens ──               │               │
+│ Avg Input Tokens           │      79803.98 │
+│ Avg Output Tokens          │        220.00 │
+│ Output Throughput (tok/s)  │        156.03 │
+│ Total Throughput (tok/s)   │      56754.29 │
+│ ── Multi-turn ──           │               │
+│ Avg Turns/Request          │          7.00 │
+│ KV Cache Hit Rate (%)      │          0.00 │
+│ ── Speculative Decoding ── │               │
+│ Decoded Tok/Iter           │          3.72 │
+│ Spec. Accept Rate          │          0.73 │
+└────────────────────────────┴───────────────┘
+2026-09-16 17:34:53 - evalscope - INFO: 
+Percentile results:
+┌────────────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+│ Metric         │       1% │       5% │      10% │      25% │      50% │      75% │      90% │      95% │      99% │
+├────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+│ Latency (s)    │     2.27 │     2.30 │     2.33 │     2.38 │     2.40 │     2.67 │     2.91 │     6.03 │     7.29 │
+│ TTFT (ms)      │   590.88 │   625.26 │   652.56 │   727.62 │   743.25 │   772.57 │   928.17 │  4340.71 │  5128.58 │
+│ ITL (ms)       │     0.05 │    23.56 │    26.14 │    28.07 │    30.85 │    31.40 │    32.03 │    33.94 │    67.75 │
+│ TPOT (ms)      │     7.02 │     7.31 │     7.35 │     7.39 │     7.53 │     8.47 │     9.64 │    10.06 │    10.67 │
+│ Input tokens   │ 74173.00 │ 74173.00 │ 75033.00 │ 76748.00 │ 79884.00 │ 82840.00 │ 84680.00 │ 85504.00 │ 85768.00 │
+│ Output tokens  │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │
+│ Output (tok/s) │    30.16 │    36.49 │    75.73 │    83.15 │    91.83 │    92.67 │    94.30 │    95.69 │    96.96 │
+│ Total (tok/s)  │ 10198.00 │ 14206.62 │ 26738.49 │ 29178.25 │ 33753.07 │ 34805.16 │ 35530.08 │ 35882.56 │ 36362.74 │
+│ Decode (tok/s) │    93.69 │    99.42 │   103.77 │   118.31 │   132.79 │   135.53 │   136.00 │   136.73 │   142.41 │
+└────────────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
+2026-09-16 17:34:53 - evalscope - INFO: Save the summary to: /workspace/zhu-pcp-main/lmsys-runs/mtp3-offload512-openhands/20260916T172941Z-current-pcp8dcp8-mtp3-offload512/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z/parallel_2_number_8
+2026-09-16 17:34:53 - evalscope - INFO: Running[perf] 100%| 1/1 [Elapsed: 02:29 < Remaining: 00:00, 149.45s/it]
+2026-09-16 17:34:53 - evalscope - INFO: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/mtp3-offload512-openhands/20260916T172941Z-current-pcp8dcp8-mtp3-offload512/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z/performance_summary.txt
+2026-09-16 17:34:54 - evalscope - INFO: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/mtp3-offload512-openhands/20260916T172941Z-current-pcp8dcp8-mtp3-offload512/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu/p1-pcp8dcp8ep-d1-tp8ep-mtp3-offload512-zhu-c2-20260916T173218Z/perf_report.html

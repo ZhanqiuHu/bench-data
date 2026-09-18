@@ -1,0 +1,196 @@
+prefill:
+  model: zai-org/GLM-5.3
+  args:
+    device-ids: 0,1,2,3,4,5,6,7
+    port: 8000
+    tensor-parallel-size: 1
+    prefill-context-parallel-size: 8
+    decode-context-parallel-size: 8
+    enable-expert-parallel: true
+    kv-transfer-config:
+      kv_connector: MultiConnector
+      kv_role: kv_both
+      kv_connector_extra_config:
+        enforce_handshake_compat: false
+        num_threads: 1
+        connectors:
+        - kv_connector: NixlConnector
+          kv_role: kv_producer
+          kv_load_failure_policy: fail
+          kv_connector_extra_config:
+            enforce_handshake_compat: false
+            num_threads: 1
+        - kv_connector: OffloadingConnector
+          kv_role: kv_both
+          kv_connector_extra_config:
+            spec_name: TieringOffloadingSpec
+            cpu_bytes_to_use: 549755813888
+            eviction_policy: lru
+      kv_load_failure_policy: fail
+      engine_id: zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512-prefill
+    served-model-name: zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512
+    disable-access-log-for-endpoints: /health,/v1/models,/metrics
+    trust-remote-code: true
+    kv-cache-dtype: fp8_ds_mla
+    moe-backend: deep_gemm
+    safetensors-load-strategy: prefetch
+    seed: 0
+    disable-uvicorn-access-log: true
+    all2all-backend: deepep_high_throughput
+    revision: 30333038ada1f1dacb294a93270305a890b50c14
+    tokenizer-revision: 30333038ada1f1dacb294a93270305a890b50c14
+    enable-auto-tool-choice: true
+    tool-call-parser: glm47
+    reasoning-parser: glm45
+    speculative-config:
+      method: mtp
+      num_speculative_tokens: 3
+    max-model-len: 142000
+    gpu-memory-utilization: 0.9
+    max-num-batched-tokens: 4096
+    max-num-seqs: 16
+    enable-prefix-caching: true
+    compilation-config:
+      cudagraph_mode: NONE
+    kernel-config:
+      enable_flashinfer_autotune: false
+      linear_backend: deep_gemm
+    dcp-comm-backend: ag_rs
+    kv-cache-memory-bytes: 2147483648
+    attention-config:
+      sparse_mla_force_mqa: true
+    _positional:
+    - 2>&1
+    - '|'
+    - tee
+    a: $LOG_DIR/${HOSTNAME}_$(date +%Y%m%d-%H%M%S).log
+  env:
+    HF_TOKEN: <valueFrom>
+    EXPECTED_VLLM_COMMIT: 1f6a41a1771bf62d30401eb14a327ce020f573a4
+    FLASHINFER_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/flashinfer
+    FLASHINFER_WORKSPACE_BASE: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/flashinfer-workspace
+    FLASH_ATTENTION_CUTE_DSL_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/fa-cute-dsl
+    FLASH_ATTENTION_CUTE_DSL_CACHE_ENABLED: '1'
+    GLOO_SOCKET_IFNAME: eth0
+    HF_HOME: /var/cache/huggingface
+    HF_HUB_OFFLINE: '1'
+    HOME: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/home
+    MANIFESTO_VLLM_ENV: /workspace/vdptest/vllm-main-20260914T180020Z-e85c8826
+    NCCL_IB_HCA: ibp
+    NCCL_SOCKET_IFNAME: eth0
+    NVIDIA_GDRCOPY: enabled
+    NVSHMEM_BOOTSTRAP_UID_SOCK_IFNAME: eth0
+    NVSHMEM_HCA_PREFIX: ibp
+    NVSHMEM_IB_ENABLE_IBGDA: 'true'
+    NVSHMEM_REMOTE_TRANSPORT: ibgda
+    PYTHONFAULTHANDLER: '1'
+    PYTHONPATH: /workspace/vdptest/vllm-main-20260914T180020Z-e85c8826
+    TILELANG_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/tilelang
+    TORCHINDUCTOR_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/torchinductor
+    TQDM_DISABLE: '1'
+    TRITON_CACHE_DIR: /tmp/triton-cache
+    VLLM_CACHE_ROOT: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/vllm
+    VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS: '0'
+    VLLM_NO_USAGE_STATS: '1'
+    VLLM_SERVER_DEV_MODE: '1'
+    VLLM_SKIP_P2P_CHECK: '1'
+    VLLM_USE_V2_MODEL_RUNNER: '1'
+    VLLM_WORKER_MULTIPROC_METHOD: spawn
+    XDG_CACHE_HOME: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/xdg
+    VLLM_NIXL_SIDE_CHANNEL_HOST: <valueFrom>
+    MANIFESTO_POD_UID: <valueFrom>
+decode:
+  model: zai-org/GLM-5.3
+  args:
+    device-ids: 0,1,2,3,4,5,6,7
+    port: 8200
+    tensor-parallel-size: 8
+    enable-expert-parallel: true
+    kv-transfer-config:
+      kv_connector: MultiConnector
+      kv_role: kv_both
+      kv_connector_extra_config:
+        enforce_handshake_compat: false
+        num_threads: 1
+        connectors:
+        - kv_connector: NixlConnector
+          kv_role: kv_consumer
+          kv_load_failure_policy: fail
+          kv_connector_extra_config:
+            enforce_handshake_compat: false
+            num_threads: 1
+        - kv_connector: OffloadingConnector
+          kv_role: kv_both
+          kv_connector_extra_config:
+            spec_name: TieringOffloadingSpec
+            cpu_bytes_to_use: 549755813888
+            eviction_policy: lru
+      kv_load_failure_policy: fail
+      engine_id: zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512-decode
+    served-model-name: zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512
+    disable-access-log-for-endpoints: /health,/v1/models,/metrics
+    trust-remote-code: true
+    kv-cache-dtype: fp8_ds_mla
+    moe-backend: deep_gemm
+    safetensors-load-strategy: prefetch
+    seed: 0
+    disable-uvicorn-access-log: true
+    all2all-backend: deepep_low_latency
+    speculative-config:
+      method: mtp
+      num_speculative_tokens: 3
+    revision: 30333038ada1f1dacb294a93270305a890b50c14
+    tokenizer-revision: 30333038ada1f1dacb294a93270305a890b50c14
+    enable-auto-tool-choice: true
+    tool-call-parser: glm47
+    reasoning-parser: glm45
+    max-model-len: 142000
+    gpu-memory-utilization: 0.92
+    max-num-batched-tokens: 512
+    max-num-seqs: 64
+    enable-prefix-caching: true
+    kernel-config:
+      enable_flashinfer_autotune: false
+      linear_backend: deep_gemm
+    _positional:
+    - 2>&1
+    - '|'
+    - tee
+    a: $LOG_DIR/${HOSTNAME}_$(date +%Y%m%d-%H%M%S).log
+  env:
+    HF_TOKEN: <valueFrom>
+    EXPECTED_VLLM_COMMIT: 1f6a41a1771bf62d30401eb14a327ce020f573a4
+    FLASHINFER_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/flashinfer
+    FLASHINFER_WORKSPACE_BASE: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/flashinfer-workspace
+    FLASH_ATTENTION_CUTE_DSL_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/fa-cute-dsl
+    FLASH_ATTENTION_CUTE_DSL_CACHE_ENABLED: '1'
+    GLOO_SOCKET_IFNAME: eth0
+    HF_HOME: /var/cache/huggingface
+    HF_HUB_OFFLINE: '1'
+    HOME: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/home
+    MANIFESTO_VLLM_ENV: /workspace/vdptest/vllm-main-20260914T180020Z-e85c8826
+    NCCL_IB_HCA: ibp
+    NCCL_SOCKET_IFNAME: eth0
+    NVIDIA_GDRCOPY: enabled
+    NVSHMEM_BOOTSTRAP_UID_SOCK_IFNAME: eth0
+    NVSHMEM_HCA_PREFIX: ibp
+    NVSHMEM_IB_ENABLE_IBGDA: 'true'
+    NVSHMEM_QP_DEPTH: '1026'
+    NVSHMEM_REMOTE_TRANSPORT: ibgda
+    PYTHONFAULTHANDLER: '1'
+    PYTHONPATH: /workspace/vdptest/vllm-main-20260914T180020Z-e85c8826
+    TILELANG_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/tilelang
+    TORCHINDUCTOR_CACHE_DIR: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/torchinductor
+    TQDM_DISABLE: '1'
+    TRITON_CACHE_DIR: /tmp/triton-cache
+    UCX_TLS: rc,cuda_copy,cuda_ipc,self,sm,tcp
+    VLLM_CACHE_ROOT: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/vllm
+    VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS: '0'
+    VLLM_NO_USAGE_STATS: '1'
+    VLLM_SERVER_DEV_MODE: '1'
+    VLLM_SKIP_P2P_CHECK: '1'
+    VLLM_USE_V2_MODEL_RUNNER: '1'
+    VLLM_WORKER_MULTIPROC_METHOD: spawn
+    XDG_CACHE_HOME: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-main-pcp8dcp8-tp8-mtp3-offload512/xdg
+    VLLM_NIXL_SIDE_CHANNEL_HOST: <valueFrom>
+    MANIFESTO_POD_UID: <valueFrom>
