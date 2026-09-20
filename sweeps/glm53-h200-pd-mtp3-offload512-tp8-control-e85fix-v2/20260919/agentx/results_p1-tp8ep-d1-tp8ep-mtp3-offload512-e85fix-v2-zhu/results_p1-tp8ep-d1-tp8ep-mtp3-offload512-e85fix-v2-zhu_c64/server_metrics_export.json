@@ -1,0 +1,5551 @@
+{
+  "schema_version": "1.1",
+  "aiperf_version": "0.8.0",
+  "benchmark_id": "b89653d5-6081-463b-a958-191a1f9ec83b",
+  "summary": {
+    "endpoints_configured": [
+      "http://glm-zhu-epp:80/metrics"
+    ],
+    "endpoints_successful": [
+      "http://glm-zhu-epp:80/metrics"
+    ],
+    "start_time": "2026-09-19T19:52:51.029859",
+    "end_time": "2026-09-19T20:23:31.033065",
+    "endpoint_info": {
+      "http://glm-zhu-epp:80/metrics": {
+        "total_fetches": 7643,
+        "first_fetch_ns": 1789846777837746983,
+        "last_fetch_ns": 1789849411041574942,
+        "avg_fetch_latency_ms": 6.558302364647389,
+        "unique_updates": 7643,
+        "first_update_ns": 1789846777837746983,
+        "last_update_ns": 1789849411041574942,
+        "duration_seconds": 2633.203827959,
+        "avg_update_interval_ms": 344.56998533878567,
+        "median_update_interval_ms": 333.3608475
+      }
+    },
+    "phase_time_ranges": {
+      "profiling": {
+        "start_ns": 1789847571029858642,
+        "end_ns": 1789849411033065319
+      },
+      "warmup": {
+        "start_ns": 1789846864190383634,
+        "end_ns": 1789847571020405680
+      }
+    }
+  },
+  "metrics_phase": "profiling",
+  "metrics": {
+    "http_request_duration_highr_seconds": {
+      "type": "histogram",
+      "description": "Latency with many buckets but no API specific labels. Made for more accurate percentile calculations.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "count": 766,
+            "sum": 204064.30803067703,
+            "avg": 266.40249090166714,
+            "count_rate": 0.4163012471544417,
+            "sum_rate": 110.90368920741385,
+            "p1_estimate": 0.00012789620444186945,
+            "p5_estimate": 0.00016422394600511194,
+            "p10_estimate": 0.00020963362295916516,
+            "p25_estimate": 0.00034586265382132467,
+            "p50_estimate": 61.226696662924326,
+            "p75_estimate": 530.4381702314777,
+            "p90_estimate": 811.9650543726098,
+            "p95_estimate": 905.8073490863204,
+            "p99_estimate": 980.881184857289
+          },
+          "buckets": {
+            "0.01": 368,
+            "0.025": 368,
+            "0.05": 368,
+            "0.075": 368,
+            "0.1": 368,
+            "0.25": 368,
+            "0.5": 369,
+            "0.75": 369,
+            "1.0": 369,
+            "1.5": 369,
+            "2.0": 369,
+            "2.5": 369,
+            "3.0": 369,
+            "3.5": 369,
+            "4.0": 369,
+            "4.5": 369,
+            "5.0": 369,
+            "7.5": 370,
+            "10.0": 370,
+            "30.0": 372,
+            "60.0": 382,
+            "+Inf": 766
+          }
+        }
+      ]
+    },
+    "http_request_duration_seconds": {
+      "type": "histogram",
+      "description": "Latency with only few buckets by handler. Made to be only used if aggregation by handler is important.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/reset_prefix_cache",
+            "method": "POST"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "0.1": 0,
+            "0.5": 0,
+            "1.0": 0,
+            "+Inf": 0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/chat/completions",
+            "method": "POST"
+          },
+          "stats": {
+            "count": 398,
+            "sum": 204064.18476489652,
+            "avg": 512.7240823238606,
+            "count_rate": 0.2163027367721512,
+            "sum_rate": 110.9036222156408,
+            "p1_estimate": 8.695222346280726,
+            "p5_estimate": 49.84004755131033,
+            "p10_estimate": 101.27107905759733,
+            "p25_estimate": 255.56417357645833,
+            "p50_estimate": 512.7193311078934,
+            "p75_estimate": 769.8744886393283,
+            "p90_estimate": 924.1675831581894,
+            "p95_estimate": 975.5986146644763,
+            "p99_estimate": 1016.7434398695059
+          },
+          "buckets": {
+            "0.1": 0,
+            "0.5": 1,
+            "1.0": 1,
+            "+Inf": 398
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/models",
+            "method": "GET"
+          },
+          "stats": {
+            "count": 368,
+            "sum": 0.12326578050851822,
+            "avg": 0.00033496136007749516,
+            "count_rate": 0.19999851038229055,
+            "sum_rate": 0.00006699177305112508,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 0.01293396624719543,
+            "p90_estimate": 0.027893205377630216,
+            "p95_estimate": 0.03287961842110847,
+            "p99_estimate": 0.03686874885589108
+          },
+          "buckets": {
+            "0.1": 368,
+            "0.5": 368,
+            "1.0": 368,
+            "+Inf": 368
+          }
+        }
+      ]
+    },
+    "http_requests": {
+      "type": "counter",
+      "description": "Total number of requests by method, status and handler.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/reset_prefix_cache",
+            "method": "POST",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/chat/completions",
+            "method": "POST",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 398.0,
+            "rate": 0.2163027367721512
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/models",
+            "method": "GET",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 368.0,
+            "rate": 0.19999851038229055
+          }
+        }
+      ]
+    },
+    "process_cpu_seconds": {
+      "type": "counter",
+      "description": "Total user and system CPU time spent in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "total": 218.72999999999956,
+            "rate": 0.1188741146084737
+          }
+        }
+      ]
+    },
+    "process_max_fds": {
+      "type": "gauge",
+      "description": "Maximum number of open file descriptors.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 1048576.0,
+            "min": 1048576.0,
+            "max": 1048576.0,
+            "std": 0.0,
+            "p1": 1048576.0,
+            "p5": 1048576.0,
+            "p10": 1048576.0,
+            "p25": 1048576.0,
+            "p50": 1048576.0,
+            "p75": 1048576.0,
+            "p90": 1048576.0,
+            "p95": 1048576.0,
+            "p99": 1048576.0
+          }
+        }
+      ]
+    },
+    "process_open_fds": {
+      "type": "gauge",
+      "description": "Number of open file descriptors.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 167.12192028985507,
+            "min": 111.0,
+            "max": 234.0,
+            "std": 55.581481916415385,
+            "p1": 111.0,
+            "p5": 112.0,
+            "p10": 113.0,
+            "p25": 114.0,
+            "p50": 117.0,
+            "p75": 226.0,
+            "p90": 231.0,
+            "p95": 233.0,
+            "p99": 234.0
+          }
+        }
+      ]
+    },
+    "process_resident_memory_bytes": {
+      "type": "gauge",
+      "description": "Resident memory size in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 2048693192.347826,
+            "min": 1920163840.0,
+            "max": 2197389312.0,
+            "std": 131642592.80582798,
+            "p1": 1920163840.0,
+            "p5": 1920163840.0,
+            "p10": 1920163840.0,
+            "p25": 1920892928.0,
+            "p50": 1921212416.0,
+            "p75": 2186903552.0,
+            "p90": 2188914688.0,
+            "p95": 2192146432.0,
+            "p99": 2196340736.0
+          }
+        }
+      ]
+    },
+    "process_start_time_seconds": {
+      "type": "gauge",
+      "description": "Start time of the process since unix epoch in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 1789791111.3200002,
+            "min": 1789790444.2,
+            "max": 1789791813.16,
+            "std": 684.3218081568424,
+            "p1": 1789790444.2,
+            "p5": 1789790444.2,
+            "p10": 1789790444.2,
+            "p25": 1789790444.2,
+            "p50": 1789790444.2,
+            "p75": 1789791813.16,
+            "p90": 1789791813.16,
+            "p95": 1789791813.16,
+            "p99": 1789791813.16
+          }
+        }
+      ]
+    },
+    "process_virtual_memory_bytes": {
+      "type": "gauge",
+      "description": "Virtual memory size in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 82402697091.33913,
+            "min": 82269626368.0,
+            "max": 82552512512.0,
+            "std": 134389064.39873266,
+            "p1": 82269626368.0,
+            "p5": 82271756288.0,
+            "p10": 82271756288.0,
+            "p25": 82271756288.0,
+            "p50": 82272411648.0,
+            "p75": 82540978176.0,
+            "p90": 82547253248.0,
+            "p95": 82548301824.0,
+            "p99": 82551463936.0
+          }
+        }
+      ]
+    },
+    "python_gc_collections": {
+      "type": "counter",
+      "description": "Number of times this generation was collected",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 245.0,
+            "rate": 0.1331511821838619
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 22.0,
+            "rate": 0.011956432685897805
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 2.0,
+            "rate": 0.0010869484259907094
+          }
+        }
+      ]
+    },
+    "python_gc_objects_collected": {
+      "type": "counter",
+      "description": "Objects collected during gc",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 16168.0,
+            "rate": 8.786891075708896
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 2303.0,
+            "rate": 1.251621112528302
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 472.0,
+            "rate": 0.25651982853380745
+          }
+        }
+      ]
+    },
+    "python_gc_objects_uncollectable": {
+      "type": "counter",
+      "description": "Uncollectable objects found during GC",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "python_info": {
+      "type": "gauge",
+      "description": "Python platform information",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "implementation": "CPython",
+            "major": "3",
+            "minor": "12",
+            "patchlevel": "13",
+            "version": "3.12.13"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        }
+      ]
+    },
+    "vllm:cache_config_info": {
+      "type": "gauge",
+      "description": "Information of the LLMEngine CacheConfig",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "_block_size_resolved": "True",
+            "block_size": "64",
+            "cache_dtype": "fp8_ds_mla",
+            "enable_mamba_fine_grained_prefix_cache": "False",
+            "enable_prefix_caching": "True",
+            "engine": "0",
+            "gpu_memory_utilization": "0.85",
+            "is_attention_free": "False",
+            "kv_cache_dtype_skip_layers": "[]",
+            "kv_cache_layout": "None",
+            "kv_cache_max_concurrency": "2.940513744930149",
+            "kv_cache_memory_bytes": "None",
+            "kv_cache_size_tokens": "417552",
+            "kv_offloading_backend": "native",
+            "kv_offloading_size": "None",
+            "kv_sharing_fast_prefill": "False",
+            "mamba_block_size": "None",
+            "mamba_cache_dtype": "auto",
+            "mamba_cache_mode": "none",
+            "mamba_page_size_padded": "None",
+            "mamba_ssm_cache_dtype": "auto",
+            "num_cpu_blocks": "None",
+            "num_gpu_blocks": "6525",
+            "num_gpu_blocks_override": "None",
+            "prefix_cache_retention_interval": "0",
+            "prefix_caching_hash_algo": "sha256",
+            "prefix_match_unit": "None",
+            "replayssm_buffer_len": "16",
+            "skip_page_size_padded": "None",
+            "sliding_window": "None",
+            "use_kda_recoverssm": "False",
+            "use_replayssm": "False",
+            "user_specified_block_size": "False",
+            "user_specified_mamba_block_size": "False"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "_block_size_resolved": "True",
+            "block_size": "64",
+            "cache_dtype": "fp8_ds_mla",
+            "enable_mamba_fine_grained_prefix_cache": "False",
+            "enable_prefix_caching": "True",
+            "engine": "0",
+            "gpu_memory_utilization": "0.92",
+            "is_attention_free": "False",
+            "kv_cache_dtype_skip_layers": "[]",
+            "kv_cache_layout": "None",
+            "kv_cache_max_concurrency": "5.112663361874718",
+            "kv_cache_memory_bytes": "None",
+            "kv_cache_size_tokens": "725998",
+            "kv_offloading_backend": "native",
+            "kv_offloading_size": "None",
+            "kv_sharing_fast_prefill": "False",
+            "mamba_block_size": "None",
+            "mamba_cache_dtype": "auto",
+            "mamba_cache_mode": "none",
+            "mamba_page_size_padded": "None",
+            "mamba_ssm_cache_dtype": "auto",
+            "num_cpu_blocks": "None",
+            "num_gpu_blocks": "11345",
+            "num_gpu_blocks_override": "None",
+            "prefix_cache_retention_interval": "0",
+            "prefix_caching_hash_algo": "sha256",
+            "prefix_match_unit": "None",
+            "replayssm_buffer_len": "16",
+            "skip_page_size_padded": "None",
+            "sliding_window": "None",
+            "use_kda_recoverssm": "False",
+            "use_replayssm": "False",
+            "user_specified_block_size": "False",
+            "user_specified_mamba_block_size": "False"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        }
+      ]
+    },
+    "vllm:e2e_request_latency_seconds": {
+      "type": "histogram",
+      "description": "Histogram of e2e request latency in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 167231.42519187927,
+            "avg": 576.6600868685492,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 90.88596719424812,
+            "p1_estimate": 22.153349160552025,
+            "p5_estimate": 92.71661520004274,
+            "p10_estimate": 274.85061557737583,
+            "p25_estimate": 540.0858649289833,
+            "p50_estimate": 622.8886388813206,
+            "p75_estimate": 705.691412833658,
+            "p90_estimate": 755.3730772050604,
+            "p95_estimate": 771.9336319955279,
+            "p99_estimate": 785.1820758279019
+          },
+          "buckets": {
+            "0.3": 0,
+            "0.5": 1,
+            "0.8": 1,
+            "1.0": 1,
+            "1.5": 1,
+            "2.0": 1,
+            "2.5": 1,
+            "5.0": 1,
+            "10.0": 2,
+            "15.0": 3,
+            "20.0": 3,
+            "30.0": 4,
+            "40.0": 6,
+            "50.0": 7,
+            "60.0": 10,
+            "120.0": 16,
+            "240.0": 29,
+            "480.0": 55,
+            "960.0": 290,
+            "1920.0": 290,
+            "7680.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:engine_sleep_state": {
+      "type": "gauge",
+      "description": "Engine sleep state; awake = 0 means engine is sleeping; awake = 1 means engine is awake; weights_offloaded = 1 means sleep level 1; discard_all = 1 means sleep level 2.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "awake"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "discard_all"
+          },
+          "stats": {
+            "avg": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "std": 0.0,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "weights_offloaded"
+          },
+          "stats": {
+            "avg": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "std": 0.0,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_flops_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of floating point operations per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_read_bytes_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of bytes read from memory per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_write_bytes_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of bytes written to memory per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:external_prefix_cache_hits": {
+      "type": "counter",
+      "description": "External prefix cache hits from KV connector cross-instance cache sharing, in terms of number of cached tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 122880.0,
+            "rate": 66.78211129286919
+          }
+        }
+      ]
+    },
+    "vllm:external_prefix_cache_queries": {
+      "type": "counter",
+      "description": "External prefix cache queries from KV connector cross-instance cache sharing, in terms of number of queried tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 13648869.0,
+            "rate": 7417.808338051695
+          }
+        }
+      ]
+    },
+    "vllm:generation_tokens": {
+      "type": "counter",
+      "description": "Number of generation tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 290.0,
+            "rate": 0.1576075217686529
+          }
+        }
+      ]
+    },
+    "vllm:inter_token_latency_seconds": {
+      "type": "histogram",
+      "description": "Histogram of inter-token latency in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "0.01": 0,
+            "0.025": 0,
+            "0.05": 0,
+            "0.075": 0,
+            "0.1": 0,
+            "0.15": 0,
+            "0.2": 0,
+            "0.3": 0,
+            "0.4": 0,
+            "0.5": 0,
+            "0.75": 0,
+            "1.0": 0,
+            "2.5": 0,
+            "5.0": 0,
+            "7.5": 0,
+            "10.0": 0,
+            "20.0": 0,
+            "40.0": 0,
+            "80.0": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:iteration_tokens_total": {
+      "type": "histogram",
+      "description": "Histogram of number of tokens per engine_step.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 219,
+            "sum": 13382699.0,
+            "avg": 61108.21461187214,
+            "count_rate": 0.1190208526459827,
+            "sum_rate": 7273.151806778721,
+            "p1_estimate": 2293.812382458652,
+            "p5_estimate": 4200.715617305426,
+            "p10_estimate": 11876.384406957632,
+            "p25_estimate": 31056.53051529347,
+            "p50_estimate": 61232.1121410857,
+            "p75_estimate": 91407.69376687793,
+            "p90_estimate": 109513.04274235328,
+            "p95_estimate": 115548.15906751172,
+            "p99_estimate": 120376.25212763847
+          },
+          "buckets": {
+            "1.0": 0,
+            "8.0": 0,
+            "16.0": 0,
+            "32.0": 0,
+            "64.0": 0,
+            "128.0": 0,
+            "256.0": 0,
+            "512.0": 1,
+            "1024.0": 1,
+            "2048.0": 1,
+            "4096.0": 11,
+            "8192.0": 14,
+            "16384.0": 28,
+            "+Inf": 219
+          }
+        }
+      ]
+    },
+    "vllm:kv_cache_usage_perc": {
+      "type": "gauge",
+      "description": "KV-cache usage. 1 means 100 percent usage.",
+      "unit": "ratio",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.16866407805457093,
+            "min": 0.0,
+            "max": 0.5362306064880114,
+            "std": 0.10640457565768988,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.10040550070521859,
+            "p50": 0.16370324954015936,
+            "p75": 0.2355916615573268,
+            "p90": 0.3131258815232722,
+            "p95": 0.3528032440056418,
+            "p99": 0.4512350141043724
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_allocation_size": {
+      "type": "histogram",
+      "description": "Histogram of the number of CPU chunks requested by each KV offload prepare_store call.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 1110,
+            "sum": 210349.0,
+            "avg": 189.5036036036036,
+            "count_rate": 0.6032563764248438,
+            "sum_rate": 114.31925722935988,
+            "p1_estimate": 3.5969300440541847,
+            "p5_estimate": 10.62187656648922,
+            "p10_estimate": 49.13856751585853,
+            "p25_estimate": 143.35775217092083,
+            "p50_estimate": 219.9426600383344,
+            "p75_estimate": 256.0,
+            "p90_estimate": 256.0,
+            "p95_estimate": 256.0,
+            "p99_estimate": 256.0
+          },
+          "buckets": {
+            "1.0": 2,
+            "4.0": 14,
+            "16.0": 61,
+            "64.0": 186,
+            "256.0": 1110,
+            "1024.0": 1110,
+            "4096.0": 1110,
+            "16384.0": 1110,
+            "65536.0": 1110,
+            "262144.0": 1110,
+            "+Inf": 1110
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_read_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by in-flight loads that have not yet completed (0.0 = idle, 1.0 = saturated).",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.00013982858970637007,
+            "min": 0.0,
+            "max": 0.024415107803659717,
+            "std": 0.0016267449901601195,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.000050970997502421816,
+            "p99": 0.000560680972526633
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by active transfers (0.0 = idle, 1.0 = saturated). Sustained high values indicate transfers (stores or promotions) may be dropped due to insufficient capacity.",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.013620087670115702,
+            "min": 0.0,
+            "max": 0.10984249961771751,
+            "std": 0.014587004774025589,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.002446607880116214,
+            "p75": 0.026097150721239616,
+            "p90": 0.026097150721239616,
+            "p95": 0.026148121718742035,
+            "p99": 0.05000254854987512
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_write_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by in-flight stores that have not yet completed (0.0 = idle, 1.0 = saturated).",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.013480259080409333,
+            "min": 0.0,
+            "max": 0.10984249961771751,
+            "std": 0.01437414232183586,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.002446607880116214,
+            "p75": 0.026097150721239616,
+            "p90": 0.026097150721239616,
+            "p95": 0.026097150721239616,
+            "p99": 0.04225750547938233
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_bytes": {
+      "type": "counter",
+      "description": "Total bytes loaded from offload storage to GPU.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 53799813120.0,
+            "rate": 29238811.09468916
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload load operation size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 696,
+            "sum": 53799813120.0,
+            "avg": 77298582.06896552,
+            "count_rate": 0.3782580522447669,
+            "sum_rate": 29238811.09468916,
+            "p1_estimate": 1602998.235102085,
+            "p5_estimate": 1796053.7906576404,
+            "p10_estimate": 2037373.235102085,
+            "p25_estimate": 2761331.5684354184,
+            "p50_estimate": 3967928.7906576404,
+            "p75_estimate": 5000000.0,
+            "p90_estimate": 38633193.97823927,
+            "p95_estimate": 419625554.70769227,
+            "p99_estimate": 1856235065.501536
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 576,
+            "1e+07": 576,
+            "2e+07": 584,
+            "4e+07": 648,
+            "6e+07": 648,
+            "8e+07": 648,
+            "1e+08": 648,
+            "1.5e+08": 656,
+            "2e+08": 656,
+            "+Inf": 696
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_time": {
+      "type": "counter",
+      "description": "Total load time from offload storage to GPU, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 1.1768764419852573,
+            "rate": 0.000639601998100711
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_lookup_async_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time between a request's offload lookup first deferring and the following lookup resolving, or request finish, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 16,
+            "sum": 259.5140803270042,
+            "avg": 16.219630020437762,
+            "count_rate": 0.008695587407925675,
+            "sum_rate": 0.1410392105669319,
+            "p1_estimate": 6.821357704878197,
+            "p5_estimate": 7.244701494749385,
+            "p10_estimate": 7.77388123208837,
+            "p25_estimate": 9.162696055917673,
+            "p50_estimate": 13.645092094441257,
+            "p75_estimate": 22.757822330544393,
+            "p90_estimate": 28.225460472206276,
+            "p95_estimate": 30.048006519426906,
+            "p99_estimate": 31.506043357203406
+          },
+          "buckets": {
+            "0.0001": 0,
+            "0.0005": 0,
+            "0.001": 0,
+            "0.005": 0,
+            "0.01": 0,
+            "0.05": 0,
+            "0.1": 0,
+            "0.5": 0,
+            "1.0": 0,
+            "5.0": 0,
+            "10.0": 6,
+            "+Inf": 16
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_lookup_sync_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of the time spent in a single offload lookup call, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 323,
+            "sum": 0.01632553804665804,
+            "avg": 0.00005054346144476173,
+            "count_rate": 0.1755421707974996,
+            "sum_rate": 8.872508941633199e-6,
+            "p1_estimate": 3.3968857695512228e-6,
+            "p5_estimate": 0.00001707113443141091,
+            "p10_estimate": 0.000020813858301855182,
+            "p25_estimate": 0.00003204202991318799,
+            "p50_estimate": 0.00004385016088588895,
+            "p75_estimate": 0.00005042478113614363,
+            "p90_estimate": 0.000059431602017171554,
+            "p95_estimate": 0.00006306028477667367,
+            "p99_estimate": 0.00048468052719556555
+          },
+          "buckets": {
+            "1e-05": 10,
+            "5e-05": 194,
+            "0.0001": 317,
+            "0.0005": 319,
+            "0.001": 323,
+            "0.005": 323,
+            "0.01": 323,
+            "0.05": 323,
+            "0.1": 323,
+            "0.5": 323,
+            "1.0": 323,
+            "+Inf": 323
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload transfer size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "count": 696,
+            "sum": 53799813120.0,
+            "avg": 77298582.06896552,
+            "count_rate": 0.3782580522447669,
+            "sum_rate": 29238811.09468916,
+            "p1_estimate": 1592558.4255828452,
+            "p5_estimate": 1785613.9811384007,
+            "p10_estimate": 2026933.4255828452,
+            "p25_estimate": 2750891.7589161787,
+            "p50_estimate": 3957488.9811384007,
+            "p75_estimate": 5000000.0,
+            "p90_estimate": 38529745.5368538,
+            "p95_estimate": 420240782.4410256,
+            "p99_estimate": 1860874606.408203
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 576,
+            "1e+07": 576,
+            "2e+07": 584,
+            "4e+07": 648,
+            "6e+07": 648,
+            "8e+07": 648,
+            "1e+08": 648,
+            "1.5e+08": 656,
+            "2e+08": 656,
+            "+Inf": 696
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "count": 8880,
+            "sum": 5894133796864.0,
+            "avg": 663753805.9531531,
+            "count_rate": 4.82605101139875,
+            "sum_rate": 3203309726.5399847,
+            "p1_estimate": 13487576.2806266,
+            "p5_estimate": 51151424.27272142,
+            "p10_estimate": 145204949.57069245,
+            "p25_estimate": 328654728.5024452,
+            "p50_estimate": 663942469.7332089,
+            "p75_estimate": 999230210.9639724,
+            "p90_estimate": 1200402855.7024307,
+            "p95_estimate": 1267460403.9485834,
+            "p99_estimate": 1321106442.5455053
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 16,
+            "1e+07": 72,
+            "2e+07": 224,
+            "4e+07": 384,
+            "6e+07": 488,
+            "8e+07": 576,
+            "1e+08": 688,
+            "1.5e+08": 904,
+            "2e+08": 1368,
+            "+Inf": 8880
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_bytes": {
+      "type": "counter",
+      "description": "Total bytes stored from GPU to offload storage.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 5894133796864.0,
+            "rate": 3203309726.5399847
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload store operation size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 8880,
+            "sum": 5894133796864.0,
+            "avg": 663753805.9531531,
+            "count_rate": 4.82605101139875,
+            "sum_rate": 3203309726.5399847,
+            "p1_estimate": 13487576.2806266,
+            "p5_estimate": 51151424.27272142,
+            "p10_estimate": 145204949.57069245,
+            "p25_estimate": 328654728.5024452,
+            "p50_estimate": 663942469.7332089,
+            "p75_estimate": 999230210.9639724,
+            "p90_estimate": 1200402855.7024307,
+            "p95_estimate": 1267460403.9485834,
+            "p99_estimate": 1321106442.5455053
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 16,
+            "1e+07": 72,
+            "2e+07": 224,
+            "4e+07": 384,
+            "6e+07": 488,
+            "8e+07": 576,
+            "1e+08": 688,
+            "1.5e+08": 904,
+            "2e+08": 1368,
+            "+Inf": 8880
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_time": {
+      "type": "counter",
+      "description": "Total store time from GPU to offload storage, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 175.87536771146165,
+            "rate": 0.09558372705225525
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_chunk_hits": {
+      "type": "counter",
+      "description": "Number of chunk lookup hits in a tier, labeled by tier.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "total": 1935.0,
+            "rate": 1.0516226021460116
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_chunk_queries": {
+      "type": "counter",
+      "description": "Number of chunk lookup queries sent to a tier, labeled by tier.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "total": 2234.0,
+            "rate": 1.2141213918316225
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_lookup_sync_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of blocking time spent in a per-chunk tier lookup that resolved as a hit or miss, labeled by tier, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "count": 2234,
+            "sum": 0.0026739323511719704,
+            "avg": 1.1969258510169966e-6,
+            "count_rate": 1.2141213918316225,
+            "sum_rate": 1.453213280156005e-6,
+            "p1_estimate": 3.0766117079589225e-9,
+            "p5_estimate": 3.39885425768816e-8,
+            "p10_estimate": 7.2628456163035e-8,
+            "p25_estimate": 1.885481969214952e-7,
+            "p50_estimate": 3.888885431006783e-7,
+            "p75_estimate": 2.176623893902726e-6,
+            "p90_estimate": 3.249265104383954e-6,
+            "p95_estimate": 3.6068121745443638e-6,
+            "p99_estimate": 3.8928498306726915e-6
+          },
+          "buckets": {
+            "1e-05": 2229,
+            "5e-05": 2234,
+            "0.0001": 2234,
+            "0.0005": 2234,
+            "0.001": 2234,
+            "0.005": 2234,
+            "0.01": 2234,
+            "0.05": 2234,
+            "0.1": 2234,
+            "0.5": 2234,
+            "1.0": 2234,
+            "+Inf": 2234
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_total_bytes": {
+      "type": "counter",
+      "description": "Number of bytes offloaded by KV connector",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "total": 53799813120.0,
+            "rate": 29238811.09468916
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "total": 5894133796864.0,
+            "rate": 3203309726.5399847
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_total_time": {
+      "type": "counter",
+      "description": "Total time measured by all KV offloading operations",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "total": 1.1768764419852573,
+            "rate": 0.000639601998100711
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "total": 175.87536771146165,
+            "rate": 0.09558372705225525
+          }
+        }
+      ]
+    },
+    "vllm:mm_cache_hits": {
+      "type": "counter",
+      "description": "Multi-modal cache hits, in terms of number of cached items.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:mm_cache_queries": {
+      "type": "counter",
+      "description": "Multi-modal cache queries, in terms of number of queried items.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_bytes_transferred": {
+      "type": "histogram",
+      "description": "Histogram of bytes transferred per NIXL KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "2048.0": 0,
+            "8192.0": 0,
+            "32768.0": 0,
+            "131072.0": 0,
+            "524288.0": 0,
+            "2.097152e+06": 0,
+            "8.388608e+06": 0,
+            "3.3554432e+07": 0,
+            "1.34217728e+08": 0,
+            "5.36870912e+08": 0,
+            "2.147483648e+09": 0,
+            "8.589934592e+09": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_descriptors": {
+      "type": "histogram",
+      "description": "Histogram of number of descriptors per NIXL  KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "10.0": 0,
+            "20.0": 0,
+            "30.0": 0,
+            "50.0": 0,
+            "75.0": 0,
+            "100.0": 0,
+            "200.0": 0,
+            "400.0": 0,
+            "1000.0": 0,
+            "2000.0": 0,
+            "4000.0": 0,
+            "10000.0": 0,
+            "20000.0": 0,
+            "50000.0": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_failed_notifications": {
+      "type": "counter",
+      "description": "Number of failed NIXL KV Cache notifications.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_failed_transfers": {
+      "type": "counter",
+      "description": "Number of failed NIXL KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_kv_expired_reqs": {
+      "type": "counter",
+      "description": "Number of requests that had their KV expire. NOTE: This metric is tracked on the P instance.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_post_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of transfer post time for NIXL KV Cache transfers.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "0.001": 0,
+            "0.005": 0,
+            "0.01": 0,
+            "0.025": 0,
+            "0.05": 0,
+            "0.075": 0,
+            "0.1": 0,
+            "0.2": 0,
+            "0.3": 0,
+            "0.5": 0,
+            "0.75": 0,
+            "1.0": 0,
+            "5.0": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_xfer_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of transfer duration for NIXL KV Cache transfers.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "0.005": 0,
+            "0.01": 0,
+            "0.025": 0,
+            "0.05": 0,
+            "0.075": 0,
+            "0.1": 0,
+            "0.2": 0,
+            "0.3": 0,
+            "0.5": 0,
+            "0.75": 0,
+            "1.0": 0,
+            "5.0": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:num_preemptions": {
+      "type": "counter",
+      "description": "Cumulative number of preemption from the engine.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_running": {
+      "type": "gauge",
+      "description": "Number of requests in model execution batches.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 1.5208333333333333,
+            "min": 0.0,
+            "max": 7.0,
+            "std": 1.1076832403803483,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 2.0,
+            "p90": 3.0,
+            "p95": 4.0,
+            "p99": 5.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_waiting": {
+      "type": "gauge",
+      "description": "Number of requests waiting to be processed.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 52.89746376811594,
+            "min": 0.0,
+            "max": 121.0,
+            "std": 55.262751719183754,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 112.0,
+            "p90": 117.0,
+            "p95": 118.0,
+            "p99": 120.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_waiting_by_reason": {
+      "type": "gauge",
+      "description": "Number of waiting requests by reason. Reason labels: 'capacity' = waiting for scheduling capacity; 'deferred' = deferred by transient constraints (LoRA budget, KV transfer, blocked status). Sum of all reasons equals vllm:num_requests_waiting.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "reason": "capacity"
+          },
+          "stats": {
+            "avg": 52.5481884057971,
+            "min": 0.0,
+            "max": 121.0,
+            "std": 54.91920828494724,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 111.0,
+            "p90": 116.0,
+            "p95": 118.0,
+            "p99": 120.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "reason": "deferred"
+          },
+          "stats": {
+            "avg": 0.3492753623188406,
+            "min": 0.0,
+            "max": 6.0,
+            "std": 0.8421963173584567,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 1.0,
+            "p95": 3.0,
+            "p99": 3.0
+          }
+        }
+      ]
+    },
+    "vllm:prefix_cache_hits": {
+      "type": "counter",
+      "description": "Prefix cache hits, in terms of number of cached tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 1555840.0,
+            "rate": 845.5589195466928
+          }
+        }
+      ]
+    },
+    "vllm:prefix_cache_queries": {
+      "type": "counter",
+      "description": "Prefix cache queries, in terms of number of queried tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 15204709.0,
+            "rate": 8263.367257598387
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens": {
+      "type": "counter",
+      "description": "Number of prefill tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 15057929.0,
+            "rate": 8183.59611261493
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens_by_source": {
+      "type": "counter",
+      "description": "Number of prompt tokens by source.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "external_kv_transfer"
+          },
+          "stats": {
+            "total": 122624.0,
+            "rate": 66.64298189434238
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "local_cache_hit"
+          },
+          "stats": {
+            "total": 1552896.0,
+            "rate": 843.9589314636344
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "local_compute"
+          },
+          "stats": {
+            "total": 13382409.0,
+            "rate": 7272.994199256952
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens_cached": {
+      "type": "counter",
+      "description": "Number of cached prompt tokens (local + external).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 1675520.0,
+            "rate": 910.6019133579767
+          }
+        }
+      ]
+    },
+    "vllm:request_decode_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in DECODE phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 0.0,
+            "avg": 0.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.0,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 0.0,
+            "p90_estimate": 0.0,
+            "p95_estimate": 0.0,
+            "p99_estimate": 0.0
+          },
+          "buckets": {
+            "0.3": 290,
+            "0.5": 290,
+            "0.8": 290,
+            "1.0": 290,
+            "1.5": 290,
+            "2.0": 290,
+            "2.5": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "15.0": 290,
+            "20.0": 290,
+            "30.0": 290,
+            "40.0": 290,
+            "50.0": 290,
+            "60.0": 290,
+            "120.0": 290,
+            "240.0": 290,
+            "480.0": 290,
+            "960.0": 290,
+            "1920.0": 290,
+            "7680.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_generation_tokens": {
+      "type": "histogram",
+      "description": "Number of generation tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 290.0,
+            "avg": 1.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.1576075217686529,
+            "p1_estimate": 0.41168965517241385,
+            "p5_estimate": 0.45155172413793104,
+            "p10_estimate": 0.5013793103448276,
+            "p25_estimate": 0.6508620689655172,
+            "p50_estimate": 0.8999999999999999,
+            "p75_estimate": 1.0,
+            "p90_estimate": 1.0,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "1.0": 290,
+            "2.0": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "50.0": 290,
+            "100.0": 290,
+            "200.0": 290,
+            "500.0": 290,
+            "1000.0": 290,
+            "2000.0": 290,
+            "5000.0": 290,
+            "10000.0": 290,
+            "20000.0": 290,
+            "50000.0": 290,
+            "100000.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_inference_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in RUNNING phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 3124.2133263954893,
+            "avg": 10.773149401363757,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 1.697929378792388,
+            "p1_estimate": 2.5759553997962845,
+            "p5_estimate": 2.943338002995048,
+            "p10_estimate": 3.4025662569935027,
+            "p25_estimate": 5.17827919406007,
+            "p50_estimate": 10.288749463458956,
+            "p75_estimate": 15.40398917440468,
+            "p90_estimate": 19.27082777173325,
+            "p95_estimate": 21.213629077805674,
+            "p99_estimate": 25.250224350524736
+          },
+          "buckets": {
+            "0.3": 0,
+            "0.5": 1,
+            "0.8": 1,
+            "1.0": 1,
+            "1.5": 1,
+            "2.0": 1,
+            "2.5": 1,
+            "5.0": 70,
+            "10.0": 140,
+            "15.0": 211,
+            "20.0": 267,
+            "30.0": 290,
+            "40.0": 290,
+            "50.0": 290,
+            "60.0": 290,
+            "120.0": 290,
+            "240.0": 290,
+            "480.0": 290,
+            "960.0": 290,
+            "1920.0": 290,
+            "7680.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_max_num_generation_tokens": {
+      "type": "histogram",
+      "description": "Histogram of maximum number of requested generation tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 290.0,
+            "avg": 1.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.1576075217686529,
+            "p1_estimate": 0.41168965517241385,
+            "p5_estimate": 0.45155172413793104,
+            "p10_estimate": 0.5013793103448276,
+            "p25_estimate": 0.6508620689655172,
+            "p50_estimate": 0.8999999999999999,
+            "p75_estimate": 1.0,
+            "p90_estimate": 1.0,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "1.0": 290,
+            "2.0": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "50.0": 290,
+            "100.0": 290,
+            "200.0": 290,
+            "500.0": 290,
+            "1000.0": 290,
+            "2000.0": 290,
+            "5000.0": 290,
+            "10000.0": 290,
+            "20000.0": 290,
+            "50000.0": 290,
+            "100000.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_num_preemptions": {
+      "type": "histogram",
+      "description": "Histogram of the number of times a request was preempted.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 0.0,
+            "avg": 0.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.0,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 0.0,
+            "p90_estimate": 0.0,
+            "p95_estimate": 0.0,
+            "p99_estimate": 0.0
+          },
+          "buckets": {
+            "1.0": 290,
+            "2.0": 290,
+            "3.0": 290,
+            "4.0": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_params_max_tokens": {
+      "type": "histogram",
+      "description": "Histogram of the max_tokens request parameter.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 290.0,
+            "avg": 1.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.1576075217686529,
+            "p1_estimate": 0.41168965517241385,
+            "p5_estimate": 0.45155172413793104,
+            "p10_estimate": 0.5013793103448276,
+            "p25_estimate": 0.6508620689655172,
+            "p50_estimate": 0.8999999999999999,
+            "p75_estimate": 1.0,
+            "p90_estimate": 1.0,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "1.0": 290,
+            "2.0": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "50.0": 290,
+            "100.0": 290,
+            "200.0": 290,
+            "500.0": 290,
+            "1000.0": 290,
+            "2000.0": 290,
+            "5000.0": 290,
+            "10000.0": 290,
+            "20000.0": 290,
+            "50000.0": 290,
+            "100000.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_params_n": {
+      "type": "histogram",
+      "description": "Histogram of the n request parameter.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 290.0,
+            "avg": 1.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.1576075217686529,
+            "p1_estimate": 0.41168965517241385,
+            "p5_estimate": 0.45155172413793104,
+            "p10_estimate": 0.5013793103448276,
+            "p25_estimate": 0.6508620689655172,
+            "p50_estimate": 0.8999999999999999,
+            "p75_estimate": 1.0,
+            "p90_estimate": 1.0,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "1.0": 290,
+            "2.0": 290,
+            "5.0": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_prefill_kv_computed_tokens": {
+      "type": "histogram",
+      "description": "Histogram of new KV tokens computed during prefill (excluding cached tokens).",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 13382409.0,
+            "avg": 46146.237931034484,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 7272.994199256952,
+            "p1_estimate": 227.86874242085514,
+            "p5_estimate": 444.61874242085514,
+            "p10_estimate": 2015.2404476133988,
+            "p25_estimate": 4109.570636292645,
+            "p50_estimate": 43580.02615377448,
+            "p75_estimate": 80592.63590540628,
+            "p90_estimate": 101051.61375620349,
+            "p95_estimate": 108287.71793579406,
+            "p99_estimate": 114076.60127946651
+          },
+          "buckets": {
+            "1.0": 0,
+            "2.0": 0,
+            "5.0": 0,
+            "10.0": 0,
+            "20.0": 0,
+            "50.0": 0,
+            "100.0": 0,
+            "200.0": 2,
+            "500.0": 18,
+            "1000.0": 22,
+            "2000.0": 25,
+            "5000.0": 78,
+            "10000.0": 90,
+            "20000.0": 107,
+            "50000.0": 157,
+            "100000.0": 258,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_prefill_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in PREFILL phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 3124.2133263954893,
+            "avg": 10.773149401363757,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 1.697929378792388,
+            "p1_estimate": 2.5099767097597154,
+            "p5_estimate": 2.9260648587106393,
+            "p10_estimate": 3.4496155833483204,
+            "p25_estimate": 5.053377637855417,
+            "p50_estimate": 10.011503846636316,
+            "p75_estimate": 15.04814986798746,
+            "p90_estimate": 18.914763750696025,
+            "p95_estimate": 22.97086717401296,
+            "p99_estimate": 27.9969541305347
+          },
+          "buckets": {
+            "0.3": 0,
+            "0.5": 1,
+            "0.8": 1,
+            "1.0": 1,
+            "1.5": 1,
+            "2.0": 1,
+            "2.5": 1,
+            "5.0": 70,
+            "10.0": 140,
+            "15.0": 211,
+            "20.0": 267,
+            "30.0": 290,
+            "40.0": 290,
+            "50.0": 290,
+            "60.0": 290,
+            "120.0": 290,
+            "240.0": 290,
+            "480.0": 290,
+            "960.0": 290,
+            "1920.0": 290,
+            "7680.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_prompt_tokens": {
+      "type": "histogram",
+      "description": "Number of prefill tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 15057929.0,
+            "avg": 51923.893103448274,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 8183.59611261493,
+            "p1_estimate": 1437.0887419894493,
+            "p5_estimate": 2744.8616054266136,
+            "p10_estimate": 3987.2791564470217,
+            "p25_estimate": 20966.151266919653,
+            "p50_estimate": 45634.256362524415,
+            "p75_estimate": 76476.37278870223,
+            "p90_estimate": 104747.36797243184,
+            "p95_estimate": 137413.7809255934,
+            "p99_estimate": 163546.91128812268
+          },
+          "buckets": {
+            "1.0": 0,
+            "2.0": 0,
+            "5.0": 0,
+            "10.0": 0,
+            "20.0": 0,
+            "50.0": 0,
+            "100.0": 0,
+            "200.0": 1,
+            "500.0": 2,
+            "1000.0": 2,
+            "2000.0": 4,
+            "5000.0": 39,
+            "10000.0": 44,
+            "20000.0": 52,
+            "50000.0": 151,
+            "100000.0": 258,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_queue_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in WAITING phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 163741.94702765532,
+            "avg": 564.627403543639,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 88.98952579518205,
+            "p1_estimate": 5.347925181673272,
+            "p5_estimate": 61.38411445652297,
+            "p10_estimate": 208.4064157910102,
+            "p25_estimate": 480.0,
+            "p50_estimate": 592.7101652532563,
+            "p75_estimate": 740.9152934583844,
+            "p90_estimate": 829.8383703814613,
+            "p95_estimate": 859.479396022487,
+            "p99_estimate": 883.1922165353075
+          },
+          "buckets": {
+            "0.3": 2,
+            "0.5": 2,
+            "0.8": 2,
+            "1.0": 2,
+            "1.5": 2,
+            "2.0": 2,
+            "2.5": 3,
+            "5.0": 3,
+            "10.0": 4,
+            "15.0": 4,
+            "20.0": 5,
+            "30.0": 6,
+            "40.0": 8,
+            "50.0": 8,
+            "60.0": 11,
+            "120.0": 18,
+            "240.0": 31,
+            "480.0": 56,
+            "960.0": 290,
+            "1920.0": 290,
+            "7680.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:request_success": {
+      "type": "counter",
+      "description": "Count of successfully processed requests.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "abort",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "error",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "length",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 290.0,
+            "rate": 0.1576075217686529
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "repetition",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "stop",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:request_time_per_output_token_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time_per_output_token_seconds per request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 0.0,
+            "avg": 0.0,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 0.0,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 0.0,
+            "p90_estimate": 0.0,
+            "p95_estimate": 0.0,
+            "p99_estimate": 0.0
+          },
+          "buckets": {
+            "0.01": 290,
+            "0.025": 290,
+            "0.05": 290,
+            "0.075": 290,
+            "0.1": 290,
+            "0.15": 290,
+            "0.2": 290,
+            "0.3": 290,
+            "0.4": 290,
+            "0.5": 290,
+            "0.75": 290,
+            "1.0": 290,
+            "2.5": 290,
+            "5.0": 290,
+            "7.5": 290,
+            "10.0": 290,
+            "20.0": 290,
+            "40.0": 290,
+            "80.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_accepted_tokens": {
+      "type": "counter",
+      "description": "Number of accepted tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_accepted_tokens_per_pos": {
+      "type": "counter",
+      "description": "Accepted tokens per draft position.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "0"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "1"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "2"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_draft_tokens": {
+      "type": "counter",
+      "description": "Number of draft tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_drafts": {
+      "type": "counter",
+      "description": "Number of spec decoding drafts.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:time_to_first_token_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time to first token in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 290,
+            "sum": 167231.42519187927,
+            "avg": 576.6600868685492,
+            "count_rate": 0.1576075217686529,
+            "sum_rate": 90.88596719424812,
+            "p1_estimate": 19.01,
+            "p5_estimate": 80.0,
+            "p10_estimate": 160.0,
+            "p25_estimate": 373.5312680823008,
+            "p50_estimate": 640.0,
+            "p75_estimate": 1072.0,
+            "p90_estimate": 1501.030927835052,
+            "p95_estimate": 1644.0412371134023,
+            "p99_estimate": 1758.4494845360825
+          },
+          "buckets": {
+            "0.001": 0,
+            "0.005": 0,
+            "0.01": 0,
+            "0.02": 0,
+            "0.04": 0,
+            "0.06": 0,
+            "0.08": 0,
+            "0.1": 0,
+            "0.25": 0,
+            "0.5": 1,
+            "0.75": 1,
+            "1.0": 1,
+            "2.5": 1,
+            "5.0": 1,
+            "7.5": 2,
+            "10.0": 2,
+            "20.0": 3,
+            "40.0": 6,
+            "80.0": 11,
+            "160.0": 21,
+            "640.0": 96,
+            "2560.0": 290,
+            "+Inf": 290
+          }
+        }
+      ]
+    },
+    "vllm:tool_call_parser_invocations": {
+      "type": "counter",
+      "description": "Total number of ToolParser invocations. Non-streaming increments once per choice; streaming increments once per delta.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 290.0,
+            "rate": 0.1576075217686529
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    }
+  },
+  "warmup_metrics": {
+    "http_request_duration_highr_seconds": {
+      "type": "histogram",
+      "description": "Latency with many buckets but no API specific labels. Made for more accurate percentile calculations.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "count": -85,
+            "sum": 134823.14812732302,
+            "avg": -1586.154683850859,
+            "count_rate": -0.12027733764901115,
+            "sum_rate": 190.77846247309031
+          }
+        }
+      ]
+    },
+    "http_request_duration_seconds": {
+      "type": "histogram",
+      "description": "Latency with only few buckets by handler. Made to be only used if aggregation by handler is important.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/reset_prefix_cache",
+            "method": "POST"
+          },
+          "stats": {
+            "count": 1,
+            "sum": 0.0015309134032577276,
+            "avg": 0.0015309134032577276,
+            "count_rate": 0.0014150275017530724,
+            "sum_rate": 2.1662845684120763e-6,
+            "p1_estimate": 0.0015309134032577276,
+            "p5_estimate": 0.0015309134032577276,
+            "p10_estimate": 0.0015309134032577276,
+            "p25_estimate": 0.0015309134032577276,
+            "p50_estimate": 0.0015309134032577276,
+            "p75_estimate": 0.0015309134032577276,
+            "p90_estimate": 0.0015309134032577276,
+            "p95_estimate": 0.0015309134032577276,
+            "p99_estimate": 0.0015309134032577276
+          },
+          "buckets": {
+            "0.1": 1,
+            "0.5": 1,
+            "1.0": 1,
+            "+Inf": 1
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/chat/completions",
+            "method": "POST"
+          },
+          "stats": {
+            "count": 134,
+            "sum": 134822.9772409373,
+            "avg": 1006.1416212010246,
+            "count_rate": 0.1896136852349117,
+            "sum_rate": 190.77822066415484,
+            "p1_estimate": 0.2677928400774916,
+            "p5_estimate": 0.29468242012509976,
+            "p10_estimate": 0.3282943951846099,
+            "p25_estimate": 0.4291303203631406,
+            "p50_estimate": 0.5,
+            "p75_estimate": 0.796025522098632,
+            "p90_estimate": 0.9664368539828627,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "0.1": 0,
+            "0.5": 183,
+            "1.0": 315,
+            "+Inf": 134
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/models",
+            "method": "GET"
+          },
+          "stats": {
+            "count": -220,
+            "sum": 0.16935547231696546,
+            "avg": -0.0007697976014407521,
+            "count_rate": -0.31130605038567594,
+            "sum_rate": 0.00023964265090088726
+          }
+        }
+      ]
+    },
+    "http_requests": {
+      "type": "counter",
+      "description": "Total number of requests by method, status and handler.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/reset_prefix_cache",
+            "method": "POST",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 1.0,
+            "rate": 0.0014150275017530724
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/chat/completions",
+            "method": "POST",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 134.0,
+            "rate": 0.1896136852349117
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "handler": "/v1/models",
+            "method": "GET",
+            "status": "2xx"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "process_cpu_seconds": {
+      "type": "counter",
+      "description": "Total user and system CPU time spent in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "process_max_fds": {
+      "type": "gauge",
+      "description": "Maximum number of open file descriptors.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 1048576.0,
+            "min": 1048576.0,
+            "max": 1048576.0,
+            "std": 0.0,
+            "p1": 1048576.0,
+            "p5": 1048576.0,
+            "p10": 1048576.0,
+            "p25": 1048576.0,
+            "p50": 1048576.0,
+            "p75": 1048576.0,
+            "p90": 1048576.0,
+            "p95": 1048576.0,
+            "p99": 1048576.0
+          }
+        }
+      ]
+    },
+    "process_open_fds": {
+      "type": "gauge",
+      "description": "Number of open file descriptors.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 133.10377358490567,
+            "min": 111.0,
+            "max": 198.0,
+            "std": 27.23788524370046,
+            "p1": 111.0,
+            "p5": 112.0,
+            "p10": 112.0,
+            "p25": 112.0,
+            "p50": 113.0,
+            "p75": 155.0,
+            "p90": 178.0,
+            "p95": 187.0,
+            "p99": 196.80999999999995
+          }
+        }
+      ]
+    },
+    "process_resident_memory_bytes": {
+      "type": "gauge",
+      "description": "Resident memory size in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 2027376769.4490566,
+            "min": 1919844352.0,
+            "max": 2150912000.0,
+            "std": 110565460.46482377,
+            "p1": 1919844352.0,
+            "p5": 1919844352.0,
+            "p10": 1919844352.0,
+            "p25": 1919844352.0,
+            "p50": 1920892928.0,
+            "p75": 2148810752.0,
+            "p90": 2150912000.0,
+            "p95": 2150912000.0,
+            "p99": 2150912000.0
+          }
+        }
+      ]
+    },
+    "process_start_time_seconds": {
+      "type": "gauge",
+      "description": "Start time of the process since unix epoch in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 1789791109.9536607,
+            "min": 1789790444.2,
+            "max": 1789791813.16,
+            "std": 684.3852205221418,
+            "p1": 1789790444.2,
+            "p5": 1789790444.2,
+            "p10": 1789790444.2,
+            "p25": 1789790444.2,
+            "p50": 1789790444.2,
+            "p75": 1789791813.16,
+            "p90": 1789791813.16,
+            "p95": 1789791813.16,
+            "p99": 1789791813.16
+          }
+        }
+      ]
+    },
+    "process_virtual_memory_bytes": {
+      "type": "gauge",
+      "description": "Virtual memory size in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "stats": {
+            "avg": 82390386394.32452,
+            "min": 82269626368.0,
+            "max": 82529443840.0,
+            "std": 124786208.42850718,
+            "p1": 82269626368.0,
+            "p5": 82269626368.0,
+            "p10": 82269626368.0,
+            "p25": 82269626368.0,
+            "p50": 82269642752.0,
+            "p75": 82525233152.0,
+            "p90": 82529427456.0,
+            "p95": 82529427456.0,
+            "p99": 82529443840.0
+          }
+        }
+      ]
+    },
+    "python_gc_collections": {
+      "type": "counter",
+      "description": "Number of times this generation was collected",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "python_gc_objects_collected": {
+      "type": "counter",
+      "description": "Objects collected during gc",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 8023.0,
+            "rate": 11.3527656465649
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 713.0,
+            "rate": 1.0089146087499405
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 48.0,
+            "rate": 0.06792132008414747
+          }
+        }
+      ]
+    },
+    "python_gc_objects_uncollectable": {
+      "type": "counter",
+      "description": "Uncollectable objects found during GC",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "0"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "1"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "generation": "2"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "python_info": {
+      "type": "gauge",
+      "description": "Python platform information",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "implementation": "CPython",
+            "major": "3",
+            "minor": "12",
+            "patchlevel": "13",
+            "version": "3.12.13"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        }
+      ]
+    },
+    "vllm:cache_config_info": {
+      "type": "gauge",
+      "description": "Information of the LLMEngine CacheConfig",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "_block_size_resolved": "True",
+            "block_size": "64",
+            "cache_dtype": "fp8_ds_mla",
+            "enable_mamba_fine_grained_prefix_cache": "False",
+            "enable_prefix_caching": "True",
+            "engine": "0",
+            "gpu_memory_utilization": "0.85",
+            "is_attention_free": "False",
+            "kv_cache_dtype_skip_layers": "[]",
+            "kv_cache_layout": "None",
+            "kv_cache_max_concurrency": "2.940513744930149",
+            "kv_cache_memory_bytes": "None",
+            "kv_cache_size_tokens": "417552",
+            "kv_offloading_backend": "native",
+            "kv_offloading_size": "None",
+            "kv_sharing_fast_prefill": "False",
+            "mamba_block_size": "None",
+            "mamba_cache_dtype": "auto",
+            "mamba_cache_mode": "none",
+            "mamba_page_size_padded": "None",
+            "mamba_ssm_cache_dtype": "auto",
+            "num_cpu_blocks": "None",
+            "num_gpu_blocks": "6525",
+            "num_gpu_blocks_override": "None",
+            "prefix_cache_retention_interval": "0",
+            "prefix_caching_hash_algo": "sha256",
+            "prefix_match_unit": "None",
+            "replayssm_buffer_len": "16",
+            "skip_page_size_padded": "None",
+            "sliding_window": "None",
+            "use_kda_recoverssm": "False",
+            "use_replayssm": "False",
+            "user_specified_block_size": "False",
+            "user_specified_mamba_block_size": "False"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "_block_size_resolved": "True",
+            "block_size": "64",
+            "cache_dtype": "fp8_ds_mla",
+            "enable_mamba_fine_grained_prefix_cache": "False",
+            "enable_prefix_caching": "True",
+            "engine": "0",
+            "gpu_memory_utilization": "0.92",
+            "is_attention_free": "False",
+            "kv_cache_dtype_skip_layers": "[]",
+            "kv_cache_layout": "None",
+            "kv_cache_max_concurrency": "5.112663361874718",
+            "kv_cache_memory_bytes": "None",
+            "kv_cache_size_tokens": "725998",
+            "kv_offloading_backend": "native",
+            "kv_offloading_size": "None",
+            "kv_sharing_fast_prefill": "False",
+            "mamba_block_size": "None",
+            "mamba_cache_dtype": "auto",
+            "mamba_cache_mode": "none",
+            "mamba_page_size_padded": "None",
+            "mamba_ssm_cache_dtype": "auto",
+            "num_cpu_blocks": "None",
+            "num_gpu_blocks": "11345",
+            "num_gpu_blocks_override": "None",
+            "prefix_cache_retention_interval": "0",
+            "prefix_caching_hash_algo": "sha256",
+            "prefix_match_unit": "None",
+            "replayssm_buffer_len": "16",
+            "skip_page_size_padded": "None",
+            "sliding_window": "None",
+            "use_kda_recoverssm": "False",
+            "use_replayssm": "False",
+            "user_specified_block_size": "False",
+            "user_specified_mamba_block_size": "False"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        }
+      ]
+    },
+    "vllm:e2e_request_latency_seconds": {
+      "type": "histogram",
+      "description": "Histogram of e2e request latency in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 126851.01734733582,
+            "avg": 1425.2923297453463,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 179.49767817183624
+          }
+        }
+      ]
+    },
+    "vllm:engine_sleep_state": {
+      "type": "gauge",
+      "description": "Engine sleep state; awake = 0 means engine is sleeping; awake = 1 means engine is awake; weights_offloaded = 1 means sleep level 1; discard_all = 1 means sleep level 2.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "awake"
+          },
+          "stats": {
+            "avg": 1.0,
+            "min": 1.0,
+            "max": 1.0,
+            "std": 0.0,
+            "p1": 1.0,
+            "p5": 1.0,
+            "p10": 1.0,
+            "p25": 1.0,
+            "p50": 1.0,
+            "p75": 1.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 1.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "discard_all"
+          },
+          "stats": {
+            "avg": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "std": 0.0,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "sleep_state": "weights_offloaded"
+          },
+          "stats": {
+            "avg": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "std": 0.0,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_flops_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of floating point operations per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_read_bytes_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of bytes read from memory per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:estimated_write_bytes_per_gpu": {
+      "type": "counter",
+      "description": "Estimated number of bytes written to memory per GPU (for Model Flops Utilization calculations).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:external_prefix_cache_hits": {
+      "type": "counter",
+      "description": "External prefix cache hits from KV connector cross-instance cache sharing, in terms of number of cached tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:external_prefix_cache_queries": {
+      "type": "counter",
+      "description": "External prefix cache queries from KV connector cross-instance cache sharing, in terms of number of queried tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 21965654.0,
+            "rate": 31082.004503992383
+          }
+        }
+      ]
+    },
+    "vllm:generation_tokens": {
+      "type": "counter",
+      "description": "Number of generation tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:inter_token_latency_seconds": {
+      "type": "histogram",
+      "description": "Histogram of inter-token latency in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -242531,
+            "sum": -8498.774210079107,
+            "avg": 0.03504201199054598,
+            "count_rate": -343.1880350276744,
+            "sum_rate": -12.02599923845168
+          }
+        }
+      ]
+    },
+    "vllm:iteration_tokens_total": {
+      "type": "histogram",
+      "description": "Histogram of number of tokens per engine_step.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -104564,
+            "sum": 35971059.0,
+            "avg": -344.0099747523048,
+            "count_rate": -147.96093569330827,
+            "sum_rate": 50900.03775218237
+          }
+        }
+      ]
+    },
+    "vllm:kv_cache_usage_perc": {
+      "type": "gauge",
+      "description": "KV-cache usage. 1 means 100 percent usage.",
+      "unit": "ratio",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.09186981660073677,
+            "min": 0.0,
+            "max": 0.4800735744941753,
+            "std": 0.10681310674233711,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.17121397915389336,
+            "p90": 0.2539852851011649,
+            "p95": 0.29337829552421824,
+            "p99": 0.37201103617412634
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_allocation_size": {
+      "type": "histogram",
+      "description": "Histogram of the number of CPU chunks requested by each KV offload prepare_store call.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 2281,
+            "sum": 75199.0,
+            "avg": 32.96755808855765,
+            "count_rate": 3.2276777314987584,
+            "sum_rate": 106.40865310432929,
+            "p1_estimate": 2.689473684210526,
+            "p5_estimate": 21.90628886933836,
+            "p10_estimate": 30.374020521843825,
+            "p25_estimate": 64.0,
+            "p50_estimate": 127.58155640175445,
+            "p75_estimate": 161.40919070118196,
+            "p90_estimate": 172.0743209031027,
+            "p95_estimate": 175.6293643037429,
+            "p99_estimate": 178.47339902425512
+          },
+          "buckets": {
+            "1.0": 5,
+            "4.0": 24,
+            "16.0": 88,
+            "64.0": 297,
+            "256.0": 2715,
+            "1024.0": 2533,
+            "4096.0": 2281,
+            "16384.0": 2281,
+            "65536.0": 2281,
+            "262144.0": 2281,
+            "+Inf": 2281
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_read_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by in-flight loads that have not yet completed (0.0 = idle, 1.0 = saturated).",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.00023997241795833266,
+            "min": 0.0,
+            "max": 0.023956368826137928,
+            "std": 0.0021077288085629494,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "p99": 0.015138386258219071
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by active transfers (0.0 = idle, 1.0 = saturated). Sustained high values indicate transfers (stores or promotions) may be dropped due to insufficient capacity.",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.013566291629119634,
+            "min": 0.0,
+            "max": 0.10148325602732046,
+            "std": 0.014495202041597268,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.026097150721239616,
+            "p90": 0.026097150721239616,
+            "p95": 0.026097150721239616,
+            "p99": 0.04500739079463785
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_cpu_cache_write_usage_perc": {
+      "type": "gauge",
+      "description": "Fraction of CPU KV-cache space currently pinned by in-flight stores that have not yet completed (0.0 = idle, 1.0 = saturated).",
+      "unit": "percent",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.013326319211161303,
+            "min": 0.0,
+            "max": 0.10148325602732046,
+            "std": 0.014126213619054858,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.026097150721239616,
+            "p90": 0.026097150721239616,
+            "p95": 0.026097150721239616,
+            "p99": 0.03117284265253066
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_bytes": {
+      "type": "counter",
+      "description": "Total bytes loaded from offload storage to GPU.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 53127315456.0,
+            "rate": 66991560.80716826
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload load operation size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 104,
+            "sum": 53127315456.0,
+            "avg": 510839571.6923077,
+            "count_rate": 0.13114011623108765,
+            "sum_rate": 66991560.80716826,
+            "p1_estimate": 1662294.428383341,
+            "p5_estimate": 1956580.1426690554,
+            "p10_estimate": 2324437.2855261983,
+            "p25_estimate": 3428008.714097627,
+            "p50_estimate": 5000000.0,
+            "p75_estimate": 958493921.8051282,
+            "p90_estimate": 1842926457.0420513,
+            "p95_estimate": 2137737302.1210253,
+            "p99_estimate": 2373585978.184205
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 56,
+            "1e+07": 56,
+            "2e+07": 56,
+            "4e+07": 64,
+            "6e+07": 64,
+            "8e+07": 64,
+            "1e+08": 64,
+            "1.5e+08": 64,
+            "2e+08": 64,
+            "+Inf": 104
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_load_time": {
+      "type": "counter",
+      "description": "Total load time from offload storage to GPU, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 1.0654749209880947,
+            "rate": 0.0013435240863431507
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_lookup_async_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time between a request's offload lookup first deferring and the following lookup resolving, or request finish, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 0
+          },
+          "buckets": {
+            "0.0001": 0,
+            "0.0005": 0,
+            "0.001": 0,
+            "0.005": 0,
+            "0.01": 0,
+            "0.05": 0,
+            "0.1": 0,
+            "0.5": 0,
+            "1.0": 0,
+            "5.0": 0,
+            "10.0": 0,
+            "+Inf": 0
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_lookup_sync_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of the time spent in a single offload lookup call, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 12706,
+            "sum": 6.641500463942066,
+            "avg": 0.0005227058447931737,
+            "count_rate": 17.97933943727454,
+            "sum_rate": 0.009397905809383813
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload transfer size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "count": 5440,
+            "sum": 11076344754176.0,
+            "avg": 2036092785.6941175,
+            "count_rate": 7.6977496095367135,
+            "sum_rate": 15673332446.057415,
+            "p1_estimate": 2078320.8811487434,
+            "p5_estimate": 2444583.50741137,
+            "p10_estimate": 2902411.7902396526,
+            "p25_estimate": 4275896.6387245,
+            "p50_estimate": 819776067.8017757,
+            "p75_estimate": 4018032265.8794403,
+            "p90_estimate": 5936985984.72604,
+            "p95_estimate": 6576637224.341573,
+            "p99_estimate": 7088358216.033998
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 2376,
+            "1e+07": 2392,
+            "2e+07": 2400,
+            "4e+07": 2408,
+            "6e+07": 2456,
+            "8e+07": 2456,
+            "1e+08": 2456,
+            "1.5e+08": 2456,
+            "2e+08": 2456,
+            "+Inf": 5440
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "count": 18248,
+            "sum": 2107131326464.0,
+            "avg": 115471905.22051732,
+            "count_rate": 25.821421851990067,
+            "sum_rate": 2981648776.7519917,
+            "p1_estimate": 18234670.52631579,
+            "p5_estimate": 82004032.25806452,
+            "p10_estimate": 161494468.10725278,
+            "p25_estimate": 230617612.47601956,
+            "p50_estimate": 287078408.31734633,
+            "p75_estimate": 343539204.1586732,
+            "p90_estimate": 377415681.66346925,
+            "p95_estimate": 388707840.8317346,
+            "p99_estimate": 397741568.1663469
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 40,
+            "1e+07": 96,
+            "2e+07": 248,
+            "4e+07": 496,
+            "6e+07": 760,
+            "8e+07": 888,
+            "1e+08": 1136,
+            "1.5e+08": 1568,
+            "2e+08": 2088,
+            "+Inf": 18248
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_bytes": {
+      "type": "counter",
+      "description": "Total bytes stored from GPU to offload storage.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 2107131326464.0,
+            "rate": 2981648776.7519917
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_size": {
+      "type": "histogram",
+      "description": "Histogram of KV offload store operation size, in bytes.",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 18248,
+            "sum": 2107131326464.0,
+            "avg": 115471905.22051732,
+            "count_rate": 25.821421851990067,
+            "sum_rate": 2981648776.7519917,
+            "p1_estimate": 18234670.52631579,
+            "p5_estimate": 82004032.25806452,
+            "p10_estimate": 161494468.10725278,
+            "p25_estimate": 230617612.47601956,
+            "p50_estimate": 287078408.31734633,
+            "p75_estimate": 343539204.1586732,
+            "p90_estimate": 377415681.66346925,
+            "p95_estimate": 388707840.8317346,
+            "p99_estimate": 397741568.1663469
+          },
+          "buckets": {
+            "1e+06": 0,
+            "5e+06": 40,
+            "1e+07": 96,
+            "2e+07": 248,
+            "4e+07": 496,
+            "6e+07": 760,
+            "8e+07": 888,
+            "1e+08": 1136,
+            "1.5e+08": 1568,
+            "2e+08": 2088,
+            "+Inf": 18248
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_store_time": {
+      "type": "counter",
+      "description": "Total store time from GPU to offload storage, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 81.9286266623954,
+            "rate": 0.11593125990814952
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_chunk_hits": {
+      "type": "counter",
+      "description": "Number of chunk lookup hits in a tier, labeled by tier.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "total": 269001.0,
+            "rate": 380.64381299907825
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_chunk_queries": {
+      "type": "counter",
+      "description": "Number of chunk lookup queries sent to a tier, labeled by tier.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "total": 269092.0,
+            "rate": 380.77258050173776
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_tiering_lookup_sync_delay_seconds": {
+      "type": "histogram",
+      "description": "Histogram of blocking time spent in a per-chunk tier lookup that resolved as a hit or miss, labeled by tier, in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "tier": "0:primary"
+          },
+          "stats": {
+            "count": 269092,
+            "sum": 0.10466017806902528,
+            "avg": 3.889382741554014e-7,
+            "count_rate": 380.77258050173776,
+            "sum_rate": 0.00014809703030604454,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 1.328981558140649e-6,
+            "p90_estimate": 2.341220212463765e-6,
+            "p95_estimate": 2.6786330972381363e-6,
+            "p99_estimate": 2.9485634050576335e-6
+          },
+          "buckets": {
+            "1e-05": 269180,
+            "5e-05": 269092,
+            "0.0001": 269092,
+            "0.0005": 269092,
+            "0.001": 269092,
+            "0.005": 269092,
+            "0.01": 269092,
+            "0.05": 269092,
+            "0.1": 269092,
+            "0.5": 269092,
+            "1.0": 269092,
+            "+Inf": 269092
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_total_bytes": {
+      "type": "counter",
+      "description": "Number of bytes offloaded by KV connector",
+      "unit": "bytes",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "total": 11076344754176.0,
+            "rate": 15673332446.057415
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "total": 2107131326464.0,
+            "rate": 2981648776.7519917
+          }
+        }
+      ]
+    },
+    "vllm:kv_offload_total_time": {
+      "type": "counter",
+      "description": "Total time measured by all KV offloading operations",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "CPU_to_GPU"
+          },
+          "stats": {
+            "total": 324.3427051679792,
+            "rate": 0.45895384780567894
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "transfer_type": "GPU_to_CPU"
+          },
+          "stats": {
+            "total": 81.9286266623954,
+            "rate": 0.11593125990814952
+          }
+        }
+      ]
+    },
+    "vllm:mm_cache_hits": {
+      "type": "counter",
+      "description": "Multi-modal cache hits, in terms of number of cached items.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:mm_cache_queries": {
+      "type": "counter",
+      "description": "Multi-modal cache queries, in terms of number of queried items.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_bytes_transferred": {
+      "type": "histogram",
+      "description": "Histogram of bytes transferred per NIXL KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -8456,
+            "sum": -17693693747200.0,
+            "avg": 2092442496.1210976,
+            "count_rate": -11.96547255482398,
+            "sum_rate": -25037063259.884373
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_descriptors": {
+      "type": "histogram",
+      "description": "Histogram of number of descriptors per NIXL  KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -8456,
+            "sum": -441285968.0,
+            "avg": 52186.1362346263,
+            "count_rate": -11.96547255482398,
+            "sum_rate": -624431.7808577262
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_failed_notifications": {
+      "type": "counter",
+      "description": "Number of failed NIXL KV Cache notifications.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_failed_transfers": {
+      "type": "counter",
+      "description": "Number of failed NIXL KV Cache transfers.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_num_kv_expired_reqs": {
+      "type": "counter",
+      "description": "Number of requests that had their KV expire. NOTE: This metric is tracked on the P instance.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:nixl_post_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of transfer post time for NIXL KV Cache transfers.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -8456,
+            "sum": -32.892896000000036,
+            "avg": 0.003889888363292341,
+            "count_rate": -11.96547255482398,
+            "sum_rate": -0.04654435245230368
+          }
+        }
+      ]
+    },
+    "vllm:nixl_xfer_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of transfer duration for NIXL KV Cache transfers.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": -8456,
+            "sum": -849.459502,
+            "avg": 0.10045642171239356,
+            "count_rate": -11.96547255482398,
+            "sum_rate": -1.202008556955469
+          }
+        }
+      ]
+    },
+    "vllm:num_preemptions": {
+      "type": "counter",
+      "description": "Cumulative number of preemption from the engine.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_running": {
+      "type": "gauge",
+      "description": "Number of requests in model execution batches.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 0.6183962264150943,
+            "min": 0.0,
+            "max": 3.0,
+            "std": 0.7153288736220434,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 1.0,
+            "p90": 2.0,
+            "p95": 2.0,
+            "p99": 2.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_waiting": {
+      "type": "gauge",
+      "description": "Number of requests waiting to be processed.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "avg": 19.931132075471698,
+            "min": 0.0,
+            "max": 84.0,
+            "std": 26.344470405481037,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 42.0,
+            "p90": 64.0,
+            "p95": 72.0,
+            "p99": 82.0
+          }
+        }
+      ]
+    },
+    "vllm:num_requests_waiting_by_reason": {
+      "type": "gauge",
+      "description": "Number of waiting requests by reason. Reason labels: 'capacity' = waiting for scheduling capacity; 'deferred' = deferred by transient constraints (LoRA budget, KV transfer, blocked status). Sum of all reasons equals vllm:num_requests_waiting.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "reason": "capacity"
+          },
+          "stats": {
+            "avg": 19.81556603773585,
+            "min": 0.0,
+            "max": 84.0,
+            "std": 26.262055469626475,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 42.0,
+            "p90": 62.0,
+            "p95": 71.0,
+            "p99": 82.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "reason": "deferred"
+          },
+          "stats": {
+            "avg": 0.11556603773584906,
+            "min": 0.0,
+            "max": 2.0,
+            "std": 0.35872876117448216,
+            "p1": 0.0,
+            "p5": 0.0,
+            "p10": 0.0,
+            "p25": 0.0,
+            "p50": 0.0,
+            "p75": 0.0,
+            "p90": 1.0,
+            "p95": 1.0,
+            "p99": 2.0
+          }
+        }
+      ]
+    },
+    "vllm:prefix_cache_hits": {
+      "type": "counter",
+      "description": "Prefix cache hits, in terms of number of cached tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:prefix_cache_queries": {
+      "type": "counter",
+      "description": "Prefix cache queries, in terms of number of queried tokens.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 5849750.0,
+            "rate": 8277.557128380035
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens": {
+      "type": "counter",
+      "description": "Number of prefill tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 5429468.0,
+            "rate": 7682.846539888251
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens_by_source": {
+      "type": "counter",
+      "description": "Number of prompt tokens by source.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "external_kv_transfer"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "local_cache_hit"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "source": "local_compute"
+          },
+          "stats": {
+            "total": 36625346.0,
+            "rate": 51825.871851221884
+          }
+        }
+      ]
+    },
+    "vllm:prompt_tokens_cached": {
+      "type": "counter",
+      "description": "Number of cached prompt tokens (local + external).",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:request_decode_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in DECODE phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -7995.025382749038,
+            "avg": -89.8317458735847,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -11.313180793803772
+          },
+          "buckets": {
+            "0.3": 1076,
+            "0.5": 1071,
+            "0.8": 1066,
+            "1.0": 1063,
+            "1.5": 1034,
+            "2.0": 758,
+            "2.5": 499,
+            "5.0": 330,
+            "10.0": 238,
+            "15.0": 196,
+            "20.0": 167,
+            "30.0": 137,
+            "40.0": 121,
+            "50.0": 110,
+            "60.0": 106,
+            "120.0": 97,
+            "240.0": 92,
+            "480.0": 90,
+            "960.0": 89,
+            "1920.0": 89,
+            "7680.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_generation_tokens": {
+      "type": "histogram",
+      "description": "Number of generation tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -616218.0,
+            "avg": -6923.797752808989,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -871.9654170752748
+          },
+          "buckets": {
+            "1.0": 1085,
+            "2.0": 1085,
+            "5.0": 1085,
+            "10.0": 1082,
+            "20.0": 1072,
+            "50.0": 1067,
+            "100.0": 1033,
+            "200.0": 910,
+            "500.0": 293,
+            "1000.0": 214,
+            "2000.0": 141,
+            "5000.0": 104,
+            "10000.0": 95,
+            "20000.0": 90,
+            "50000.0": 90,
+            "100000.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_inference_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in RUNNING phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -476.2031662457157,
+            "avg": -5.350597373547368,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -0.6738405766595781
+          }
+        }
+      ]
+    },
+    "vllm:request_max_num_generation_tokens": {
+      "type": "histogram",
+      "description": "Histogram of maximum number of requested generation tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -616218.0,
+            "avg": -6923.797752808989,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -871.9654170752748
+          },
+          "buckets": {
+            "1.0": 1085,
+            "2.0": 1085,
+            "5.0": 1085,
+            "10.0": 1082,
+            "20.0": 1072,
+            "50.0": 1067,
+            "100.0": 1033,
+            "200.0": 910,
+            "500.0": 293,
+            "1000.0": 214,
+            "2000.0": 141,
+            "5000.0": 104,
+            "10000.0": 95,
+            "20000.0": 90,
+            "50000.0": 90,
+            "100000.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_num_preemptions": {
+      "type": "histogram",
+      "description": "Histogram of the number of times a request was preempted.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 0.0,
+            "avg": 0.0,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 0.0,
+            "p1_estimate": 0.0,
+            "p5_estimate": 0.0,
+            "p10_estimate": 0.0,
+            "p25_estimate": 0.0,
+            "p50_estimate": 0.0,
+            "p75_estimate": 0.0,
+            "p90_estimate": 0.0,
+            "p95_estimate": 0.0,
+            "p99_estimate": 0.0
+          },
+          "buckets": {
+            "1.0": 89,
+            "2.0": 89,
+            "3.0": 89,
+            "4.0": 89,
+            "5.0": 89,
+            "10.0": 89,
+            "20.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_params_max_tokens": {
+      "type": "histogram",
+      "description": "Histogram of the max_tokens request parameter.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -616218.0,
+            "avg": -6923.797752808989,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -871.9654170752748
+          },
+          "buckets": {
+            "1.0": 1085,
+            "2.0": 1085,
+            "5.0": 1085,
+            "10.0": 1082,
+            "20.0": 1072,
+            "50.0": 1067,
+            "100.0": 1033,
+            "200.0": 910,
+            "500.0": 293,
+            "1000.0": 214,
+            "2000.0": 141,
+            "5000.0": 104,
+            "10000.0": 95,
+            "20000.0": 90,
+            "50000.0": 90,
+            "100000.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_params_n": {
+      "type": "histogram",
+      "description": "Histogram of the n request parameter.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 89.0,
+            "avg": 1.0,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 0.12593744765602344,
+            "p1_estimate": 0.4155056179775281,
+            "p5_estimate": 0.4550561797752809,
+            "p10_estimate": 0.504494382022472,
+            "p25_estimate": 0.6528089887640449,
+            "p50_estimate": 0.9,
+            "p75_estimate": 1.0,
+            "p90_estimate": 1.0,
+            "p95_estimate": 1.0,
+            "p99_estimate": 1.0
+          },
+          "buckets": {
+            "1.0": 89,
+            "2.0": 89,
+            "5.0": 89,
+            "10.0": 89,
+            "20.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_prefill_kv_computed_tokens": {
+      "type": "histogram",
+      "description": "Histogram of new KV tokens computed during prefill (excluding cached tokens).",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 36625346.0,
+            "avg": 411520.7415730337,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 51825.871851221884
+          }
+        }
+      ]
+    },
+    "vllm:request_prefill_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in PREFILL phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 7518.822216503322,
+            "avg": 84.48114850003732,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 10.639340217144195
+          }
+        }
+      ]
+    },
+    "vllm:request_prompt_tokens": {
+      "type": "histogram",
+      "description": "Number of prefill tokens processed.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 5501656.0,
+            "avg": 61816.3595505618,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 7784.994545184802,
+            "p1_estimate": 8272.370155123206,
+            "p5_estimate": 21071.48104690784,
+            "p10_estimate": 24953.833988084312,
+            "p25_estimate": 36600.89281161372,
+            "p50_estimate": 56578.48870225636,
+            "p75_estimate": 82713.2354189543,
+            "p90_estimate": 105458.19300699301,
+            "p95_estimate": 125471.56736596729,
+            "p99_estimate": 141482.26685314678
+          },
+          "buckets": {
+            "1.0": 0,
+            "2.0": 0,
+            "5.0": 0,
+            "10.0": 0,
+            "20.0": 0,
+            "50.0": 0,
+            "100.0": 0,
+            "200.0": 0,
+            "500.0": 0,
+            "1000.0": 0,
+            "2000.0": 0,
+            "5000.0": 0,
+            "10000.0": 2,
+            "20000.0": 3,
+            "50000.0": 37,
+            "100000.0": 78,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:request_queue_time_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time spent in WAITING phase for request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": 126538.04084639042,
+            "avg": 1421.7757398470833,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": 179.05480781559606
+          }
+        }
+      ]
+    },
+    "vllm:request_success": {
+      "type": "counter",
+      "description": "Count of successfully processed requests.",
+      "unit": "requests",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "abort",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "error",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "length",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 89.0,
+            "rate": 0.12593744765602344
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "repetition",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "finished_reason": "stop",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:request_time_per_output_token_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time_per_output_token_seconds per request.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 89,
+            "sum": -12.083794688650402,
+            "avg": -0.1357729740297798,
+            "count_rate": 0.12593744765602344,
+            "sum_rate": -0.017098901809978022
+          },
+          "buckets": {
+            "0.01": 671,
+            "0.025": 101,
+            "0.05": 90,
+            "0.075": 89,
+            "0.1": 89,
+            "0.15": 89,
+            "0.2": 89,
+            "0.3": 89,
+            "0.4": 89,
+            "0.5": 89,
+            "0.75": 89,
+            "1.0": 89,
+            "2.5": 89,
+            "5.0": 89,
+            "7.5": 89,
+            "10.0": 89,
+            "20.0": 89,
+            "40.0": 89,
+            "80.0": 89,
+            "+Inf": 89
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_accepted_tokens": {
+      "type": "counter",
+      "description": "Number of accepted tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_accepted_tokens_per_pos": {
+      "type": "counter",
+      "description": "Accepted tokens per draft position.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "0"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "1"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "position": "2"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_draft_tokens": {
+      "type": "counter",
+      "description": "Number of draft tokens.",
+      "unit": "tokens",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:spec_decode_num_drafts": {
+      "type": "counter",
+      "description": "Number of spec decoding drafts.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    },
+    "vllm:time_to_first_token_seconds": {
+      "type": "histogram",
+      "description": "Histogram of time to first token in seconds.",
+      "unit": "seconds",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "engine": "0",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+          },
+          "stats": {
+            "count": 87,
+            "sum": 134846.05421590805,
+            "avg": 1549.9546461598627,
+            "count_rate": 0.1231073926525173,
+            "sum_rate": 190.81087521839572
+          }
+        }
+      ]
+    },
+    "vllm:tool_call_parser_invocations": {
+      "type": "counter",
+      "description": "Total number of ToolParser invocations. Non-streaming increments once per choice; streaming increments once per delta.",
+      "series": [
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 1144.0,
+            "rate": 1.6187914620055148
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "non_streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "no_tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "chat_completions"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "other"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        },
+        {
+          "endpoint_url": "http://glm-zhu-epp:80/metrics",
+          "labels": {
+            "mode": "streaming",
+            "model_name": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+            "outcome": "tool_call",
+            "request_type": "responses"
+          },
+          "stats": {
+            "total": 0.0,
+            "rate": 0.0
+          }
+        }
+      ]
+    }
+  },
+  "input_config": {
+    "endpoint": {
+      "model_names": [
+        "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512"
+      ],
+      "type": "chat",
+      "streaming": true,
+      "urls": [
+        "http://glm-zhu-epp:80"
+      ],
+      "use_server_token_count": true
+    },
+    "input": {
+      "extra": [
+        [
+          "ignore_eos",
+          true
+        ]
+      ],
+      "extra_inputs_parsed": {
+        "ignore_eos": true
+      },
+      "detected_loader": "semianalysis_cc_traces_weka_062126",
+      "use_end_to_start_delays": true,
+      "public_dataset": "semianalysis_cc_traces_weka_062126",
+      "random_seed": 20260827,
+      "max_context_length": 142000
+    },
+    "output": {
+      "artifact_directory": "/results/zhu-pcp-main/e85fix-v2-tp8-agentx-20260919T182534Z-e85fix-v2-tp8-control/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu_c64"
+    },
+    "tokenizer": {
+      "name": "zai-org/GLM-5.3",
+      "revision": "30333038ada1f1dacb294a93270305a890b50c14",
+      "resolved_names": null
+    },
+    "loadgen": {
+      "benchmark_duration": 1800.0,
+      "trajectory_start_min_ratio": 0.0,
+      "trajectory_start_max_ratio": 1.0,
+      "concurrency": 64,
+      "trace_idle_gap_cap_seconds": 10.0
+    },
+    "cli_command": "aiperf profile --scenario 'inferencex-agentx-mvp' --url 'http://glm-zhu-epp:80' --model 'zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512' --tokenizer 'zai-org/GLM-5.3' --tokenizer-revision '30333038ada1f1dacb294a93270305a890b50c14' --max-context-length 142000 --endpoint-type 'chat' --use-server-token-count --public-dataset 'semianalysis_cc_traces_weka_062126' --concurrency 64 --benchmark-duration 1800 --random-seed 20260827 --artifact-dir '/results/zhu-pcp-main/e85fix-v2-tp8-agentx-20260919T182534Z-e85fix-v2-tp8-control/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu_c64' --ui None",
+    "benchmark_id": "b89653d5-6081-463b-a958-191a1f9ec83b",
+    "scenario": "inferencex-agentx-mvp"
+  }
+}

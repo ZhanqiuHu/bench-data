@@ -1,0 +1,82 @@
+# Recovery-validation duplicate of the TP8->TP8 diagnostic deployment.
+# It keeps the workload flags unchanged and changes only runtime identity and
+# opt-in lifecycle instrumentation plus stale-peer recovery. It is not a performance configuration.
+extends: base-agentx-prefill8-dp8.yaml
+release: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+cache:
+  preserve_pod_on_exit: true
+model:
+  label: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+  served_name: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+runtime:
+  vllm_env: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+  env:
+    EXPECTED_VLLM_COMMIT: 1f6a41a1771bf62d30401eb14a327ce020f573a4
+roles:
+  prefill:
+    shm_size: 576Gi
+    parallelism: {gpus: 8, tp: 8, pcp: 1, dcp: 1, dp: 1, ep: true}
+    env:
+      MANIFESTO_VLLM_ENV: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+      PYTHONPATH: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+      PYTHONFAULTHANDLER: "1"
+      VLLM_NIXL_DIAG: "1"
+      VLLM_NIXL_DIAG_PATCH_SHA256: 3a502430c7f4efce94c5145dcaec8199ac81da4b0716e5db68ddc3e44ce194c0
+    kv_transfer_config:
+      kv_connector: MultiConnector
+      kv_role: kv_both
+      kv_load_failure_policy: fail
+      engine_id: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512-prefill
+      kv_connector_extra_config:
+        connectors:
+          - kv_connector: NixlConnector
+            kv_role: kv_producer
+            kv_load_failure_policy: fail
+            kv_connector_extra_config:
+              enforce_handshake_compat: false
+              num_threads: 1
+          - kv_connector: OffloadingConnector
+            kv_role: kv_both
+            kv_connector_extra_config:
+              spec_name: TieringOffloadingSpec
+              cpu_bytes_to_use: 549755813888
+              eviction_policy: lru
+    vllm:
+      # Exact attempt-B values, retained only to reproduce its NIXL failure.
+      # No memory-optimality or correctness claim is attached to these values.
+      gpu_memory_utilization: 0.85
+      max_num_batched_tokens: 16384
+      compilation_config: {cudagraph_mode: NONE}
+      attention_config:
+        sparse_mla_force_mqa: true
+  decode:
+    shm_size: 576Gi
+    resources: {cpu: 48, memory: 600Gi, gpus: 8, ephemeral_storage: 100Gi}
+    parallelism: {gpus: 8, tp: 8, pcp: 1, dcp: 1, dp: 1, ep: true}
+    dp_load_balancing: $delete
+    env:
+      MANIFESTO_VLLM_ENV: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+      PYTHONPATH: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+      PYTHONFAULTHANDLER: "1"
+      VLLM_NIXL_DIAG: "1"
+      VLLM_NIXL_DIAG_PATCH_SHA256: 3a502430c7f4efce94c5145dcaec8199ac81da4b0716e5db68ddc3e44ce194c0
+      UCX_TLS: rc,cuda_copy,cuda_ipc,self,sm,tcp
+    kv_transfer_config:
+      kv_connector: MultiConnector
+      kv_role: kv_both
+      kv_load_failure_policy: fail
+      engine_id: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512-decode
+      kv_connector_extra_config:
+        connectors:
+          - kv_connector: NixlConnector
+            kv_role: kv_consumer
+            kv_load_failure_policy: fail
+            kv_connector_extra_config:
+              enforce_handshake_compat: false
+              num_threads: 1
+          - kv_connector: OffloadingConnector
+            kv_role: kv_both
+            kv_connector_extra_config:
+              spec_name: TieringOffloadingSpec
+              cpu_bytes_to_use: 549755813888
+              eviction_policy: lru

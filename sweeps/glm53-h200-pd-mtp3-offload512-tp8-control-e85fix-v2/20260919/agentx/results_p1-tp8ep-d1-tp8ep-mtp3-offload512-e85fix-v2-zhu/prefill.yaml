@@ -1,0 +1,229 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512-prefill
+  labels:
+    app.kubernetes.io/name: manifesto
+    app.kubernetes.io/instance: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+    llm-d.ai/owner: zhu
+    app.kubernetes.io/component: model-server
+    llm-d.ai/role: prefill
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+      llm-d.ai/role: prefill
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: manifesto
+        app.kubernetes.io/instance: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+        llm-d.ai/owner: zhu
+        app.kubernetes.io/component: model-server
+        llm-d.ai/role: prefill
+        llm-d.ai/inferenceServing: 'true'
+        llm-d.ai/model: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+        llm-d.ai/deployment: pd
+      annotations:
+        inference.networking.k8s.io/active-ports: '8000'
+        llm-d.ai/active-ports: '8000'
+    spec:
+      volumes:
+      - name: dshm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 576Gi
+      - name: hf-cache
+        hostPath:
+          path: /mnt/local/hf-cache
+          type: DirectoryOrCreate
+      - name: jit-cache
+        hostPath:
+          path: /mnt/local/jit-cache
+          type: DirectoryOrCreate
+      - name: workspace
+        persistentVolumeClaim:
+          claimName: workspace-zhu
+      containers:
+      - name: vllm
+        image: quay.io/rh-ee-lwilkins/vllm-envs-cuda:pr8-cv2
+        command:
+        - /bin/bash
+        - -c
+        args:
+        - "set -uo pipefail\nLOG_DIR=/workspace/zhu/logs/prefill\nmkdir -p \"$LOG_DIR\"\
+          \nLOG_FILE=\"$LOG_DIR/${HOSTNAME}_$(date +%Y%m%d-%H%M%S).log\"\necho \"\
+          === Pod $HOSTNAME started at $(date -Iseconds) ===\"\necho \"[LOG] Writing\
+          \ to $LOG_FILE\"\n\nif [ ! -d \"${MANIFESTO_VLLM_ENV}\" ]; then\n  echo\
+          \ \"Error: vllm-envs worktree not found at ${MANIFESTO_VLLM_ENV}\" >&2\n\
+          \  exit 1\nfi\nif [ ! -f \"${MANIFESTO_VLLM_ENV}/.venv/bin/activate\" ];\
+          \ then\n  echo \"Error: vllm-envs environment is incomplete: ${MANIFESTO_VLLM_ENV}/.venv/bin/activate\
+          \ is missing\" >&2\n  exit 1\nfi\necho \"Using vllm-envs worktree at ${MANIFESTO_VLLM_ENV}\"\
+          \nsource \"${MANIFESTO_VLLM_ENV}/.venv/bin/activate\"\n\necho '=== Running\
+          \ pre-launch hooks ==='\nactual=$(git -C \"$MANIFESTO_VLLM_ENV\" rev-parse\
+          \ HEAD)\nif [ \"$actual\" != \"$EXPECTED_VLLM_COMMIT\" ]; then\n  echo \"\
+          Expected vLLM $EXPECTED_VLLM_COMMIT, found $actual\" >&2\n  exit 1\nfi\n\
+          \nvllm \\\n  serve \\\n  zai-org/GLM-5.3 \\\n  --device-ids 0,1,2,3,4,5,6,7\
+          \ \\\n  --port 8000 \\\n  --tensor-parallel-size 8 \\\n  --enable-expert-parallel\
+          \ \\\n  --kv_transfer_config '{\"kv_connector\":\"MultiConnector\",\"kv_role\"\
+          :\"kv_both\",\"kv_connector_extra_config\":{\"enforce_handshake_compat\"\
+          :false,\"num_threads\":1,\"connectors\":[{\"kv_connector\":\"NixlConnector\"\
+          ,\"kv_role\":\"kv_producer\",\"kv_load_failure_policy\":\"fail\",\"kv_connector_extra_config\"\
+          :{\"enforce_handshake_compat\":false,\"num_threads\":1}},{\"kv_connector\"\
+          :\"OffloadingConnector\",\"kv_role\":\"kv_both\",\"kv_connector_extra_config\"\
+          :{\"spec_name\":\"TieringOffloadingSpec\",\"cpu_bytes_to_use\":549755813888,\"\
+          eviction_policy\":\"lru\"}}]},\"kv_load_failure_policy\":\"fail\",\"engine_id\"\
+          :\"zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512-prefill\"}' \\\n  --served-model-name\
+          \ zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512 \\\n  --disable-access-log-for-endpoints\
+          \ /health,/v1/models,/metrics \\\n  --trust-remote-code \\\n  --kv-cache-dtype\
+          \ fp8_ds_mla \\\n  --moe-backend deep_gemm \\\n  --safetensors-load-strategy\
+          \ prefetch \\\n  --seed 0 \\\n  --disable-uvicorn-access-log \\\n  --all2all-backend\
+          \ deepep_high_throughput \\\n  --revision 30333038ada1f1dacb294a93270305a890b50c14\
+          \ \\\n  --tokenizer-revision 30333038ada1f1dacb294a93270305a890b50c14 \\\
+          \n  --enable-auto-tool-choice \\\n  --tool-call-parser glm47 \\\n  --reasoning-parser\
+          \ glm45 \\\n  --speculative-config '{\"method\":\"mtp\",\"num_speculative_tokens\"\
+          :3}' \\\n  --max-model-len 142000 \\\n  --gpu-memory-utilization 0.85 \\\
+          \n  --max-num-batched-tokens 16384 \\\n  --max-num-seqs 256 \\\n  --enable-prefix-caching\
+          \ \\\n  --compilation-config '{\"cudagraph_mode\":\"NONE\"}' \\\n  --kernel-config\
+          \ '{\"enable_flashinfer_autotune\":false,\"linear_backend\":\"deep_gemm\"\
+          }' \\\n  --attention-config '{\"sparse_mla_force_mqa\":true}' 2>&1 | tee\
+          \ -a \"$LOG_FILE\"\nVLLM_EXIT=${PIPESTATUS[0]}\necho \"[CRASH] vllm exited\
+          \ with code $VLLM_EXIT, log=${LOG_FILE:-stdout}\"\nsleep infinity"
+        env:
+        - name: HF_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: hf-secret
+              key: HF_TOKEN
+              optional: false
+        - name: EXPECTED_VLLM_COMMIT
+          value: 1f6a41a1771bf62d30401eb14a327ce020f573a4
+        - name: FLASHINFER_CACHE_DIR
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/flashinfer
+        - name: FLASHINFER_WORKSPACE_BASE
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/flashinfer-workspace
+        - name: FLASH_ATTENTION_CUTE_DSL_CACHE_DIR
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/fa-cute-dsl
+        - name: FLASH_ATTENTION_CUTE_DSL_CACHE_ENABLED
+          value: '1'
+        - name: GLOO_SOCKET_IFNAME
+          value: eth0
+        - name: HF_HOME
+          value: /var/cache/huggingface
+        - name: HF_HUB_OFFLINE
+          value: '1'
+        - name: HOME
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/home
+        - name: MANIFESTO_VLLM_ENV
+          value: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+        - name: NCCL_IB_HCA
+          value: ibp
+        - name: NCCL_SOCKET_IFNAME
+          value: eth0
+        - name: NVIDIA_GDRCOPY
+          value: enabled
+        - name: NVSHMEM_BOOTSTRAP_UID_SOCK_IFNAME
+          value: eth0
+        - name: NVSHMEM_HCA_PREFIX
+          value: ibp
+        - name: NVSHMEM_IB_ENABLE_IBGDA
+          value: 'true'
+        - name: NVSHMEM_REMOTE_TRANSPORT
+          value: ibgda
+        - name: PYTHONFAULTHANDLER
+          value: '1'
+        - name: PYTHONPATH
+          value: /workspace/vdptest/vllm-e85c-1f6a-nixlfix-v2c-20260919
+        - name: TILELANG_CACHE_DIR
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/tilelang
+        - name: TORCHINDUCTOR_CACHE_DIR
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/torchinductor
+        - name: TQDM_DISABLE
+          value: '1'
+        - name: TRITON_CACHE_DIR
+          value: /tmp/triton-cache
+        - name: VLLM_CACHE_ROOT
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/vllm
+        - name: VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS
+          value: '0'
+        - name: VLLM_NIXL_DIAG
+          value: '1'
+        - name: VLLM_NIXL_DIAG_PATCH_SHA256
+          value: 3a502430c7f4efce94c5145dcaec8199ac81da4b0716e5db68ddc3e44ce194c0
+        - name: VLLM_NO_USAGE_STATS
+          value: '1'
+        - name: VLLM_SERVER_DEV_MODE
+          value: '1'
+        - name: VLLM_SKIP_P2P_CHECK
+          value: '1'
+        - name: VLLM_USE_V2_MODEL_RUNNER
+          value: '1'
+        - name: VLLM_WORKER_MULTIPROC_METHOD
+          value: spawn
+        - name: XDG_CACHE_HOME
+          value: /var/cache/vllm/zhu/h200/cu13/pr8-cv2/zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512/xdg
+        - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MANIFESTO_POD_UID
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.uid
+        ports:
+        - containerPort: 8000
+          name: vllm-0
+        resources:
+          requests:
+            cpu: '64'
+            memory: 600Gi
+            nvidia.com/gpu: '8'
+            ephemeral-storage: 100Gi
+            rdma/ib: '8'
+          limits:
+            memory: 600Gi
+            nvidia.com/gpu: '8'
+            ephemeral-storage: 100Gi
+            rdma/ib: '8'
+        volumeMounts:
+        - name: dshm
+          mountPath: /dev/shm
+        - name: hf-cache
+          mountPath: /var/cache/huggingface
+        - name: jit-cache
+          mountPath: /var/cache/vllm
+        - name: workspace
+          mountPath: /workspace
+        securityContext:
+          runAsUser: 0
+        readinessProbe:
+          httpGet:
+            path: /v1/models
+            port: 8000
+          periodSeconds: 5
+          failureThreshold: 120
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 100%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512-prefill-svc
+  labels:
+    app.kubernetes.io/name: manifesto
+    app.kubernetes.io/instance: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+    llm-d.ai/owner: zhu
+    app.kubernetes.io/component: model-server
+    llm-d.ai/role: prefill
+spec:
+  selector:
+    app.kubernetes.io/instance: zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+    llm-d.ai/role: prefill
+  ports:
+  - name: vllm-0
+    port: 8000
+    targetPort: 8000

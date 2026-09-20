@@ -1,0 +1,5 @@
+parallel,total_samples,total_requests,successful_requests,failed_requests,test_duration_s,request_throughput_req_s,avg_latency_s,avg_ttft_ms,avg_tpot_ms,avg_itl_ms,avg_input_tokens,avg_output_tokens,output_throughput_tok_s,total_throughput_tok_s,decoded_tokens_per_iteration,spec_accept_rate
+1,4,52,52,0,143.5057,0.3624,2.7585,1174.11,7.23,27.3,79790.6538,220.0,79.7181,28992.2609,3.7926,0.7363
+2,8,104,104,0,166.3488,0.6252,3.1409,1406.53,7.92,29.27,79765.0288,220.0,137.5423,50006.0206,3.7362,0.7323
+4,8,104,104,0,75.2979,1.3812,2.8153,814.72,9.14,34.15,79745.0577,220.0,303.8595,110446.1188,3.8884,0.7428
+8,16,208,208,0,169.2007,1.2293,6.4443,4247.53,10.03,37.25,79709.7308,220.0,270.4481,98258.3916,3.7587,0.7339

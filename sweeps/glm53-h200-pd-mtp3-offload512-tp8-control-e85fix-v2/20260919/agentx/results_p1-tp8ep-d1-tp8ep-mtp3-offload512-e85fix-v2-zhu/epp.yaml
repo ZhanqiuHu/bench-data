@@ -1,0 +1,258 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: glm-zhu-epp
+  namespace: zhu-dev
+  labels:
+    app.kubernetes.io/name: glm-zhu-epp
+    app.kubernetes.io/version: v0.9.0
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: glm-zhu-epp-sa
+  namespace: zhu-dev
+  labels:
+    app.kubernetes.io/name: glm-zhu-epp
+    app.kubernetes.io/version: v0.9.0
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - watch
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: glm-zhu-epp-non-sa
+  namespace: zhu-dev
+  labels:
+    app.kubernetes.io/name: glm-zhu-epp
+    app.kubernetes.io/version: v0.9.0
+rules:
+- apiGroups:
+  - inference.networking.x-k8s.io
+  resources:
+  - inferenceobjectives
+  - inferencemodelrewrites
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups:
+  - llm-d.ai
+  resources:
+  - inferenceobjectives
+  - inferencemodelrewrites
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups:
+  - inference.networking.k8s.io
+  resources:
+  - inferencepools
+  verbs:
+  - get
+  - watch
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: glm-zhu-epp-sa
+  namespace: zhu-dev
+subjects:
+- kind: ServiceAccount
+  name: glm-zhu-epp
+  namespace: zhu-dev
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: glm-zhu-epp-sa
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: glm-zhu-epp-non-sa
+  namespace: zhu-dev
+subjects:
+- kind: ServiceAccount
+  name: glm-zhu-epp
+  namespace: zhu-dev
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: glm-zhu-epp-non-sa
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: glm-zhu-epp
+  namespace: zhu-dev
+  labels:
+    app.kubernetes.io/name: glm-zhu-epp
+    app.kubernetes.io/version: v0.9.0
+spec:
+  selector:
+    llm-d-router-gateway: glm-zhu-epp
+  ports:
+  - name: grpc-ext-proc
+    protocol: TCP
+    port: 9002
+  - name: http-metrics
+    protocol: TCP
+    port: 9090
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8081
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glm-zhu-epp
+  namespace: zhu-dev
+  labels:
+    app.kubernetes.io/name: glm-zhu-epp
+    app.kubernetes.io/version: v0.9.0
+    llm-d.ai/igw-mode: llm-d-router-gateway
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      llm-d-router-gateway: glm-zhu-epp
+  template:
+    metadata:
+      labels:
+        llm-d-router-gateway: glm-zhu-epp
+        llm-d.ai/igw-mode: llm-d-router-gateway
+    spec:
+      serviceAccountName: glm-zhu-epp
+      terminationGracePeriodSeconds: 130
+      containers:
+      - name: envoy-proxy
+        image: docker.io/envoyproxy/envoy:distroless-v1.33.2
+        imagePullPolicy: IfNotPresent
+        command:
+        - envoy
+        args:
+        - --service-node
+        - envoy-proxy
+        - --log-level
+        - warn
+        - --cpuset-threads
+        - --drain-strategy
+        - immediate
+        - --drain-time-s
+        - '60'
+        - -c
+        - /etc/envoy/envoy.yaml
+        env:
+        - name: NS_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        ports:
+        - containerPort: 8081
+          name: http-8081
+        - containerPort: 19001
+          name: metrics-19001
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: 19001
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: 16Gi
+          requests:
+            cpu: '4'
+            memory: 8Gi
+        volumeMounts:
+        - mountPath: /etc/envoy
+          name: config
+          readOnly: true
+      - name: epp
+        image: ghcr.io/llm-d/llm-d-router-endpoint-picker:v0.9.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - --pool-name
+        - glm-zhu
+        - --pool-namespace
+        - zhu-dev
+        - --pool-group
+        - inference.networking.k8s.io
+        - --zap-encoder
+        - json
+        - --config-file
+        - /config/plugins.yaml
+        - --grpc-health-port
+        - '9003'
+        - --ha-enable-leader-election=false
+        - --tracing=false
+        resources:
+          limits:
+            memory: 16Gi
+          requests:
+            cpu: '8'
+            memory: 8Gi
+        ports:
+        - name: grpc
+          containerPort: 9002
+        - name: grpc-health
+          containerPort: 9003
+        - name: metrics
+          containerPort: 9090
+        livenessProbe:
+          grpc:
+            port: 9003
+            service: inference-extension
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          grpc:
+            port: 9003
+            service: inference-extension
+          periodSeconds: 2
+        env:
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        volumeMounts:
+        - name: plugins-config-volume
+          mountPath: /config
+      volumes:
+      - configMap:
+          items:
+          - key: envoy.yaml
+            path: envoy.yaml
+          name: glm-zhu-envoy
+        name: config
+      - name: plugins-config-volume
+        configMap:
+          name: glm-zhu-epp
+      tolerations:
+      - effect: NoSchedule
+        key: nvidia.com/gpu
+        operator: Exists

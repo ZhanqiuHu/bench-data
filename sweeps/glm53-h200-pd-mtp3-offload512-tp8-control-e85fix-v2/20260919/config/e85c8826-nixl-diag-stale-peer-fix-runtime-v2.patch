@@ -1,0 +1,741 @@
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/nixl/base_worker.py b/vllm/distributed/kv_transfer/kv_connector/v1/nixl/base_worker.py
+index 58ab5850ea..d232883a30 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/nixl/base_worker.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/nixl/base_worker.py
+@@ -3,7 +3,9 @@
+ """Base worker-side logic for the NIXL connector."""
+ 
+ import contextlib
++import hashlib
+ import itertools
++import json
+ import logging
+ import math
+ import os
+@@ -849,6 +851,10 @@ class NixlBaseConnectorWorker:
+         notif_agents_only: bool = False,
+     ) -> tuple[dict[tuple[int, int], str], float]:
+         """Do a NIXL handshake with a remote instance."""
++        self._diag_event("handshake.begin", remote_host=host, remote_port=port,
++                         remote_engine_id=expected_engine_id,
++                         remote_tp_size=remote_tp_size,
++                         remote_dcp_size=remote_dcp_size)
+         if self._is_csa_linear:
+             self._validate_csa_linear_tp_layout(remote_tp_size)
+ 
+@@ -990,8 +996,27 @@ class NixlBaseConnectorWorker:
+                 )
+                 remote_ranks = (remote_pp_rank, remote_rank)
+                 remote_rank_to_agent_name[remote_ranks] = remote_agent_name
++                self._diag_event(
++                    "handshake.rank_ready",
++                    remote_engine_id=metadata.engine_id,
++                    remote_pp_rank=remote_pp_rank,
++                    remote_tp_rank=remote_rank,
++                    remote_agent_name=remote_agent_name,
++                    compatibility_hash=handshake_payload.compatibility_hash,
++                    metadata_bytes=len(handshake_payload.agent_metadata_bytes),
++                    rtt_ns=int(rtt * 1e9),
++                )
+ 
+         assert best_offset is not None
++        self._diag_event(
++            "handshake.complete",
++            remote_engine_id=expected_engine_id,
++            rank_map=[
++                {"pp_rank": ranks[0], "tp_rank": ranks[1], "agent": agent}
++                for ranks, agent in sorted(remote_rank_to_agent_name.items())
++            ],
++            clock_offset_ns=int(best_offset * 1e9),
++        )
+         return remote_rank_to_agent_name, best_offset
+ 
+     def _add_notif_only_remote_agent(
+@@ -1122,6 +1147,23 @@ class NixlBaseConnectorWorker:
+             stacklevel=2,
+         )
+ 
++    @staticmethod
++    def _is_nixl_not_found(error: BaseException) -> bool:
++        """Match the typed NIXL binding error without hard-coding a wheel name.
++
++        CUDA-specific wheels expose the same binding class from different
++        package names (for example ``nixl`` and ``nixl_cu13``).
++        """
++        return error.__class__.__name__ == "nixlNotFoundError"
++
++    @staticmethod
++    def _is_stale_peer_error(error: BaseException) -> bool:
++        """Typed failures observed when a cached peer generation disappears."""
++        return error.__class__.__name__ in {
++            "nixlNotFoundError",
++            "nixlRemoteDisconnectError",
++        }
++
+     def _ensure_handshake(
+         self,
+         engine_id: EngineId,
+@@ -1219,6 +1253,12 @@ class NixlBaseConnectorWorker:
+     def register_kv_caches(self, kv_caches: dict[str, torch.Tensor]):
+         """Register the KV Cache data in nixl."""
+ 
++        tensor_names = sorted(kv_caches)
++        layouts = sorted({(tuple(t.shape), str(t.dtype), str(t.device), t.element_size()) for t in kv_caches.values()}, key=str)
++        self._diag_event("registration.begin", tensor_count=len(kv_caches),
++                         tensor_names={"first": tensor_names[:4], "last": tensor_names[-4:]},
++                         total_bytes=sum(t.numel() * t.element_size() for t in kv_caches.values()),
++                         layouts=[{"shape": list(s), "dtype": d, "device": v, "element_size": e} for s, d, v, e in layouts])
+         self.transfer_topo = TransferTopology(
+             tp_rank=self.transfer_tp_rank,
+             tp_size=self.transfer_tp_size,
+@@ -1603,6 +1643,17 @@ class NixlBaseConnectorWorker:
+             self._uses_region_group_mapping
+         )
+         self.dst_region_mem_types[self.engine_id] = self.region_mem_types
++        self._diag_event(
++            "registration.complete",
++            num_blocks=self.num_blocks,
++            num_regions=self.num_regions,
++            num_descs=self.num_descs,
++            region_num_blocks=self.region_num_blocks,
++            region_group_ids=self.region_group_ids,
++            region_mem_types=self.region_mem_types,
++            base_addresses=seen_base_addresses,
++            registered_memory_lists=len(self._registered_descs),
++        )
+ 
+         if self._has_mamba:
+             logger.info(
+@@ -2218,6 +2269,16 @@ class NixlBaseConnectorWorker:
+         self.dst_xfer_side_handles[engine_id][remote_tp_rank] = (
+             self.nixl_wrapper.prep_xfer_dlist(remote_agent_name, descs)
+         )
++        self._diag_event(
++            "remote_descriptors.ready",
++            remote_engine_id=engine_id,
++            remote_tp_rank=remote_tp_rank,
++            remote_agent_name=remote_agent_name,
++            remote_handle=self.dst_xfer_side_handles[engine_id][remote_tp_rank],
++            descriptors=self._diag_data(blocks_data),
++            tp_ratio=tp_ratio,
++            block_size_ratio=block_size_ratio,
++        )
+ 
+         return remote_agent_name
+ 
+@@ -2732,6 +2793,9 @@ class NixlBaseConnectorWorker:
+                 req_id,
+                 count,
+             )
++            self._diag_event("lease.expired_release", req_id,
++                             expires_mono=expires, now_mono=now,
++                             remote_notifications=count)
+             self._reqs_to_process.remove(req_id)
+             del self._reqs_to_send[req_id]
+             done_sending.add(req_id)
+@@ -2774,6 +2838,9 @@ class NixlBaseConnectorWorker:
+             if req_id in self._reqs_to_send:
+                 old = self._reqs_to_send[req_id]
+                 self._reqs_to_send[req_id] = max(old, new_expiry)
++                self._diag_event("lease.heartbeat", req_id,
++                                 old_expiry_mono=old,
++                                 new_expiry_mono=self._reqs_to_send[req_id])
+                 logger.debug(
+                     "Heartbeat extended lease for request %s "
+                     "by %ds (old_expiry=%.1f, new_expiry=%.1f)",
+@@ -2797,11 +2864,23 @@ class NixlBaseConnectorWorker:
+             for handle in handles:
+                 try:
+                     xfer_state = self.nixl_wrapper.check_xfer_state(handle)
++                    state_key = (req_id, handle)
++                    last_states = getattr(self, "_diag_xfer_states", None)
++                    if last_states is None:
++                        last_states = self._diag_xfer_states = {}
++                    if last_states.get(state_key) != xfer_state:
++                        self._diag_event(
++                            "transfer.state", req_id, handle=handle, state=xfer_state
++                        )
++                        last_states[state_key] = xfer_state
+                     if xfer_state == "DONE":
+                         # Get telemetry from NIXL
+                         res = self.nixl_wrapper.get_xfer_telemetry(handle)
+                         self.xfer_stats.record_transfer(res)
+                         self.nixl_wrapper.release_xfer_handle(handle)
++                        last_states.pop(state_key, None)
++                        self._diag_event("transfer.done", req_id, handle=handle,
++                                         telemetry=res)
+                     elif xfer_state == "PROC":
+                         in_progress.append(handle)
+                     else:
+@@ -2865,6 +2944,12 @@ class NixlBaseConnectorWorker:
+         for agent_name, notif_id in self._pending_recv_notifs.pop(req_id, []):
+             try:
+                 self.nixl_wrapper.send_notif(agent_name, notif_msg=notif_id)
++                self._diag_event(
++                    "notification.sent",
++                    req_id,
++                    remote_agent_name=agent_name,
++                    notif_id=notif_id.decode(errors="replace"),
++                )
+             except Exception as e:
+                 self._log_failure(
+                     failure_type="notification_failed",
+@@ -3251,7 +3336,11 @@ class NixlBaseConnectorWorker:
+         }
+ 
+     def _cleanup_remote_engine(
+-        self, engine_id: EngineId, *, log_eviction: bool = True
++        self,
++        engine_id: EngineId,
++        *,
++        log_eviction: bool = True,
++        tolerate_nixl_not_found: bool = False,
+     ) -> None:
+         """Remove all state for a single remote engine.
+ 
+@@ -3268,7 +3357,15 @@ class NixlBaseConnectorWorker:
+         with self._handshake_lock:
+             agents = self._remote_agents.pop(engine_id)
+         for agent_name in agents.values():
+-            self.nixl_wrapper.remove_remote_agent(agent_name)
++            try:
++                self.nixl_wrapper.remove_remote_agent(agent_name)
++            except Exception as error:
++                # A peer disconnect can invalidate the C++ remote section
++                # before vLLM drops its Python-side engine cache.
++                if not (
++                    tolerate_nixl_not_found and self._is_nixl_not_found(error)
++                ):
++                    raise
+ 
+         self.kv_caches_base_addr.pop(engine_id, None)
+         self.dst_num_blocks.pop(engine_id, None)
+@@ -3341,3 +3438,66 @@ class NixlBaseConnectorWorker:
+                 self.nixl_wrapper.release_xfer_handle(handle)
+         self._recving_transfers.clear()
+         self._finish_shutdown()
++
++    def _diag_event(self, event: str, req_id: str | None = None, **fields) -> None:
++        """Emit one machine-readable PD/NIXL lifecycle record when enabled."""
++        if os.getenv("VLLM_NIXL_DIAG", "0") != "1":
++            return
++        record = {
++            "ts_wall_ns": time.time_ns(),
++            "ts_mono_ns": time.monotonic_ns(),
++            "event": event,
++            "request_id": req_id,
++            "engine_id": getattr(self, "engine_id", None),
++            "tp_rank": getattr(self, "transfer_tp_rank", None),
++            "tp_size": getattr(self, "transfer_tp_size", None),
++            "dcp_rank": getattr(self, "dcp_rank", None),
++            "dcp_size": getattr(self, "dcp_size", None),
++            "thread": threading.current_thread().name,
++            **fields,
++        }
++        logger.warning("NIXL_DIAG %s", json.dumps(record, default=str, sort_keys=True))
++
++    @staticmethod
++    def _diag_ids(value) -> dict[str, Any]:
++        def flatten(item):
++            if isinstance(item, np.ndarray):
++                yield from item.reshape(-1).tolist()
++            elif isinstance(item, (list, tuple)):
++                for child in item:
++                    yield from flatten(child)
++            else:
++                yield int(item)
++
++        array = np.asarray(list(flatten(value)), dtype=np.int64)
++        raw = array.tobytes()
++        return {
++            "count": int(array.size),
++            "first": array[:8].tolist(),
++            "last": array[-8:].tolist() if array.size else [],
++            "sha256": hashlib.sha256(raw).hexdigest(),
++        }
++
++    @staticmethod
++    def _diag_all_ids(value) -> list[int]:
++        def flatten(item):
++            if isinstance(item, np.ndarray):
++                yield from item.reshape(-1).tolist()
++            elif isinstance(item, (list, tuple)):
++                for child in item:
++                    yield from flatten(child)
++            else:
++                yield int(item)
++
++        return list(flatten(value))
++
++    @staticmethod
++    def _diag_data(value) -> dict[str, Any]:
++        data = np.asarray(value).tolist()
++        encoded = json.dumps(data, default=str, separators=(",", ":")).encode()
++        return {
++            "rows": len(data),
++            "first": data[:2],
++            "last": data[-2:] if data else [],
++            "sha256": hashlib.sha256(encoded).hexdigest(),
++        }
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/nixl/pull_worker.py b/vllm/distributed/kv_transfer/kv_connector/v1/nixl/pull_worker.py
+index 59205b943a..0fc904a047 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/nixl/pull_worker.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/nixl/pull_worker.py
+@@ -32,6 +32,10 @@ logger = init_logger(__name__)
+ _KV_BLOCKS_EXPIRY_SAFETY_MARGIN = 5.0
+ 
+ 
++class _StaleRemoteRegistrationError(RuntimeError):
++    """The cached peer exists in vLLM but no longer exists in NIXL."""
++
++
+ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+     """Pull-specific (READ) worker logic."""
+ 
+@@ -42,6 +46,90 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         kv_cache_config: "KVCacheConfig",
+     ):
+         super().__init__(vllm_config, engine_id, kv_cache_config)
++        self._stale_peer_retries: set[str] = set()
++
++    def _retry_after_stale_peer(
++        self, req_id: str, meta: ReqMeta, error: BaseException
++    ) -> bool:
++        """Drop one stale peer generation and re-handshake once per request."""
++        assert meta.remote is not None
++        if req_id in self._stale_peer_retries:
++            self._diag_event(
++                "peer.recovery_rejected",
++                req_id,
++                reason="retry_exhausted",
++                remote_engine_id=meta.remote.engine_id,
++            )
++            return False
++        # A request with a posted sibling READ cannot safely be retried because
++        # that DMA may still write into the same destination blocks.
++        if self._recving_transfers.get(req_id):
++            self._diag_event(
++                "peer.recovery_rejected",
++                req_id,
++                reason="request_dma_inflight",
++                remote_engine_id=meta.remote.engine_id,
++            )
++            return False
++
++        engine_id = meta.remote.engine_id
++        # Do not tear down descriptor/agent state under another request whose
++        # DMA has already been posted to the same peer.
++        for other_req_id, handles in self._recving_transfers.items():
++            if other_req_id == req_id or not handles:
++                continue
++            other_meta = self._recving_metadata.get(other_req_id)
++            if (
++                other_meta is not None
++                and other_meta.remote is not None
++                and other_meta.remote.engine_id == engine_id
++            ):
++                self._diag_event(
++                    "peer.recovery_rejected",
++                    req_id,
++                    reason="peer_dma_inflight",
++                    remote_engine_id=engine_id,
++                    blocking_request_id=other_req_id,
++                )
++                return False
++
++        self._stale_peer_retries.add(req_id)
++        self._diag_event(
++            "peer.stale_detected",
++            req_id,
++            remote_engine_id=engine_id,
++            exception_type=type(error).__name__,
++            exception=str(error),
++        )
++        logger.warning(
++            "NIXL remote registration for engine %s became stale while "
++            "setting up request %s; clearing the cached generation and "
++            "retrying the handshake once.",
++            engine_id,
++            req_id,
++            exc_info=error,
++        )
++        self._recving_transfers.pop(req_id, None)
++        self._cleanup_remote_engine(
++            engine_id,
++            log_eviction=False,
++            tolerate_nixl_not_found=True,
++        )
++        self._diag_event(
++            "peer.cache_cleared", req_id, remote_engine_id=engine_id
++        )
++        self._background_nixl_handshake(req_id, engine_id, meta)
++        self._diag_event(
++            "peer.rehandshake_started", req_id, remote_engine_id=engine_id
++        )
++        return True
++
++    def get_transfer_results(self):
++        results = super().get_transfer_results()
++        # Keep retry bookkeeping only for live requests. Both successful and
++        # failed terminal requests are represented by finished_recving.
++        self._stale_peer_retries.difference_update(results.finished_recving)
++        return results
+ 
+     def start_load_kv(self, metadata: NixlConnectorMetadata):
+         """
+@@ -49,6 +137,10 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         We check for these trnxs to complete in each step().
+         """
+         for req_id, meta in metadata.reqs_to_recv.items():
++            self._diag_event("request.recv_metadata", req_id,
++                             remote_engine_id=meta.remote.engine_id if meta.remote else None,
++                             local_blocks=self._diag_ids(meta.local_block_ids),
++                             remote_blocks=self._diag_ids(meta.remote.block_ids) if meta.remote else None)
+             meta.local_physical_block_ids = self._logical_to_kernel_block_ids(
+                 meta.local_block_ids, self._physical_blocks_per_logical_kv_block
+             )
+@@ -119,6 +211,13 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+                         expiration_time - metadata.scheduler_clock
+                     )
+                 self._reqs_to_send[req_id] = expiration_time
++                self._diag_event(
++                    "lease.armed",
++                    req_id,
++                    scheduler_clock=metadata.scheduler_clock,
++                    expiry_mono=expiration_time,
++                    ttl_seconds=expiration_time - now_local,
++                )
+ 
+         # Send heartbeats to P-side engines to keep KV blocks alive while
+         # requests sit in the D scheduler WAITING queue.
+@@ -163,6 +262,17 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         plan = self.tp_mappings[engine_id]
+         remote_info = self.transfer_topo.get_engine_info(engine_id)
+         tp_ratio = self.transfer_topo.tp_ratio(remote_info.remote_tp_size)
++        self._diag_event(
++            "mapping.topology",
++            req_id,
++            remote_engine_id=engine_id,
++            remote_tp_size=remote_info.remote_tp_size,
++            remote_dcp_size=remote_info.remote_dcp_size,
++            tp_ratio=tp_ratio,
++            source_ranks=list(plan.all_source_ranks),
++            source_ranks_per_group=plan.source_ranks_per_group,
++            local_consumers=plan.local_consumers,
++        )
+ 
+         dcp_active = self.dcp_size > 1 or remote_info.remote_dcp_size > 1
+         local_block_ids = meta.local_physical_block_ids
+@@ -252,6 +362,19 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         # MLA may also read from multiple ranks (disjoint token slices).
+         if self.use_mla and tp_ratio < 0 and not self._has_mamba and not dcp_active:
+             assert len(read_specs) == 1
++        self._diag_event(
++            "mapping.complete",
++            req_id,
++            read_specs=[
++                {
++                    "remote_rank": spec.remote_rank,
++                    "local_blocks": self._diag_ids(spec.local_block_ids),
++                    "remote_blocks": self._diag_ids(spec.remote_block_ids),
++                    "by_region": spec.block_ids_by_region,
++                }
++                for spec in read_specs
++            ],
++        )
+ 
+         for i, spec in enumerate(read_specs):
+             remote_block_size = remote_info.remote_block_size
+@@ -294,16 +417,29 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+             # Once a read routes the request to failure reporting, the
+             # scheduler may free and reuse its blocks, so no sibling READs
+             # may be posted (and P must not be notified).
+-            if not self._read_blocks(
+-                read_spec=spec,
+-                request_id=req_id,
+-                dst_engine_id=meta.remote.engine_id,
+-                remote_request_id=meta.remote.request_id,
+-                local_xfer_side_handle=local_xfer_side_handle,
+-                local_dram_handle=local_dram_handle,
+-                remote_xfer_side_handle=remote_xfer_side_handle,
+-                expected_consumers=plan.local_consumers,
+-            ):
++            try:
++                read_started = self._read_blocks(
++                    read_spec=spec,
++                    request_id=req_id,
++                    dst_engine_id=meta.remote.engine_id,
++                    remote_request_id=meta.remote.request_id,
++                    local_xfer_side_handle=local_xfer_side_handle,
++                    local_dram_handle=local_dram_handle,
++                    remote_xfer_side_handle=remote_xfer_side_handle,
++                    expected_consumers=plan.local_consumers,
++                )
++            except _StaleRemoteRegistrationError as error:
++                if self._retry_after_stale_peer(req_id, meta, error):
++                    return
++                self._log_failure(
++                    failure_type="stale_remote_registration_retry_exhausted",
++                    req_id=req_id,
++                    error=error,
++                    remote_engine_id=meta.remote.engine_id,
++                )
++                self._handle_failed_transfer(req_id, None)
++                return
++            if not read_started:
+                 return
+ 
+         if self.use_mla and tp_ratio < 0 and len(read_specs) == 1:
+@@ -340,6 +476,14 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         remote_rank = read_spec.remote_rank
+         local_block_ids = read_spec.local_block_ids
+         remote_block_ids = read_spec.remote_block_ids
++        self._diag_event("mapping.read_spec", request_id,
++                         remote_engine_id=dst_engine_id,
++                         remote_request_id=remote_request_id,
++                         remote_rank=remote_rank,
++                         local_blocks=self._diag_ids(local_block_ids),
++                         remote_blocks=self._diag_ids(remote_block_ids),
++                         local_handle=local_xfer_side_handle,
++                         remote_handle=remote_xfer_side_handle)
+ 
+         remote_info = self.transfer_topo.get_engine_info(dst_engine_id)
+         block_size_ratio = self.transfer_topo.block_size_ratio(
+@@ -453,6 +597,16 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+         )
+ 
+         assert len(local_block_descs_ids) == len(remote_block_descs_ids)
++        agent_name = self._remote_agents.get(dst_engine_id, {}).get((0, remote_rank))
++        self._diag_event("transfer.prepare", request_id,
++                         remote_engine_id=dst_engine_id,
++                         remote_rank=remote_rank,
++                         remote_agent_name=agent_name,
++                         local_handle=local_xfer_side_handle,
++                         remote_handle=remote_xfer_side_handle,
++                         local_descs=self._diag_ids(local_block_descs_ids),
++                         remote_descs=self._diag_ids(remote_block_descs_ids),
++                         notif_id=notif_id.decode(errors="replace"))
+ 
+         # Prepare transfer with Nixl.
+         handle = None
+@@ -481,11 +635,27 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+ 
+             # Begin async xfer.
+             self.nixl_wrapper.transfer(handle)
++            self._diag_event("transfer.posted", request_id, handle=handle,
++                             remote_engine_id=dst_engine_id,
++                             remote_rank=remote_rank)
+ 
+             # Use handle to check completion in future step().
+             self._recving_transfers[request_id].append(handle)
+             return True
+         except Exception as e:
++            self._diag_event("transfer.setup_failed", request_id,
++                             exception_type=type(e).__name__, exception=str(e),
++                             handle=handle, remote_engine_id=dst_engine_id,
++                             remote_rank=remote_rank,
++                             local_descs=self._diag_ids(local_block_descs_ids),
++                             remote_descs=self._diag_ids(remote_block_descs_ids),
++                             local_descs_all=self._diag_all_ids(local_block_descs_ids),
++                             remote_descs_all=self._diag_all_ids(remote_block_descs_ids))
++            if self._is_stale_peer_error(e):
++                raise _StaleRemoteRegistrationError(
++                    f"NIXL rejected the cached peer generation for "
++                    f"{dst_engine_id}"
++                ) from e
+             # mark all (logical) blocks for this request as invalid
+             self._log_failure(
+                 failure_type="transfer_setup_failed",
+@@ -573,6 +743,10 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+                     continue
+ 
+                 req_id, expected_consumers = msg.rsplit(":", 1)
++                self._diag_event("notification.recv", req_id,
++                                 expected_consumers=int(expected_consumers),
++                                 recognized=(req_id in self._reqs_to_send or
++                                             req_id in self._reqs_to_process))
+                 if (
+                     req_id not in self._reqs_to_send
+                     and req_id not in self._reqs_to_process
+@@ -593,6 +767,11 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+                 )
+ 
+                 self.consumer_notification_counts_by_req[req_id] += 1
++                self._diag_event(
++                    "notification.counted", req_id,
++                    received=self.consumer_notification_counts_by_req[req_id],
++                    expected=self.expected_consumer_notifications_by_req[req_id],
++                )
+                 # Wait all consumers (D) to be done reading before freeing.
+                 if (
+                     self.consumer_notification_counts_by_req[req_id]
+@@ -603,4 +782,5 @@ class NixlPullConnectorWorker(NixlBaseConnectorWorker):
+                     del self.expected_consumer_notifications_by_req[req_id]
+                     self._reqs_to_process.remove(req_id)
+                     self._reqs_to_send.pop(req_id, None)
++                    self._diag_event("notification.all_consumers_done", req_id)
+         return notified_req_ids
+diff --git a/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py b/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
+index 7357088175..548980c835 100644
+--- a/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
++++ b/vllm/distributed/kv_transfer/kv_connector/v1/offloading_connector.py
+@@ -2,6 +2,9 @@
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ from collections.abc import Iterable
+ from functools import cached_property
++import json
++import os
++import time
+ from typing import Any
+ 
+ import torch
+@@ -47,9 +50,32 @@ from vllm.v1.kv_cache_interface import KVCacheConfig
+ from vllm.v1.kv_offload.factory import OffloadingSpecFactory
+ from vllm.v1.outputs import KVConnectorOutput
+ from vllm.v1.request import Request
++from vllm.logger import init_logger
++
++
++logger = init_logger(__name__)
+ 
+ 
+ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
++    def _diag(self, event: str, req_id: str | None = None, **fields) -> None:
++        if os.getenv("VLLM_NIXL_DIAG", "0") != "1":
++            return
++        logger.warning(
++            "OFFLOAD_DIAG %s",
++            json.dumps(
++                {
++                    "ts_wall_ns": time.time_ns(),
++                    "ts_mono_ns": time.monotonic_ns(),
++                    "event": event,
++                    "request_id": req_id,
++                    "role": str(self.role),
++                    **fields,
++                },
++                default=str,
++                sort_keys=True,
++            ),
++        )
++
+     @cached_property
+     def _bounding_group_ids(self) -> tuple[int, ...]:
+         """Prefix-cacheable groups this connector does not offload.
+@@ -106,6 +132,19 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+ 
+     def register_kv_caches(self, kv_caches: dict[str, torch.Tensor]):
+         assert self.connector_worker is not None
++        tensor_names = sorted(kv_caches)
++        layouts = sorted(
++            {(tuple(t.shape), str(t.dtype), str(t.device), t.element_size())
++             for t in kv_caches.values()}, key=str)
++        self._diag(
++            "offload.registration",
++            tensor_count=len(kv_caches),
++            tensor_names={"first": tensor_names[:4], "last": tensor_names[-4:]},
++            total_bytes=sum(t.numel() * t.element_size()
++                            for t in kv_caches.values()),
++            layouts=[{"shape": list(s), "dtype": d, "device": v,
++                      "element_size": e} for s, d, v, e in layouts],
++        )
+         self.connector_worker.register_kv_caches(kv_caches)
+ 
+     def handle_preemptions(self, kv_connector_metadata: KVConnectorMetadata):
+@@ -116,6 +155,15 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+     def start_load_kv(self, forward_context: "ForwardContext", **kwargs) -> None:
+         assert self.connector_worker is not None
+         assert isinstance(self._connector_metadata, OffloadingConnectorMetadata)
++        if (self._connector_metadata.load_jobs
++                or self._connector_metadata.store_jobs
++                or self._connector_metadata.jobs_to_flush):
++            self._diag(
++                "offload.worker_start",
++                load_jobs={job_id: entry.req_id for job_id, entry in self._connector_metadata.load_jobs.items()},
++                store_job_ids=list(self._connector_metadata.store_jobs),
++                flush_job_ids=list(self._connector_metadata.jobs_to_flush),
++            )
+         self.connector_worker.start_kv_transfers(self._connector_metadata)
+ 
+     def wait_for_layer_load(self, layer_name: str) -> None:
+@@ -144,7 +192,14 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         # wait_for_save is skipped.
+         self.connector_worker.prepare_store_kv(self._connector_metadata)
+ 
+-        return self.connector_worker.get_finished(finished_req_ids)
++        result = self.connector_worker.get_finished(finished_req_ids)
++        if result[0] or result[1]:
++            self._diag(
++                "offload.worker_finished",
++                finished_sending=sorted(result[0]),
++                finished_recving=sorted(result[1]),
++            )
++        return result
+ 
+     def build_connector_worker_meta(self) -> OffloadingWorkerMetadata | None:
+         if self.connector_worker is not None:
+@@ -188,6 +243,14 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         self, request: "Request", blocks: "KVCacheBlocks", num_external_tokens: int
+     ):
+         assert self.connector_scheduler is not None
++        self._diag(
++            "offload.scheduler_alloc",
++            request.request_id,
++            num_external_tokens=num_external_tokens,
++            block_ids=[
++                [block.block_id for block in group] for group in blocks.blocks
++            ],
++        )
+         return self.connector_scheduler.update_state_after_alloc(
+             request, blocks, num_external_tokens
+         )
+@@ -196,7 +259,16 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         self, scheduler_output: SchedulerOutput
+     ) -> KVConnectorMetadata:
+         assert self.connector_scheduler is not None
+-        return self.connector_scheduler.build_connector_meta(scheduler_output)
++        metadata = self.connector_scheduler.build_connector_meta(scheduler_output)
++        self._diag(
++            "offload.scheduler_metadata",
++            load_jobs={job_id: entry.req_id for job_id, entry in metadata.load_jobs.items()},
++            store_jobs={
++                job_id: entry.req_id for job_id, entry in metadata.store_jobs.items()
++            },
++            flush_job_ids=list(metadata.jobs_to_flush),
++        )
++        return metadata
+ 
+     def has_pending_push_work(self) -> bool:
+         assert self.connector_scheduler is not None
+@@ -212,7 +284,14 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         block_ids: list[int],
+     ) -> tuple[bool, dict[str, Any] | None]:
+         assert self.connector_scheduler is not None
+-        return self.connector_scheduler.request_finished(request)
++        result = self.connector_scheduler.request_finished(request)
++        self._diag(
++            "offload.scheduler_request_finished",
++            request.request_id,
++            async_save=result[0],
++            transfer_params=result[1],
++        )
++        return result
+ 
+     def request_finished_all_groups(
+         self,
+@@ -220,7 +299,14 @@ class OffloadingConnector(KVConnectorBase_V1, SupportsHMA):
+         block_ids: tuple[list[int], ...],
+     ) -> tuple[bool, dict[str, Any] | None]:
+         assert self.connector_scheduler is not None
+-        return self.connector_scheduler.request_finished(request)
++        result = self.connector_scheduler.request_finished(request)
++        self._diag(
++            "offload.scheduler_request_finished",
++            request.request_id,
++            async_save=result[0],
++            transfer_params=result[1],
++        )
++        return result
+ 
+     def take_events(self) -> Iterable[KVCacheEvent]:
+         assert self.connector_scheduler is not None

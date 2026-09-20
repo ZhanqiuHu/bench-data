@@ -1,0 +1,343 @@
+################ glm-5.3/h200/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu -> /Users/zhu/Documents/workspace/agentx-mvp/results/.artifacts/sweeps/e85fix-v2-tp8-openhands/runs/20260919T181450Z-e85fix-v2-tp8-control/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu (devbox LMSYS BASE_URL=http://glm-zhu-epp:80) MODEL=zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512 run_id=20260919T181450Z-e85fix-v2-tp8-control
+ZHU_LMSYS_SKIP_DEPLOY=1 — reusing current deploy, probing router for MODEL=zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512
+Model is serving (skip-deploy).
+skip heavy metadata (ZHU_LMSYS_SKIP_DEPLOY=1)
+devbox=zhu-vllm-devbox cache=/workspace/zhu-pcp-main/cache/lmsys-glm-agentic INSTALL_DEPS=0 dataset=/workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json
+dataset cache hit: /workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json
+bench_points=1:4 2:8 4:8 8:16
+======== p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu LMSYS c=1 n=4 (20260919T181501Z) url=http://glm-zhu-epp:80 run_name=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z
+devbox job=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z log=/tmp/zhu-lmsys-20260919T181450Z-e85fix-v2-tp8-control-p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z.log
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:15:09 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/parallel_1_number_4/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:15:09 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/parallel_1_number_4/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:15:09 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/parallel_1_number_4/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:15:09 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/parallel_1_number_4/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:15:09 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/parallel_1_number_4/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_1_number_4]:   0%|          | 0/4 [00:00<?, ?it/s][A
+Processing[parallel_1_number_4]:  25%|██▌       | 1/4 [00:28<01:26, 28.91s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A                                                                              [A2026-09-19 18:16:16 - evalscope - [32mINFO[0m: Processing[parallel_1_number_4]  50%| 2/4 [Elapsed: 01:06 < Remaining: 01:08, 34.27s/it][0m
+Running[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][ARunning[perf]:   0%|          | 0/1 [01:09<?, ?it/s]
+Processing[parallel_1_number_4]:  50%|█████     | 2/4 [01:06<01:08, 34.27s/it][A
+Processing[parallel_1_number_4]:  75%|███████▌  | 3/4 [01:45<00:36, 36.11s/it][A• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:17:32 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/performance_summary.txt[0m
+2026-09-19 18:17:34 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/perf_report.html[0m
+│ Output Path           │ /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-op… │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+
+
+                                         Detailed Performance Metrics                                         
+┏━━━━━━┳━━━━━━┳━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃      ┃      ┃     ┃      ┃     Avg ┃     P99 ┃      Avg ┃      P99 ┃      Avg ┃      P99 ┃   Gen. ┃ Success┃
+┃Conc. ┃ Rate ┃ Num ┃  RPS ┃ Lat.(s) ┃ Lat.(s) ┃ TTFT(ms) ┃ TTFT(ms) ┃ TPOT(ms) ┃ TPOT(ms) ┃ toks/s ┃    Rate┃
+┡━━━━━━╇━━━━━━╇━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│    1 │  INF │  52 │ 0.36 │   2.759 │  12.540 │   1174.1 │  10538.5 │      7.2 │      9.1 │  79.72 │  100.0%│
+└──────┴──────┴─────┴──────┴─────────┴─────────┴──────────┴──────────┴──────────┴──────────┴────────┴────────┘
+
+
+                                                Request Metrics                                                
+┏━━━━━━┳━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃      ┃     ┃  Avg In ┃  P99 In ┃ Avg Out ┃ P99 Out ┃       Avg ┃    Approx ┃ Decode ┃  Decoded ┃       Spec.┃
+┃Conc. ┃ Num ┃    Toks ┃    Toks ┃    Toks ┃    Toks ┃ Turns/Req ┃ Cache Hit ┃ toks/s ┃ Tok/Iter ┃ Accept Rate┃
+┡━━━━━━╇━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│    1 │  52 │ 79790.7 │ 85727.0 │   220.0 │   220.0 │      7.00 │      0.0% │ 138.31 │     3.79 │       73.6%│
+└──────┴─────┴─────────┴─────────┴─────────┴─────────┴───────────┴───────────┴────────┴──────────┴────────────┘
+
+
+               Best Performance Configuration               
+ Highest RPS         Concurrency 1 (0.36 req/sec)           
+ Lowest Latency      Concurrency 1 (2.759 seconds)          
+
+Performance Recommendations:
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:17:32 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/performance_summary.txt[0m
+2026-09-19 18:17:34 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c1-20260919T181501Z/perf_report.html[0m
+======== p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu LMSYS c=2 n=8 (20260919T181739Z) url=http://glm-zhu-epp:80 run_name=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z
+devbox job=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z log=/tmp/zhu-lmsys-20260919T181450Z-e85fix-v2-tp8-control-p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z.log
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:17:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/parallel_2_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][AProcessing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_2_number_8]:  12%|█▎        | 1/8 [00:30<03:33, 30.57s/it][A
+Processing[parallel_2_number_8]:  25%|██▌       | 2/8 [00:31<01:20, 13.35s/it][AProcessing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_2_number_8]:  12%|█▎        | 1/8 [00:30<03:33, 30.57s/it][A
+Processing[parallel_2_number_8]:  25%|██▌       | 2/8 [00:31<01:20, 13.35s/it][AProcessing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_2_number_8]:  12%|█▎        | 1/8 [00:30<03:33, 30.57s/it][A
+Processing[parallel_2_number_8]:  25%|██▌       | 2/8 [00:31<01:20, 13.35s/it][AProcessing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_2_number_8]:  12%|█▎        | 1/8 [00:30<03:33, 30.57s/it][A
+Processing[parallel_2_number_8]:  25%|██▌       | 2/8 [00:31<01:20, 13.35s/it][AProcessing[parallel_2_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_2_number_8]:  12%|█▎        | 1/8 [00:30<03:33, 30.57s/it][A
+Processing[parallel_2_number_8]:  25%|██▌       | 2/8 [00:31<01:20, 13.35s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][ARunning[perf]:   0%|          | 0/1 [01:04<?, ?it/s]
+Processing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][AProcessing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][A
+Processing[parallel_2_number_8]:  62%|██████▎   | 5/8 [01:51<01:17, 25.85s/it][AProcessing[parallel_2_number_8]:  38%|███▊      | 3/8 [01:02<01:46, 21.21s/it][A
+Processing[parallel_2_number_8]:  50%|█████     | 4/8 [01:03<00:52, 13.21s/it][A
+Processing[parallel_2_number_8]:  62%|██████▎   | 5/8 [01:51<01:17, 25.85s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][A                                                                              [A2026-09-19 18:19:51 - evalscope - [32mINFO[0m: Processing[parallel_2_number_8]  75%| 6/8 [Elapsed: 02:04 < Remaining: 00:42, 21.48s/it][0m
+Running[perf]:   0%|          | 0/1 [02:07<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:04<00:42, 21.48s/it][ARunning[perf]:   0%|          | 0/1 [02:42<?, ?it/s]
+Processing[parallel_2_number_8]:  75%|███████▌  | 6/8 [02:39<00:42, 21.48s/it][A
+Processing[parallel_2_number_8]:  88%|████████▊ | 7/8 [02:40<00:26, 26.16s/it][A• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:20:33 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/performance_summary.txt[0m
+2026-09-19 18:20:34 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/perf_report.html[0m
+│ Output Path           │ /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-op… │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+
+
+                                         Detailed Performance Metrics                                         
+┏━━━━━━┳━━━━━━┳━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃      ┃      ┃     ┃      ┃     Avg ┃     P99 ┃      Avg ┃      P99 ┃      Avg ┃      P99 ┃   Gen. ┃ Success┃
+┃Conc. ┃ Rate ┃ Num ┃  RPS ┃ Lat.(s) ┃ Lat.(s) ┃ TTFT(ms) ┃ TTFT(ms) ┃ TPOT(ms) ┃ TPOT(ms) ┃ toks/s ┃    Rate┃
+┡━━━━━━╇━━━━━━╇━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│    2 │  INF │ 104 │ 0.63 │   3.141 │  13.560 │   1406.5 │  11532.4 │      7.9 │     11.0 │ 137.54 │  100.0%│
+└──────┴──────┴─────┴──────┴─────────┴─────────┴──────────┴──────────┴──────────┴──────────┴────────┴────────┘
+
+
+                                                Request Metrics                                                
+┏━━━━━━┳━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃      ┃     ┃  Avg In ┃  P99 In ┃ Avg Out ┃ P99 Out ┃       Avg ┃    Approx ┃ Decode ┃  Decoded ┃       Spec.┃
+┃Conc. ┃ Num ┃    Toks ┃    Toks ┃    Toks ┃    Toks ┃ Turns/Req ┃ Cache Hit ┃ toks/s ┃ Tok/Iter ┃ Accept Rate┃
+┡━━━━━━╇━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│    2 │ 104 │ 79765.0 │ 85724.0 │   220.0 │   220.0 │      7.00 │      0.0% │ 126.26 │     3.74 │       73.2%│
+└──────┴─────┴─────────┴─────────┴─────────┴─────────┴───────────┴───────────┴────────┴──────────┴────────────┘
+
+
+               Best Performance Configuration               
+ Highest RPS         Concurrency 2 (0.63 req/sec)           
+ Lowest Latency      Concurrency 2 (3.141 seconds)          
+
+Performance Recommendations:
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:20:33 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/performance_summary.txt[0m
+2026-09-19 18:20:34 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c2-20260919T181739Z/perf_report.html[0m
+======== p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu LMSYS c=4 n=8 (20260919T182039Z) url=http://glm-zhu-epp:80 run_name=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z
+devbox job=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z log=/tmp/zhu-lmsys-20260919T181450Z-e85fix-v2-tp8-control-p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z.log
+Loading[conversations]: 8it [00:00,  7.53it/s][ALoading[conversations]: 8it [00:00, 59.44it/s]
+                                                    2026-09-19 18:20:45 - evalscope - [32mINFO[0m: Loaded 8 conversations[0m
+Running[perf]:   0%|          | 0/1 [00:00<?, ?it/s]Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:20:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/parallel_4_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:20:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/parallel_4_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:20:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/parallel_4_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:20:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/parallel_4_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:20:47 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/parallel_4_number_8/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_4_number_8]:   0%|          | 0/8 [00:00<?, ?it/s][A
+Processing[parallel_4_number_8]:  12%|█▎        | 1/8 [00:35<04:05, 35.11s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][AProcessing[parallel_4_number_8]:  25%|██▌       | 2/8 [00:36<01:33, 15.50s/it][A
+Processing[parallel_4_number_8]:  38%|███▊      | 3/8 [00:37<00:43,  8.75s/it][A
+Processing[parallel_4_number_8]:  50%|█████     | 4/8 [00:38<00:22,  5.52s/it][APerformance Recommendations:
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:22:03 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/performance_summary.txt[0m
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:22:03 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/performance_summary.txt[0m
+2026-09-19 18:22:04 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/perf_report.html[0m
+│ Output Path           │ /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-op… │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+
+
+                                         Detailed Performance Metrics                                         
+┏━━━━━━┳━━━━━━┳━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃      ┃      ┃     ┃      ┃     Avg ┃     P99 ┃      Avg ┃      P99 ┃      Avg ┃      P99 ┃   Gen. ┃ Success┃
+┃Conc. ┃ Rate ┃ Num ┃  RPS ┃ Lat.(s) ┃ Lat.(s) ┃ TTFT(ms) ┃ TTFT(ms) ┃ TPOT(ms) ┃ TPOT(ms) ┃ toks/s ┃    Rate┃
+┡━━━━━━╇━━━━━━╇━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│    4 │  INF │ 104 │ 1.38 │   2.815 │   4.160 │    814.7 │   1707.0 │      9.1 │     13.0 │ 303.86 │  100.0%│
+└──────┴──────┴─────┴──────┴─────────┴─────────┴──────────┴──────────┴──────────┴──────────┴────────┴────────┘
+
+
+                                                Request Metrics                                                
+┏━━━━━━┳━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃      ┃     ┃  Avg In ┃  P99 In ┃ Avg Out ┃ P99 Out ┃       Avg ┃    Approx ┃ Decode ┃  Decoded ┃       Spec.┃
+┃Conc. ┃ Num ┃    Toks ┃    Toks ┃    Toks ┃    Toks ┃ Turns/Req ┃ Cache Hit ┃ toks/s ┃ Tok/Iter ┃ Accept Rate┃
+┡━━━━━━╇━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│    4 │ 104 │ 79745.1 │ 85636.0 │   220.0 │   220.0 │      7.00 │      0.0% │ 109.41 │     3.89 │       74.3%│
+└──────┴─────┴─────────┴─────────┴─────────┴─────────┴───────────┴───────────┴────────┴──────────┴────────────┘
+
+
+               Best Performance Configuration               
+ Highest RPS         Concurrency 4 (1.38 req/sec)           
+ Lowest Latency      Concurrency 4 (2.815 seconds)          
+
+Performance Recommendations:
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:22:03 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/performance_summary.txt[0m
+2026-09-19 18:22:04 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c4-20260919T182039Z/perf_report.html[0m
+======== p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu LMSYS c=8 n=16 (20260919T182212Z) url=http://glm-zhu-epp:80 run_name=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z
+devbox job=p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z log=/tmp/zhu-lmsys-20260919T181450Z-e85fix-v2-tp8-control-p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z.log
+Loading[conversations]: 16it [00:00,  7.52it/s][ALoading[conversations]: 16it [00:00, 118.77it/s]
+                                                    2026-09-19 18:22:18 - evalscope - [32mINFO[0m: Loaded 16 conversations[0m
+Running[perf]:   0%|          | 0/1 [00:00<?, ?it/s]Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][ARunning[perf]:   0%|          | 0/1 [00:02<?, ?it/s]                                                    2026-09-19 18:22:20 - evalscope - [32mINFO[0m: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db[0m
+Running[perf]:   0%|          | 0/1 [00:02<?, ?it/s]
+Processing[parallel_8_number_16]:   0%|          | 0/16 [00:00<?, ?it/s][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][AProcessing[parallel_8_number_16]:  38%|███▊      | 6/16 [00:46<00:29,  2.97s/it][A
+Processing[parallel_8_number_16]:  44%|████▍     | 7/16 [00:46<00:18,  2.06s/it][A
+Processing[parallel_8_number_16]:  50%|█████     | 8/16 [00:46<00:11,  1.44s/it][A                                                                                [A2026-09-19 18:25:05 - evalscope - [32mINFO[0m: Processing[parallel_8_number_16]  56%| 9/16 [Elapsed: 02:45 < Remaining: 04:25, 37.92s/it][0m
+Running[perf]:   0%|          | 0/1 [02:47<?, ?it/s]
+Processing[parallel_8_number_16]:  56%|█████▋    | 9/16 [02:45<04:25, 37.92s/it][A• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:25:10 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/performance_summary.txt[0m
+2026-09-19 18:25:11 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/perf_report.html[0m
+│ Output Path           │ /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-op… │
+└───────────────────────┴──────────────────────────────────────────────────────┘
+
+
+                                         Detailed Performance Metrics                                         
+┏━━━━━━┳━━━━━━┳━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃      ┃      ┃     ┃      ┃     Avg ┃     P99 ┃      Avg ┃      P99 ┃      Avg ┃      P99 ┃   Gen. ┃ Success┃
+┃Conc. ┃ Rate ┃ Num ┃  RPS ┃ Lat.(s) ┃ Lat.(s) ┃ TTFT(ms) ┃ TTFT(ms) ┃ TPOT(ms) ┃ TPOT(ms) ┃ toks/s ┃    Rate┃
+┡━━━━━━╇━━━━━━╇━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│    8 │  INF │ 208 │ 1.23 │   6.444 │  70.720 │   4247.5 │  68328.6 │     10.0 │     14.1 │ 270.45 │  100.0%│
+└──────┴──────┴─────┴──────┴─────────┴─────────┴──────────┴──────────┴──────────┴──────────┴────────┴────────┘
+
+
+                                                Request Metrics                                                
+┏━━━━━━┳━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃      ┃     ┃  Avg In ┃  P99 In ┃ Avg Out ┃ P99 Out ┃       Avg ┃    Approx ┃ Decode ┃  Decoded ┃       Spec.┃
+┃Conc. ┃ Num ┃    Toks ┃    Toks ┃    Toks ┃    Toks ┃ Turns/Req ┃ Cache Hit ┃ toks/s ┃ Tok/Iter ┃ Accept Rate┃
+┡━━━━━━╇━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│    8 │ 208 │ 79709.7 │ 85733.0 │   220.0 │   220.0 │      7.00 │      0.0% │  99.70 │     3.76 │       73.4%│
+└──────┴─────┴─────────┴─────────┴─────────┴─────────┴───────────┴───────────┴────────┴──────────┴────────────┘
+
+
+               Best Performance Configuration               
+ Highest RPS         Concurrency 8 (1.23 req/sec)           
+ Lowest Latency      Concurrency 8 (6.444 seconds)          
+
+Performance Recommendations:
+• The system seems not to have reached its performance bottleneck, try higher concurrency
+2026-09-19 18:25:10 - evalscope - [32mINFO[0m: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/performance_summary.txt[0m
+2026-09-19 18:25:11 - evalscope - [32mINFO[0m: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/perf_report.html[0m
+OK p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu LMSYS all points devbox no-port-forward run_id=20260919T181450Z-e85fix-v2-tp8-control

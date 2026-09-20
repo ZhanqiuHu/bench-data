@@ -1,0 +1,174 @@
+2026-09-19 18:22:18 - evalscope - INFO: Starting benchmark with args: 
+2026-09-19 18:22:18 - evalscope - INFO: {
+    "model": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+    "model_id": "zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512",
+    "attn_implementation": null,
+    "api": "openai",
+    "tokenizer_path": null,
+    "port": 8877,
+    "url": "http://glm-zhu-epp:80/v1/chat/completions",
+    "headers": {},
+    "connect_timeout": null,
+    "read_timeout": null,
+    "total_timeout": 21600,
+    "api_key": null,
+    "no_test_connection": false,
+    "number": 16,
+    "parallel": 8,
+    "rate": -1.0,
+    "open_loop": false,
+    "sleep_interval": 5,
+    "sla_auto_tune": false,
+    "sla_variable": "parallel",
+    "sla_params": null,
+    "sla_num_runs": 3,
+    "sla_upper_bound": 65536,
+    "sla_lower_bound": 1,
+    "sla_fixed_parallel": null,
+    "sla_number_multiplier": null,
+    "db_commit_interval": 1000,
+    "queue_size_multiplier": 5,
+    "in_flight_task_multiplier": 2,
+    "log_every_n_query": 100,
+    "debug": false,
+    "enable_progress_tracker": false,
+    "visualizer": null,
+    "wandb_api_key": null,
+    "swanlab_api_key": null,
+    "name": "p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z",
+    "outputs_dir": "/workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z",
+    "no_timestamp": true,
+    "max_prompt_length": 131072,
+    "min_prompt_length": 0,
+    "prefix_length": 0,
+    "prompt": null,
+    "query_template": null,
+    "apply_chat_template": true,
+    "image_width": 224,
+    "image_height": 224,
+    "image_format": "RGB",
+    "image_num": 1,
+    "image_patch_size": 28,
+    "dataset": "swe_smith",
+    "dataset_path": "/workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json",
+    "dataset_offset": 0,
+    "frequency_penalty": null,
+    "repetition_penalty": null,
+    "logprobs": null,
+    "max_tokens": 220,
+    "min_tokens": null,
+    "n_choices": null,
+    "seed": null,
+    "stop": null,
+    "stop_token_ids": null,
+    "stream": true,
+    "temperature": 0.0,
+    "top_p": null,
+    "top_k": null,
+    "extra_args": {
+        "ignore_eos": true
+    },
+    "tokenize_prompt": false,
+    "multi_turn": true,
+    "min_turns": 1,
+    "max_turns": null,
+    "multi_turn_args": null
+}
+2026-09-19 18:22:18 - evalscope - INFO: Loading conversations from dataset: swe_smith
+2026-09-19 18:22:18 - evalscope - INFO: Loading pre-built dataset from /workspace/zhu-pcp-agentx/cache/lmsys-glm-agentic/datasets/openhand-zai-org-GLM-5.3-48534d2fdaafc810.json
+2026-09-19 18:22:18 - evalscope - INFO: Loaded 128 conversations (offset=0)
+2026-09-19 18:22:18 - evalscope - INFO: Loading[conversations]   0%| 16/? [Elapsed: 00:00 < Remaining: 00:00,  7.52it/s]
+2026-09-19 18:22:18 - evalscope - INFO: Loaded 16 conversations
+2026-09-19 18:22:20 - evalscope - INFO: Test connection successful.
+2026-09-19 18:22:20 - evalscope - INFO: Save the data base to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16/benchmark_data.db
+2026-09-19 18:23:06 - evalscope - INFO: {
+  "Test Duration (s)": 45.8303,
+  "Concurrency": 8,
+  "Request Rate (req/s)": -1.0,
+  "Total Requests": 100,
+  "Success Requests": 100,
+  "Failed Requests": 0,
+  "Req Throughput (req/s)": 2.182,
+  "Avg Latency (s)": 3.5163,
+  "Avg Input Tokens": 79520.11,
+  "Output Throughput (tok/s)": 480.0313,
+  "Total Throughput (tok/s)": 173989.7508,
+  "TTFT (ms)": 1327.33,
+  "TPOT (ms)": 10.0,
+  "ITL (ms)": 37.42,
+  "Avg Output Tokens": 220.0,
+  "Avg Turns/Request": 6.76,
+  "KV Cache Hit Rate (%)": 0.0,
+  "Decoded Tok/Iter": 3.7771,
+  "Spec. Accept Rate": 0.7352
+}
+2026-09-19 18:25:05 - evalscope - INFO: Processing[parallel_8_number_16]  56%| 9/16 [Elapsed: 02:45 < Remaining: 04:25, 37.92s/it]
+2026-09-19 18:25:06 - evalscope - INFO: {
+  "Test Duration (s)": 165.7601,
+  "Concurrency": 8,
+  "Request Rate (req/s)": -1.0,
+  "Total Requests": 200,
+  "Success Requests": 200,
+  "Failed Requests": 0,
+  "Req Throughput (req/s)": 1.2066,
+  "Avg Latency (s)": 6.5748,
+  "Avg Input Tokens": 79485.38,
+  "Output Throughput (tok/s)": 265.4438,
+  "Total Throughput (tok/s)": 96169.537,
+  "TTFT (ms)": 4373.63,
+  "TPOT (ms)": 10.05,
+  "ITL (ms)": 37.29,
+  "Avg Output Tokens": 220.0,
+  "Avg Turns/Request": 6.765,
+  "KV Cache Hit Rate (%)": 0.0,
+  "Decoded Tok/Iter": 3.7552,
+  "Spec. Accept Rate": 0.7337
+}
+2026-09-19 18:25:09 - evalscope - INFO: Processing[parallel_8_number_16] 100%| 16/16 [Elapsed: 02:49 < Remaining: 00:00,  4.86s/it]
+2026-09-19 18:25:10 - evalscope - INFO: 
+Benchmarking summary:
+┌────────────────────────────┬───────────────┐
+│ Metric                     │         Value │
+├────────────────────────────┼───────────────┤
+│ ── General ──              │               │
+│ Test Duration (s)          │        169.20 │
+│ Concurrency                │             8 │
+│ Request Rate (req/s)       │         -1.00 │
+│ Total / Success / Failed   │ 208 / 208 / 0 │
+│ Req Throughput (req/s)     │          1.23 │
+│ ── Latency ──              │               │
+│ Avg Latency (s)            │          6.44 │
+│ TTFT (ms)                  │       4247.53 │
+│ TPOT (ms)                  │         10.03 │
+│ ITL (ms)                   │         37.25 │
+│ ── Tokens ──               │               │
+│ Avg Input Tokens           │      79709.73 │
+│ Avg Output Tokens          │        220.00 │
+│ Output Throughput (tok/s)  │        270.45 │
+│ Total Throughput (tok/s)   │      98258.39 │
+│ ── Multi-turn ──           │               │
+│ Avg Turns/Request          │          7.00 │
+│ KV Cache Hit Rate (%)      │          0.00 │
+│ ── Speculative Decoding ── │               │
+│ Decoded Tok/Iter           │          3.76 │
+│ Spec. Accept Rate          │          0.73 │
+└────────────────────────────┴───────────────┘
+2026-09-19 18:25:10 - evalscope - INFO: 
+Percentile results:
+┌────────────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+│ Metric         │       1% │       5% │      10% │      25% │      50% │      75% │      90% │      95% │      99% │
+├────────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤
+│ Latency (s)    │     3.01 │     3.06 │     3.08 │     3.17 │     3.44 │     3.75 │     4.59 │    31.87 │    70.72 │
+│ TTFT (ms)      │   950.28 │   973.03 │  1002.19 │  1049.74 │  1283.02 │  1564.51 │  2029.56 │ 29295.92 │ 68328.63 │
+│ ITL (ms)       │     0.39 │     0.87 │    25.41 │    34.73 │    38.07 │    39.56 │    42.40 │    80.15 │    85.73 │
+│ TPOT (ms)      │     8.96 │     9.12 │     9.25 │     9.51 │     9.59 │    10.20 │    11.60 │    12.46 │    14.12 │
+│ Input tokens   │ 74173.00 │ 74173.00 │ 74930.00 │ 76668.00 │ 79666.00 │ 82746.00 │ 84561.00 │ 85484.00 │ 85733.00 │
+│ Output tokens  │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │   220.00 │
+│ Output (tok/s) │     3.11 │     6.90 │    47.93 │    58.62 │    64.01 │    69.50 │    71.48 │    71.98 │    73.19 │
+│ Total (tok/s)  │  1059.77 │  2361.30 │ 16398.95 │ 21287.63 │ 23427.62 │ 25429.28 │ 26502.64 │ 27038.07 │ 28112.69 │
+│ Decode (tok/s) │    70.84 │    80.25 │    86.18 │    99.36 │   104.30 │   105.20 │   108.11 │   109.60 │   111.60 │
+└────────────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
+2026-09-19 18:25:10 - evalscope - INFO: Save the summary to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/parallel_8_number_16
+2026-09-19 18:25:10 - evalscope - INFO: Running[perf] 100%| 1/1 [Elapsed: 02:51 < Remaining: 00:00, 171.94s/it]
+2026-09-19 18:25:10 - evalscope - INFO: Performance summary saved to: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/performance_summary.txt
+2026-09-19 18:25:11 - evalscope - INFO: HTML report generated: /workspace/zhu-pcp-main/lmsys-runs/e85fix-v2-tp8-openhands/20260919T181450Z-e85fix-v2-tp8-control/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu-c8-20260919T182212Z/perf_report.html
