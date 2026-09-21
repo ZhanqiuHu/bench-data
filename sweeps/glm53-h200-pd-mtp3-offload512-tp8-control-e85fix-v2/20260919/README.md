@@ -2,6 +2,20 @@
 
 This directory is a self-contained, immutable copy of the 2026-09-19 runs. It records observed data and raw output without replacing earlier experiments.
 
+## Data validity status
+
+| Data | Status |
+|---|---|
+| OpenHands, all four points | Valid: every request completed successfully |
+| AgentX completed throughput and saturation evidence | Usable only with the sent/completed/in-flight counts below |
+| AgentX c16/c32/c64 latency percentiles | Censored: 13/36/108 requests remained in flight at forced phase completion |
+| Formal PCP-versus-TP8 comparison | Not available: the existing PCP and TP8 runs used different runtime builds |
+
+Do not use the AgentX c32/c64 P95 or P99 values as complete tail-latency
+measurements. The runner stopped sending at the 1800-second deadline, then
+timed out and force-ended outstanding credits instead of draining every request.
+The raw data is retained so the termination behavior remains auditable.
+
 ## Identity
 
 | Field | Value |
