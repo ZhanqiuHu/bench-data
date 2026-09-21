@@ -22,12 +22,15 @@ No AgentX performance numbers are published in this directory.
 
 ## OpenHands results
 
-| Parallel | Samples | Requests | Success | RPS | Avg latency (s) | Output tok/s | Avg TTFT (ms) | Avg TPOT (ms) | Avg ITL (ms) |
+Each completed conversation makes 13 sequential LLM API calls. Conversation
+parallelism is therefore different from the number of model calls.
+
+| Max concurrent conversations | Completed conversations | Model API calls | Successful model calls | Model calls/s | Avg call latency (s) | Output tok/s | Avg TTFT (ms) | Avg TPOT (ms) | Avg ITL (ms) |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | 4 | 52 | 100% | 0.3888 | 2.5712 | 85.5254 | 960.95 | 7.35 | 27.43 |
-| 2 | 8 | 104 | 100% | 0.7092 | 2.7868 | 156.0275 | 1028.23 | 8.03 | 29.52 |
-| 4 | 8 | 104 | 100% | 1.3892 | 2.7997 | 305.6148 | 823.49 | 9.02 | 34.20 |
-| 8 | 16 | 208 | 100% | 1.7390 | 4.4960 | 382.5874 | 2194.63 | 10.51 | 40.92 |
+| 1 | 4 | 52 | 52 | 0.3888 | 2.5712 | 85.5254 | 960.95 | 7.35 | 27.43 |
+| 2 | 8 | 104 | 104 | 0.7092 | 2.7868 | 156.0275 | 1028.23 | 8.03 | 29.52 |
+| 4 | 8 | 104 | 104 | 1.3892 | 2.7997 | 305.6148 | 823.49 | 9.02 | 34.20 |
+| 8 | 16 | 208 | 208 | 1.7390 | 4.4960 | 382.5874 | 2194.63 | 10.51 | 40.92 |
 
 ## Included files
 

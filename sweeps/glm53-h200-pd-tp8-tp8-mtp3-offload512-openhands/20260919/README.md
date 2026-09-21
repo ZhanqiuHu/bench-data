@@ -25,12 +25,15 @@ under `config/` for reproduction; they are not names for the experiment itself.
 
 ## OpenHands results
 
-| Parallel | Samples | Requests | Success | RPS | Avg latency (s) | P99 latency (s) | Avg TTFT (ms) | P99 TTFT (ms) | Output tok/s | Decode tok/s | Spec accept rate |
+Each completed conversation makes 13 sequential LLM API calls. Conversation
+parallelism is therefore different from the number of model calls.
+
+| Max concurrent conversations | Completed conversations | Model API calls | Successful model calls | Model calls/s | Avg call latency (s) | P99 call latency (s) | Avg TTFT (ms) | P99 TTFT (ms) | Output tok/s | Decode tok/s | Spec accept rate |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | 4 | 52 | 100% | 0.36 | 2.759 | 12.540 | 1174.1 | 10538.5 | 79.72 | 138.31 | 73.6% |
-| 2 | 8 | 104 | 100% | 0.63 | 3.141 | 13.560 | 1406.5 | 11532.4 | 137.54 | 126.26 | 73.2% |
-| 4 | 8 | 104 | 100% | 1.38 | 2.815 | 4.160 | 814.7 | 1707.0 | 303.86 | 109.41 | 74.3% |
-| 8 | 16 | 208 | 100% | 1.23 | 6.444 | 70.720 | 4247.5 | 68328.6 | 270.45 | 99.70 | 73.4% |
+| 1 | 4 | 52 | 52 | 0.36 | 2.759 | 12.540 | 1174.1 | 10538.5 | 79.72 | 138.31 | 73.6% |
+| 2 | 8 | 104 | 104 | 0.63 | 3.141 | 13.560 | 1406.5 | 11532.4 | 137.54 | 126.26 | 73.2% |
+| 4 | 8 | 104 | 104 | 1.38 | 2.815 | 4.160 | 814.7 | 1707.0 | 303.86 | 109.41 | 74.3% |
+| 8 | 16 | 208 | 208 | 1.23 | 6.444 | 70.720 | 4247.5 | 68328.6 | 270.45 | 99.70 | 73.4% |
 
 Exact machine-readable aggregate values are in `openhands-summary.csv`.
 
