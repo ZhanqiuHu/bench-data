@@ -1,4 +1,4 @@
-# GLM-5.3 H200 TP8→TP8 MTP3 offload512 e85fix-v2
+# GLM-5.3 H200 PD TP8→TP8 MTP3 offload512 OpenHands
 
 ## Published result status
 
@@ -6,23 +6,22 @@ This directory publishes the valid OpenHands run only.
 
 | Workload | Run ID | Status |
 |---|---|---|
-| OpenHands / EvalScope | `20260919T181450Z-e85fix-v2-tp8-control` | valid; all requests completed at all four points |
+| OpenHands / EvalScope | 2026-09-19 | valid; all requests completed at all four points |
 | AgentX / AIPerf | — | not published; the attempted run did not drain outstanding requests and must be rerun |
 
-Do not use commit `fc80cb5` or `a6870c2` as a source of AgentX performance
-numbers. Those commits retained a diagnostic run whose latency distribution was
-censored. The current tree removes that run from the published result set.
+No AgentX performance numbers are published in this directory.
 
 ## Configuration
 
 | Field | Value |
 |---|---|
-| Model | `zhu-glm53-h200-e85fix-v2-tp8-tp8-mtp3-offload512` |
-| Manifest | `p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu` |
 | Prefill | 8×H200, TP8 + EP, MTP3, CPU KV offload 512 GiB |
 | Decode | 8×H200, TP8 + EP, MTP3, CPU KV offload 512 GiB |
-| Runtime base | `/workspace/vdptest/vllm-main-20260914T180020Z-e85c8826` |
-| Runtime patch | `e85c8826-nixl-diag-stale-peer-fix-runtime-v2.patch` |
+| vLLM commit | `1f6a41a1771bf62d30401eb14a327ce020f573a4` |
+| Runtime change | NIXL stale-peer recovery patch for prefiller restart/re-handshake |
+
+The exact internal model name, manifest name, runtime path and patch are kept
+under `config/` for reproduction; they are not names for the experiment itself.
 
 ## OpenHands results
 

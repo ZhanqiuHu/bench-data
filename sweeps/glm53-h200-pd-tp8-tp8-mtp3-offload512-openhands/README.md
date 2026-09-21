@@ -1,4 +1,4 @@
-# GLM-5.3 H200 PD MTP3 offload512 TP8 control e85fix-v2
+# GLM-5.3 H200 PD TP8→TP8 MTP3 offload512 OpenHands
 
 | Date | Published result |
 |---|---|
