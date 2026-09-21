@@ -1,22 +1,19 @@
 # GLM-5.3 H200 TP8→TP8 MTP3 offload512 e85fix-v2
 
-This directory is a self-contained, immutable copy of the 2026-09-19 runs. It records observed data and raw output without replacing earlier experiments.
+## Published result status
 
-## Data validity status
+This directory publishes the valid OpenHands run only.
 
-| Data | Status |
-|---|---|
-| OpenHands, all four points | Valid: every request completed successfully |
-| AgentX completed throughput and saturation evidence | Usable only with the sent/completed/in-flight counts below |
-| AgentX c16/c32/c64 latency percentiles | Censored: 13/36/108 requests remained in flight at forced phase completion |
-| Formal PCP-versus-TP8 comparison | Not available: the existing PCP and TP8 runs used different runtime builds |
+| Workload | Run ID | Status |
+|---|---|---|
+| OpenHands / EvalScope | `20260919T181450Z-e85fix-v2-tp8-control` | valid; all requests completed at all four points |
+| AgentX / AIPerf | — | not published; the attempted run did not drain outstanding requests and must be rerun |
 
-Do not use the AgentX c32/c64 P95 or P99 values as complete tail-latency
-measurements. The runner stopped sending at the 1800-second deadline, then
-timed out and force-ended outstanding credits instead of draining every request.
-The raw data is retained so the termination behavior remains auditable.
+Do not use commit `fc80cb5` or `a6870c2` as a source of AgentX performance
+numbers. Those commits retained a diagnostic run whose latency distribution was
+censored. The current tree removes that run from the published result set.
 
-## Identity
+## Configuration
 
 | Field | Value |
 |---|---|
@@ -25,55 +22,30 @@ The raw data is retained so the termination behavior remains auditable.
 | Prefill | 8×H200, TP8 + EP, MTP3, CPU KV offload 512 GiB |
 | Decode | 8×H200, TP8 + EP, MTP3, CPU KV offload 512 GiB |
 | Runtime base | `/workspace/vdptest/vllm-main-20260914T180020Z-e85c8826` |
-| Runtime change | `e85c8826-nixl-diag-stale-peer-fix-runtime-v2.patch` |
+| Runtime patch | `e85c8826-nixl-diag-stale-peer-fix-runtime-v2.patch` |
 
-The exact manifest, environment, runtime patch, runner scripts, and sweep scripts used or retained for reproduction are in `config/`.
+## OpenHands results
 
-## Runs
+| Parallel | Samples | Requests | Success | RPS | Avg latency (s) | P99 latency (s) | Avg TTFT (ms) | P99 TTFT (ms) | Output tok/s | Decode tok/s | Spec accept rate |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | 4 | 52 | 100% | 0.36 | 2.759 | 12.540 | 1174.1 | 10538.5 | 79.72 | 138.31 | 73.6% |
+| 2 | 8 | 104 | 100% | 0.63 | 3.141 | 13.560 | 1406.5 | 11532.4 | 137.54 | 126.26 | 73.2% |
+| 4 | 8 | 104 | 100% | 1.38 | 2.815 | 4.160 | 814.7 | 1707.0 | 303.86 | 109.41 | 74.3% |
+| 8 | 16 | 208 | 100% | 1.23 | 6.444 | 70.720 | 4247.5 | 68328.6 | 270.45 | 99.70 | 73.4% |
 
-| Workload | Run ID | Points | Result |
-|---|---|---|---|
-| OpenHands / EvalScope | `20260919T181450Z-e85fix-v2-tp8-control` | parallel/total samples `1/4`, `2/8`, `4/8`, `8/16` | all requests successful; all four reports generated |
-| AgentX / AIPerf | `20260919T182534Z-e85fix-v2-tp8-control` | concurrency `16`, `32`, `64`; 1800 s profiling each | all three exports generated; see forced phase-end warning below |
+Exact machine-readable aggregate values are in `openhands-summary.csv`.
 
-Exact aggregate values are in:
+## Included files
 
-- `openhands-summary.csv`
-- `agentx-summary.csv`
+- `openhands/`: the complete four-point result tree, including SQLite request
+  data, benchmark summaries and percentiles, HTML reports, client output, and
+  server logs.
+- `openhands-controller.log`: original controller output.
+- `openhands-summary.csv`: exact aggregate values copied from the four final
+  benchmark summaries.
+- `config/`: the manifest, runtime environment, patch and OpenHands runner used
+  for this run.
+- `SHA256SUMS`: checksums for the current published files.
 
-## Raw data
-
-- `openhands/`: full copied OpenHands result tree, including the four SQLite databases, benchmark JSON files, HTML reports, performance summaries, client logs, and server logs.
-- `agentx/`: full copied AgentX result tree, including AIPerf CSV/JSON, per-request profiler JSONL, server metrics, run metadata, manifests, client logs, and server logs.
-- `independent-client-raw/`: independent raw stdout captures for the three AgentX client pods.
-- `openhands-controller.log`: original OpenHands controller output.
-- `agentx-controller.log`: original AgentX controller output.
-- `SHA256SUMS`: SHA-256 checksums for the copied archive.
-
-At archive creation there were 125 checksummed files and the checksum verification passed.
-
-The c16 decoder live log was 131,291,746 bytes, above GitHub's single-file
-limit. The archive stores it losslessly as `.log.gz`. Its original and
-decompressed SHA-256 are both
-`d15b7fb7e11b27f0eab0b9cbe9a2faf286f55a4ff4a169d71e41945fbee6111b`.
-The uncompressed source remains in the original `agentx-mvp` result tree.
-
-## Recorded warnings and errors
-
-All three AgentX points reached the profiling deadline with requests still in flight. Raw client output records:
-
-```text
-Phase profiling timed out, cancelling all credits.
-Timeout waiting 10.0s for cancelled credits to return. Some credits may be stuck. Forcing phase completion.
-```
-
-The in-flight counts were 13 at c16, 36 at c32, and 108 at c64. The exported `error_summary` is empty and `was_cancelled` is false for all three completed-result JSON files. These in-flight requests are not counted in `completed_requests`.
-
-After the c64 final copy, the controller records:
-
-```text
-2026-09-19T20:23:50Z zhu-sweep: c=64 done in 2656s
-scripts/zhu-sweep.sh: line 307: syntax error near unexpected token `exit'
-```
-
-All three point-level `run_meta.json` files contain `exit_code: 0`; the aggregate controller did not print its final `OK` line. The archived raw controller log is authoritative.
+The incomplete AgentX attempt remains in the local diagnostic archive and is
+not part of this published benchmark result.

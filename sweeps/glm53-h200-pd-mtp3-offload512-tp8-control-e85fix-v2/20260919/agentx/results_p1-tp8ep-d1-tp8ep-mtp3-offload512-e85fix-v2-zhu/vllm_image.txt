@@ -1,1 +1,0 @@
-quay.io/rh-ee-lwilkins/vllm-envs-cuda:pr8-cv2
