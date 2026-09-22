@@ -1,4 +1,4 @@
-# GLM-5.3 H200 PD TP8→TP8 MTP3 offload512 OpenHands
+# GLM-5.3 H200 PD TP8→TP8 MTP3 offload512: OpenHands + AgentX
 
 | Date | Published result |
 |---|---|
@@ -9,4 +9,4 @@ wire drain are published. AgentX raw outputs and the facts table are under
 [`agentx/`](agentx/README.md).
 
 The PCP8+DCP8 result remains in the separate
-`glm53-h200-pd-pcp8dcp8-tp8-mtp3-offload512-openhands` directory.
+`glm53-h200-pd-pcp8dcp8-tp8-mtp3-offload512` directory.
