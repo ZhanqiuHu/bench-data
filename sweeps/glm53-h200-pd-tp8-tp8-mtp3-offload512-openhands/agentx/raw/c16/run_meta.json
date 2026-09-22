@@ -1,0 +1,12 @@
+{
+  "version": "zhu-sweep",
+  "concurrency": 16,
+  "exit_code": 0,
+  "started_at": "2026-09-21T19:04:48Z",
+  "ended_at": "2026-09-21T19:44:25Z",
+  "duration_sec": 2377,
+  "local_dir": "/Users/zhu/Documents/workspace/agentx-mvp/results/.artifacts/sweeps/mtp3-offload512-agentx-tp8-wire-drain-20260921T190424Z-tp8-agentx-c16-wire-drain/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu_c16",
+  "pvc_path": "zhu-pcp-main/mtp3-offload512-agentx-tp8-wire-drain-20260921T190424Z-tp8-agentx-c16-wire-drain/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu_c16",
+  "artifact_subdir": "mtp3-offload512-agentx-tp8-wire-drain-20260921T190424Z-tp8-agentx-c16-wire-drain/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu/results_p1-tp8ep-d1-tp8ep-mtp3-offload512-e85fix-v2-zhu_c16",
+  "live_capture": true
+}

@@ -4,9 +4,9 @@
 |---|---|
 | 2026-09-19 | [OpenHands TP8 control](20260919/README.md) |
 
-Only the completed OpenHands result is published. The attempted AgentX run was
-removed from the current result tree because outstanding requests were forcibly
-terminated instead of drained; AgentX must be rerun before publication.
+The completed OpenHands result and the replacement AgentX runs with complete
+wire drain are published. AgentX raw outputs and the facts table are under
+[`agentx/`](agentx/README.md).
 
-The earlier PCP8+DCP8 dataset remains in the separate
-`glm53-h200-pd-mtp3-offload512-agentx-openhands` directory and was not changed.
+The PCP8+DCP8 result remains in the separate
+`glm53-h200-pd-pcp8dcp8-tp8-mtp3-offload512-openhands` directory.
